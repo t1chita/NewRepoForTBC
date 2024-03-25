@@ -213,9 +213,19 @@ class AdgeGenerator{
             unwrappedAddAdge = unwrapAddAdge
             killerAdges.append(unwrapAddAdge)
         }
+        if let unwrapRemoveAdge = removeAdge {
+            unwrappedRemoveAdge = unwrapRemoveAdge
+        }
+        for adge in killerAdges {
+            if unwrappedRemoveAdge == adge {
+                if let index = killerAdges.firstIndex(of: adge){
+                    killerAdges.remove(at: index)
+                }
+            }
+        }
     }
     
 }
 
 var newNew = AdgeGenerator()
-newNew.randomJoke()
+newNew.addOrRemoveAdgesFromArray(addAdge: nil, removeAdge: "ბებიააა... ბებია... ოლია მათხოვარი მევიდა...")
