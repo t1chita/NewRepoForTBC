@@ -143,6 +143,7 @@ struct structForTest {
     @InitializerStruct(initClosure: "lazy ინიციალიზებულია")
     var cachedData: String
 }
+
 var someData = structForTest()
 print(someData.cachedData)
 
