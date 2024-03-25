@@ -76,9 +76,12 @@ class Library{
     //-----Properties: Books Array, Owners Array.✅
     var BooksArray: [Book] = []
     var OwnersArray: [Owner] = []
-//    
+
     //-----Designated Init.✅
-   
+    init(BooksArray: [Book], OwnersArray: [Owner]) {
+        self.BooksArray = BooksArray
+        self.OwnersArray = OwnersArray
+    }
     //-----Method წიგნის დამატება, რათა ჩვენი ბიბლიოთეკა შევავსოთ წიგნებით.✅
     func addBooksInLibrary(book:Book) {
         BooksArray.append(book)
@@ -117,7 +120,6 @@ class Library{
                 print("We can't find owner with \(owner.ownerID)")
             }
         }
-        
     }
     //-----Method რომელიც ეძებს წაღებულ წიგნებს კონკრეტული Owner-ის მიერ.✅
     func searchBorrowedBooksByUniqueOwner(owner: Owner, booksArray: [Book]) -> [Book]{
@@ -154,8 +156,10 @@ var ownerSandro = Owner(ownerID: 1, name: "სანდრო")
 var ownerGigi = Owner(ownerID: 2, name: "გიგი")
 var ownerLuka = Owner(ownerID: 3, name: "ლუკა")
 
+var bookArray: [Book] = []
+var ownerArray: [Owner] = []
 
-var mainLibrary = Library()
+var mainLibrary = Library(BooksArray: bookArray, OwnersArray: ownerArray)
 
 //-----დავამატოთ წიგნები და Owner-ები ბიბლიოთეკაში✅
 
@@ -167,6 +171,7 @@ mainLibrary.addBooksInLibrary(book: bookMwvaneSpilo)
 mainLibrary.addOwnersInLibrary(owner: ownerGigi)
 mainLibrary.addOwnersInLibrary(owner: ownerLuka)
 mainLibrary.addOwnersInLibrary(owner: ownerSandro)
+mainLibrary.BooksArray
 //-----წავაღებინოთ Owner-ებს წიგნები და დავაბრუნებინოთ რაღაც ნაწილი.✅
 ownerGigi.takeBookFromLibrary(book: bookTetriLomi)
 ownerGigi.takeBookFromLibrary(book: bookMwvaneSpilo)
