@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         }
         if switchForLabel.isOn {
             var answer: Int = 0
-            var maxNum = max(intOfFirstText, intOfSecondText)
+            let maxNum = max(intOfFirstText, intOfSecondText)
             for num in stride(from: maxNum, to: 0, by: -1) {
                 
                 if Int(num) % intOfFirstText == 0 && Int(num) % intOfSecondText == 0 {
