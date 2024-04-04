@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func computeLMCOrHCF(_ sender: Any) {
+    @IBAction func computeLMCOrHCF(_ sender: UIButton) {
         var intOfFirstText = 0
         var intOfSecondText = 0
         if let unwrappedFirstNumber = firstNumberTextLabel.text {
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func changeLabelLMCToHCF(_ sender: Any) {
+    @IBAction func changeLabelLMCToHCF(_ sender: UISwitch) {
         if switchForLabel.isOn {
             labelOfLMCAndHCF.text = "უდიდესი საერთო გამყოფი"
             computeButton.tintColor = UIColor.red
