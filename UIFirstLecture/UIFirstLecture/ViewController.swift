@@ -52,8 +52,9 @@ class ViewController: UIViewController {
             var answer: Int = 0
             let maxNum = max(intOfFirstText, intOfSecondText)
             for num in stride(from: maxNum, to: 0, by: -1) {
-                
-                if Int(num) % intOfFirstText == 0 && Int(num) % intOfSecondText == 0 {
+                if  intOfFirstText % Int(num) == 0 &&  intOfSecondText % Int(num) == 0 {
+                    firstNumberTextLabel.textColor = UIColor.gray
+                    secondNumberTextLabel.textColor = UIColor.gray
                     answer = Int(num)
                     break
                 }
@@ -63,6 +64,8 @@ class ViewController: UIViewController {
             var answer: Int = 0
             for num in 1...Int16.max{
                 if Int(num) % intOfFirstText == 0 && Int(num) % intOfSecondText == 0 {
+                    firstNumberTextLabel.textColor = UIColor.gray
+                    secondNumberTextLabel.textColor = UIColor.gray
                     answer = Int(num)
                     break
                 }
