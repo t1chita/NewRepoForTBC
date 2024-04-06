@@ -13,7 +13,7 @@ class AuthorizationViewController: UIViewController {
         let logoLockImageView = UIImageView(image: .logoLock)
         return logoLockImageView
     }()
-    
+    //MARK: UILabels-
     let greetingLabel: UILabel = {
         let greetingLabel = UILabel()
         greetingLabel.text = "მოგესალმებით!"
@@ -30,6 +30,86 @@ class AuthorizationViewController: UIViewController {
         descriptionLabel.layer.opacity = 0.7
         return descriptionLabel
     }()
+    let authorizationLabel: UILabel = {
+        let authorizationLabel = UILabel()
+        authorizationLabel.text = "ავტორიზაცია"
+        authorizationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        authorizationLabel.textColor = UIColor.greetingLabel
+        authorizationLabel.keyboardLayoutGuide.keyboardDismissPadding = 10
+        authorizationLabel.translatesAutoresizingMaskIntoConstraints = false
+        return authorizationLabel
+    }()
+    let nameAndLastNameLabel: UILabel = {
+        let nameAndLastNameLabel = UILabel()
+        nameAndLastNameLabel.text = "სრული სახელი"
+        nameAndLastNameLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        nameAndLastNameLabel.textColor = UIColor.infoLabels
+        return nameAndLastNameLabel
+    }()
+    let emailLabel: UILabel = {
+        let emailLabel = UILabel()
+        emailLabel.text = "ელ.ფოსტა"
+        emailLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        emailLabel.textColor = UIColor.infoLabels
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        return emailLabel
+    }()
+    let passwordLabel: UILabel = {
+        let passwordLAbel = UILabel()
+        passwordLAbel.text = "პაროლი"
+        passwordLAbel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        passwordLAbel.textColor = UIColor.infoLabels
+        passwordLAbel.translatesAutoresizingMaskIntoConstraints = false
+        return passwordLAbel
+    }()
+    let orLabel: UILabel = {
+        let orLabel = UILabel()
+        orLabel.text = "ან"
+        orLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        orLabel.textColor = UIColor.orLabel
+        return orLabel
+    }()
+    
+    //MARK: UITextFields-
+    let nameAndLastNameTextField: UITextField = {
+        let nameAndLastNameTextField = UITextField()
+        nameAndLastNameTextField.addPaddingToTextField()
+        nameAndLastNameTextField.placeholder = "მაგ: ქეთინო ფერი"
+        nameAndLastNameTextField.textColor = UIColor.placeHolders
+        nameAndLastNameTextField.layer.borderWidth = 1
+        nameAndLastNameTextField.layer.cornerRadius = 4
+        nameAndLastNameTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        nameAndLastNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        nameAndLastNameTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        return nameAndLastNameTextField
+    }()
+    let emailTextField: UITextField = {
+        let emailTextField = UITextField()
+        emailTextField.addPaddingToTextField()
+        emailTextField.placeholder = "მაგ: chita@mail.ru"
+        emailTextField.textColor = UIColor.placeHolders
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.cornerRadius = 4
+        emailTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        return emailTextField
+    }()
+    let passwordTextField: UITextField = {
+        let passwordTextField = UITextField()
+        passwordTextField.addPaddingToTextField()
+        passwordTextField.placeholder = "მაგ: chitAmagaria123,yvelazesaYvarlebi2019"
+        passwordTextField.textColor = UIColor.placeHolders
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.cornerRadius = 4
+        passwordTextField.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        return passwordTextField
+    }()
+    
+    
+    //MARK: UIStackViews-
     let greetingAndDescriptionStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -53,87 +133,52 @@ class AuthorizationViewController: UIViewController {
         stackView.axis = .vertical
         return stackView
     }()
-    let authorizationLabel: UILabel = {
-        let authorizationLabel = UILabel()
-        authorizationLabel.text = "ავტორიზაცია"
-        authorizationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        authorizationLabel.textColor = UIColor.greetingLabel
-        authorizationLabel.keyboardLayoutGuide.keyboardDismissPadding = 10
-        authorizationLabel.translatesAutoresizingMaskIntoConstraints = false
-        return authorizationLabel
-    }()
     let nameAndLastNameStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         return stackView
-    }()
-    let nameAndLastNameLabel: UILabel = {
-        let nameAndLastNameLabel = UILabel()
-        nameAndLastNameLabel.text = "სრული სახელი"
-        nameAndLastNameLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        nameAndLastNameLabel.textColor = UIColor.infoLabels
-        return nameAndLastNameLabel
-    }()
-    let nameAndLastNameTextField: UITextField = {
-        let nameAndLastNameTextField = UITextField()
-        nameAndLastNameTextField.addPaddingToTextField()
-        nameAndLastNameTextField.placeholder = "მაგ: ქეთინო ფერი"
-        nameAndLastNameTextField.textColor = UIColor.placeHolders
-        nameAndLastNameTextField.layer.borderWidth = 1
-        nameAndLastNameTextField.layer.cornerRadius = 4
-        nameAndLastNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        nameAndLastNameTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        return nameAndLastNameTextField
     }()
     let emailStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         return stackView
     }()
-    let emailLabel: UILabel = {
-        let emailLabel = UILabel()
-        emailLabel.text = "ელ.ფოსტა"
-        emailLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        emailLabel.textColor = UIColor.infoLabels
-        emailLabel.translatesAutoresizingMaskIntoConstraints = false
-        return emailLabel
-    }()
-    let emailTextField: UITextField = {
-        let emailTextField = UITextField()
-        emailTextField.addPaddingToTextField()
-        emailTextField.placeholder = "მაგ: chita@mail.ru"
-        emailTextField.textColor = UIColor.placeHolders
-        emailTextField.layer.borderWidth = 1
-        emailTextField.layer.cornerRadius = 4
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        return emailTextField
-    }()
     let passwordStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         return stackView
     }()
-    let passwordLabel: UILabel = {
-        let passwordLAbel = UILabel()
-        passwordLAbel.text = "პაროლი"
-        passwordLAbel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        passwordLAbel.textColor = UIColor.infoLabels
-        passwordLAbel.translatesAutoresizingMaskIntoConstraints = false
-        return passwordLAbel
-    }()
-    let passwordTextField: UITextField = {
-        let passwordTextField = UITextField()
-        passwordTextField.addPaddingToTextField()
-        passwordTextField.placeholder = "მაგ: chitAmagaria123,yvelazesaYvarlebi2019"
-        passwordTextField.textColor = UIColor.placeHolders
-        passwordTextField.layer.borderWidth = 1
-        passwordTextField.layer.cornerRadius = 4
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        return passwordTextField
-    }()
 
+    let separatorHorizontalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        return stackView
+    }()
+    let otherWaysToLoginStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        return stackView
+    }()
+    //MARK: UIVIEWS-
+    let horizontalViewFirst: UIView = {
+       let horizontalViewFirst = UIView()
+        horizontalViewFirst.layer.borderWidth = 1
+        horizontalViewFirst.layer.borderColor = UIColor.horizontalViewBorder.cgColor
+        horizontalViewFirst.translatesAutoresizingMaskIntoConstraints = false
+        horizontalViewFirst.widthAnchor.constraint(equalToConstant: 146).isActive = true
+        horizontalViewFirst.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return horizontalViewFirst
+    }()
+    let horizontalViewSecond: UIView = {
+        let horizontalViewSecond = UIView()
+        horizontalViewSecond.layer.borderWidth = 1
+        horizontalViewSecond.layer.borderColor = UIColor.horizontalViewBorder.cgColor
+        horizontalViewSecond.translatesAutoresizingMaskIntoConstraints = false
+        horizontalViewSecond.widthAnchor.constraint(equalToConstant: 146).isActive = true
+        horizontalViewSecond.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return horizontalViewSecond
+    }()
+    //MARK: UIBUTTONS-
     let logInButton: UIButton = {
         let logInButton = UIButton()
         logInButton.backgroundColor = UIColor.loginButtonCollor
@@ -145,47 +190,14 @@ class AuthorizationViewController: UIViewController {
         logInButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         return logInButton
     }()
-    let separatorHorizontalStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        return stackView
-    }()
-    let horizontalViewFirst: UIView = {
-       let horizontalViewFirst = UIView()
-        horizontalViewFirst.layer.borderWidth = 1
-        horizontalViewFirst.layer.borderColor = UIColor.horizontalViewBorder.cgColor
-        horizontalViewFirst.translatesAutoresizingMaskIntoConstraints = false
-        horizontalViewFirst.widthAnchor.constraint(equalToConstant: 146).isActive = true
-        horizontalViewFirst.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        return horizontalViewFirst
-    }()
-    let orLabel: UILabel = {
-       let orLabel = UILabel()
-        orLabel.text = "ან"
-        orLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        orLabel.textColor = UIColor.orLabel
-        return orLabel
-    }()
-    let horizontalViewSecond: UIView = {
-       let horizontalViewSecond = UIView()
-        horizontalViewSecond.layer.borderWidth = 1
-        horizontalViewSecond.layer.borderColor = UIColor.horizontalViewBorder.cgColor
-        horizontalViewSecond.translatesAutoresizingMaskIntoConstraints = false
-        horizontalViewSecond.widthAnchor.constraint(equalToConstant: 146).isActive = true
-        horizontalViewSecond.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        return horizontalViewSecond
-    }()
-    let otherWaysToLoginStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        return stackView
-    }()
     let useGoogleForLoginButton: UIButton = {
         let useGoogleForLoginButton = UIButton()
         useGoogleForLoginButton.backgroundColor = UIColor.loginOtherWaysButtonBackground
         useGoogleForLoginButton.setTitle("გამოიყენე გუგლი", for: .normal)
         useGoogleForLoginButton.clipsToBounds = true
         useGoogleForLoginButton.layer.cornerRadius = 12
+        useGoogleForLoginButton.tintColor = UIColor.black
+        useGoogleForLoginButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         useGoogleForLoginButton.translatesAutoresizingMaskIntoConstraints = false
         useGoogleForLoginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         return useGoogleForLoginButton
@@ -196,13 +208,15 @@ class AuthorizationViewController: UIViewController {
         useFacebookForLoginButton.setTitle("გამოიყენე ფეიზბურგი", for: .normal)
         useFacebookForLoginButton.clipsToBounds = true
         useFacebookForLoginButton.layer.cornerRadius = 12
-        useFacebookForLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        useFacebookForLoginButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        useFacebookForLoginButton.titleLabel?.textColor = UIColor.black
         return useFacebookForLoginButton
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         addLogoImage()
         addGreetingLabelAndDescriptionLabelInStackView()
         addFullAuthorizationStackView()
@@ -211,7 +225,7 @@ class AuthorizationViewController: UIViewController {
     //MARK: Functions For viewDidLoad-
     func addLogoImage () {
         self.view.addSubview(logoLockImageView)
-        logoLockImageView.frame = CGRect(x: 20, y: 20, width: 90, height: 50)
+        logoLockImageView.frame = CGRect(x: 0, y: 0, width: 90, height: 50)
         logoLockImageView.translatesAutoresizingMaskIntoConstraints = false
         logoLockImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         logoLockImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 143).isActive = true
@@ -220,7 +234,7 @@ class AuthorizationViewController: UIViewController {
     }
     func addGreetingLabelAndDescriptionLabelInStackView () {
         self.view.addSubview(greetingAndDescriptionStackView)
-        greetingAndDescriptionStackView.frame = CGRect(x: 100, y: 100, width: 335, height: 126)
+        greetingAndDescriptionStackView.frame = CGRect(x: 0, y: 0, width: 335, height: 126)
         greetingAndDescriptionStackView.translatesAutoresizingMaskIntoConstraints = false
         greetingAndDescriptionStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
         greetingAndDescriptionStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
@@ -278,7 +292,6 @@ class AuthorizationViewController: UIViewController {
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordTextField)
         passwordStackView.translatesAutoresizingMaskIntoConstraints = false
-        
         passwordStackView.heightAnchor.constraint(equalToConstant: 68).isActive = true
         passwordStackView.spacing = 4
     }
@@ -304,12 +317,11 @@ class AuthorizationViewController: UIViewController {
         addNameAndLastNameStack()
         addEmailStack()
         addPasswordStackView()
+        halfOfAuthorizationStackView.addArrangedSubview(logInButton)
         
         authorizationStackView.addArrangedSubview(halfOfAuthorizationStackView)
-        halfOfAuthorizationStackView.addArrangedSubview(logInButton)
         halfOfAuthorizationStackView.setCustomSpacing(16, after: passwordStackView)
         halfOfAuthorizationStackView.translatesAutoresizingMaskIntoConstraints = false
-        halfOfAuthorizationStackView.heightAnchor.constraint(equalToConstant: 220).isActive = true
         halfOfAuthorizationStackView.spacing = 8
     }
     
