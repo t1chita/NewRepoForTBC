@@ -60,8 +60,6 @@ class AuthorizationViewController: UIViewController {
         authorizationLabel.textColor = UIColor.greetingLabel
         authorizationLabel.keyboardLayoutGuide.keyboardDismissPadding = 10
         authorizationLabel.translatesAutoresizingMaskIntoConstraints = false
-        authorizationLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        authorizationLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         return authorizationLabel
     }()
     let nameAndLastNameStackView: UIStackView = {
@@ -78,10 +76,13 @@ class AuthorizationViewController: UIViewController {
     }()
     let nameAndLastNameTextField: UITextField = {
         let nameAndLastNameTextField = UITextField()
+        nameAndLastNameTextField.addPaddingToTextField()
         nameAndLastNameTextField.placeholder = "მაგ: ქეთინო ფერი"
         nameAndLastNameTextField.textColor = UIColor.placeHolders
         nameAndLastNameTextField.layer.borderWidth = 1
         nameAndLastNameTextField.layer.cornerRadius = 4
+        nameAndLastNameTextField.translatesAutoresizingMaskIntoConstraints = false
+        nameAndLastNameTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         return nameAndLastNameTextField
     }()
     let emailStackView: UIStackView = {
@@ -94,14 +95,18 @@ class AuthorizationViewController: UIViewController {
         emailLabel.text = "ელ.ფოსტა"
         emailLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         emailLabel.textColor = UIColor.infoLabels
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
         return emailLabel
     }()
     let emailTextField: UITextField = {
         let emailTextField = UITextField()
+        emailTextField.addPaddingToTextField()
         emailTextField.placeholder = "მაგ: chita@mail.ru"
         emailTextField.textColor = UIColor.placeHolders
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.cornerRadius = 4
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         return emailTextField
     }()
     let passwordStackView: UIStackView = {
@@ -114,14 +119,18 @@ class AuthorizationViewController: UIViewController {
         passwordLAbel.text = "პაროლი"
         passwordLAbel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         passwordLAbel.textColor = UIColor.infoLabels
+        passwordLAbel.translatesAutoresizingMaskIntoConstraints = false
         return passwordLAbel
     }()
     let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
+        passwordTextField.addPaddingToTextField()
         passwordTextField.placeholder = "მაგ: chitAmagaria123,yvelazesaYvarlebi2019"
         passwordTextField.textColor = UIColor.placeHolders
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.cornerRadius = 4
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
         return passwordTextField
     }()
 
@@ -177,6 +186,8 @@ class AuthorizationViewController: UIViewController {
         useGoogleForLoginButton.setTitle("გამოიყენე გუგლი", for: .normal)
         useGoogleForLoginButton.clipsToBounds = true
         useGoogleForLoginButton.layer.cornerRadius = 12
+        useGoogleForLoginButton.translatesAutoresizingMaskIntoConstraints = false
+        useGoogleForLoginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         return useGoogleForLoginButton
     }()
     let useFacebookForLoginButton: UIButton = {
@@ -185,6 +196,7 @@ class AuthorizationViewController: UIViewController {
         useFacebookForLoginButton.setTitle("გამოიყენე ფეიზბურგი", for: .normal)
         useFacebookForLoginButton.clipsToBounds = true
         useFacebookForLoginButton.layer.cornerRadius = 12
+        useFacebookForLoginButton.translatesAutoresizingMaskIntoConstraints = false
         return useFacebookForLoginButton
     }()
     
@@ -223,19 +235,17 @@ class AuthorizationViewController: UIViewController {
         self.view.addSubview(authorizationStackView)
         authorizationStackView.translatesAutoresizingMaskIntoConstraints = false
         authorizationStackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        authorizationStackView.backgroundColor = .orange
+        authorizationStackView.backgroundColor = .white
         
         authorizationStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 256).isActive = true
         authorizationStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         authorizationStackView.widthAnchor.constraint(equalToConstant: 335).isActive = true
         authorizationStackView.heightAnchor.constraint(equalToConstant: 528).isActive = true
+        authorizationStackView.spacing = 24
         
         
         addAuthorizationLabelStackView()
-        addNameAndLastNameStack()
-        addEmailStack()
-        addPasswordStackView()
-        authorizationStackView.addArrangedSubview(logInButton)
+        addHalfOfAuthorizationStackView()
         addSeparatorView()
         addOtherWaysToLogStackView()
     }
@@ -248,7 +258,7 @@ class AuthorizationViewController: UIViewController {
         
     }
     func addNameAndLastNameStack() {
-        authorizationStackView.addArrangedSubview(nameAndLastNameStackView)
+        halfOfAuthorizationStackView.addArrangedSubview(nameAndLastNameStackView)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameLabel)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameTextField)
         nameAndLastNameStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -256,7 +266,7 @@ class AuthorizationViewController: UIViewController {
         nameAndLastNameStackView.spacing = 4
     }
     func addEmailStack() {
-        authorizationStackView.addArrangedSubview(emailStackView)
+        halfOfAuthorizationStackView.addArrangedSubview(emailStackView)
         emailStackView.addArrangedSubview(emailLabel)
         emailStackView.addArrangedSubview(emailTextField)
         emailStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -264,10 +274,11 @@ class AuthorizationViewController: UIViewController {
         emailStackView.spacing = 4
     }
     func addPasswordStackView() {
-        authorizationStackView.addArrangedSubview(passwordStackView)
+        halfOfAuthorizationStackView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordTextField)
         passwordStackView.translatesAutoresizingMaskIntoConstraints = false
+        
         passwordStackView.heightAnchor.constraint(equalToConstant: 68).isActive = true
         passwordStackView.spacing = 4
     }
@@ -286,13 +297,31 @@ class AuthorizationViewController: UIViewController {
         otherWaysToLoginStackView.addArrangedSubview(useGoogleForLoginButton)
         otherWaysToLoginStackView.addArrangedSubview(useFacebookForLoginButton)
         otherWaysToLoginStackView.translatesAutoresizingMaskIntoConstraints = false
-        otherWaysToLoginStackView.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        otherWaysToLoginStackView.spacing = 10
+        otherWaysToLoginStackView.heightAnchor.constraint(equalToConstant: 112).isActive = true
+        otherWaysToLoginStackView.spacing = 16
     }
-    func uniteHalfOfAuthorizationStackView() {
+    func addHalfOfAuthorizationStackView() {
+        addNameAndLastNameStack()
+        addEmailStack()
+        addPasswordStackView()
         
+        authorizationStackView.addArrangedSubview(halfOfAuthorizationStackView)
+        halfOfAuthorizationStackView.addArrangedSubview(logInButton)
+        halfOfAuthorizationStackView.setCustomSpacing(16, after: passwordStackView)
+        halfOfAuthorizationStackView.translatesAutoresizingMaskIntoConstraints = false
+        halfOfAuthorizationStackView.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        halfOfAuthorizationStackView.spacing = 8
     }
     
+}
+
+
+extension UITextField {
+    func addPaddingToTextField() {
+        let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 12, height: 0))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
 }
 
 #Preview {
