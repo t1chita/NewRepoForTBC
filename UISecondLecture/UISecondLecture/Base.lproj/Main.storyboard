@@ -230,6 +230,7 @@
                             <constraint firstItem="dRj-yD-UVS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Vhv-QD-8cL"/>
                             <constraint firstItem="SNb-po-r7p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="334" id="WKX-eA-dxY"/>
                             <constraint firstItem="0G9-8f-fHz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="408" id="Wqp-Zg-Z0l"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="p9e-aQ-Loi" secondAttribute="bottom" constant="61.329999999999998" id="XgY-1j-3As"/>
                             <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="p9e-aQ-Loi" secondAttribute="trailing" constant="290" id="aLF-wt-JB0"/>
                             <constraint firstItem="JNZ-DR-eqn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="361" id="dHT-ys-c4e"/>
                             <constraint firstItem="JNZ-DR-eqn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="319" id="e5E-vs-c0T"/>
@@ -281,10 +282,10 @@
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

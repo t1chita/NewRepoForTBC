@@ -13,6 +13,15 @@ class AuthorizationViewController: UIViewController {
         let logoLockImageView = UIImageView(image: .logoLock)
         return logoLockImageView
     }()
+    let facebookImageView: UIImageView = {
+        let facebookImageView = UIImageView(image: .facebook)
+        return facebookImageView
+    }()
+    let googleImageView: UIImageView = {
+        let facebookImageView = UIImageView(image: .google)
+        return facebookImageView
+    }()
+    
     //MARK: UILabels-
     let greetingLabel: UILabel = {
         let greetingLabel = UILabel()
@@ -24,10 +33,10 @@ class AuthorizationViewController: UIViewController {
     let descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.text = "ამ აპლიკაციის გამოყენების საუკეთესო გზა თქვენს ანგარიშზე შესვლაა, თუ არ გაქვთ ანგარიში გააკეთეთ, თუ არ გსურთ გაკეთება დასტოვეთ აქაურობა და წაშალეთ აპლიკაცია."
-        descriptionLabel.numberOfLines = 0
         descriptionLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         descriptionLabel.textColor = UIColor.descriptionLabel
         descriptionLabel.layer.opacity = 0.7
+        descriptionLabel.numberOfLines = 0
         return descriptionLabel
     }()
     let authorizationLabel: UILabel = {
@@ -35,7 +44,6 @@ class AuthorizationViewController: UIViewController {
         authorizationLabel.text = "ავტორიზაცია"
         authorizationLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         authorizationLabel.textColor = UIColor.greetingLabel
-        authorizationLabel.keyboardLayoutGuide.keyboardDismissPadding = 10
         authorizationLabel.translatesAutoresizingMaskIntoConstraints = false
         return authorizationLabel
     }()
@@ -113,17 +121,24 @@ class AuthorizationViewController: UIViewController {
     let greetingAndDescriptionStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.alignment = .leading
         return stackView
     }()
     
     let authorizationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 24
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
         return stackView
     }()
     let halfOfAuthorizationStackView: UIStackView = {
         let halfOfAuthorizationStackView = UIStackView()
         halfOfAuthorizationStackView.axis = .vertical
+        halfOfAuthorizationStackView.alignment = .fill
+        halfOfAuthorizationStackView.spacing = 8
+        halfOfAuthorizationStackView.distribution = .equalCentering
         return halfOfAuthorizationStackView
     }()
     let authorizationLabelStackView: UIStackView = {
@@ -136,27 +151,36 @@ class AuthorizationViewController: UIViewController {
     let nameAndLastNameStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 4
         return stackView
     }()
     let emailStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 4
+
         return stackView
     }()
     let passwordStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 4
         return stackView
     }()
 
     let separatorHorizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 11
         return stackView
     }()
     let otherWaysToLoginStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 16
         return stackView
     }()
     //MARK: UIVIEWS-
@@ -182,9 +206,9 @@ class AuthorizationViewController: UIViewController {
     let logInButton: UIButton = {
         let logInButton = UIButton()
         logInButton.backgroundColor = UIColor.loginButtonCollor
+        logInButton.setTitle("შესვლა", for: .normal)
         logInButton.clipsToBounds = true
         logInButton.layer.cornerRadius = 12
-        logInButton.setTitle("შესვლა", for: .normal)
         logInButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         logInButton.translatesAutoresizingMaskIntoConstraints = false
         logInButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
@@ -196,10 +220,9 @@ class AuthorizationViewController: UIViewController {
         useGoogleForLoginButton.setTitle("გამოიყენე გუგლი", for: .normal)
         useGoogleForLoginButton.clipsToBounds = true
         useGoogleForLoginButton.layer.cornerRadius = 12
-        useGoogleForLoginButton.tintColor = UIColor.black
+        useGoogleForLoginButton.setTitleColor(.black, for: .normal)
         useGoogleForLoginButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         useGoogleForLoginButton.translatesAutoresizingMaskIntoConstraints = false
-        useGoogleForLoginButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
         return useGoogleForLoginButton
     }()
     let useFacebookForLoginButton: UIButton = {
@@ -208,8 +231,8 @@ class AuthorizationViewController: UIViewController {
         useFacebookForLoginButton.setTitle("გამოიყენე ფეიზბურგი", for: .normal)
         useFacebookForLoginButton.clipsToBounds = true
         useFacebookForLoginButton.layer.cornerRadius = 12
+        useFacebookForLoginButton.setTitleColor(.black, for: .normal)
         useFacebookForLoginButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        useFacebookForLoginButton.titleLabel?.textColor = UIColor.black
         return useFacebookForLoginButton
     }()
     
@@ -229,18 +252,18 @@ class AuthorizationViewController: UIViewController {
         logoLockImageView.translatesAutoresizingMaskIntoConstraints = false
         logoLockImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
         logoLockImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 143).isActive = true
+        logoLockImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -143).isActive = true
         logoLockImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        logoLockImageView.widthAnchor.constraint(equalToConstant: 90).isActive = true
     }
     func addGreetingLabelAndDescriptionLabelInStackView () {
         self.view.addSubview(greetingAndDescriptionStackView)
         greetingAndDescriptionStackView.frame = CGRect(x: 0, y: 0, width: 335, height: 126)
+        
         greetingAndDescriptionStackView.translatesAutoresizingMaskIntoConstraints = false
         greetingAndDescriptionStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
         greetingAndDescriptionStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        greetingAndDescriptionStackView.widthAnchor.constraint(equalToConstant: 335).isActive = true
+        greetingAndDescriptionStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         greetingAndDescriptionStackView.heightAnchor.constraint(equalToConstant: 126).isActive = true
-        greetingAndDescriptionStackView.spacing = 4
         
         greetingAndDescriptionStackView.addArrangedSubview(greetingLabel)
         greetingAndDescriptionStackView.addArrangedSubview(descriptionLabel)
@@ -249,13 +272,11 @@ class AuthorizationViewController: UIViewController {
         self.view.addSubview(authorizationStackView)
         authorizationStackView.translatesAutoresizingMaskIntoConstraints = false
         authorizationStackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        authorizationStackView.backgroundColor = .white
         
         authorizationStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 256).isActive = true
         authorizationStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        authorizationStackView.widthAnchor.constraint(equalToConstant: 335).isActive = true
-        authorizationStackView.heightAnchor.constraint(equalToConstant: 528).isActive = true
-        authorizationStackView.spacing = 24
+        authorizationStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        authorizationStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28).isActive = true
         
         
         addAuthorizationLabelStackView()
@@ -264,36 +285,33 @@ class AuthorizationViewController: UIViewController {
         addOtherWaysToLogStackView()
     }
     func addAuthorizationLabelStackView() {
-        authorizationStackView.addArrangedSubview(authorizationLabelStackView)
         authorizationLabelStackView.addArrangedSubview(authorizationLabel)
+        
+        authorizationStackView.addArrangedSubview(authorizationLabelStackView)
+        
         authorizationLabelStackView.alignment = UIStackView.Alignment.center
         authorizationLabelStackView.translatesAutoresizingMaskIntoConstraints = false
         authorizationLabelStackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
     }
     func addNameAndLastNameStack() {
-        halfOfAuthorizationStackView.addArrangedSubview(nameAndLastNameStackView)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameLabel)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameTextField)
-        nameAndLastNameStackView.translatesAutoresizingMaskIntoConstraints = false
-        nameAndLastNameStackView.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        nameAndLastNameStackView.spacing = 4
+        
+        halfOfAuthorizationStackView.addArrangedSubview(nameAndLastNameStackView)
+        
     }
     func addEmailStack() {
         halfOfAuthorizationStackView.addArrangedSubview(emailStackView)
         emailStackView.addArrangedSubview(emailLabel)
         emailStackView.addArrangedSubview(emailTextField)
-        emailStackView.translatesAutoresizingMaskIntoConstraints = false
-        emailStackView.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        emailStackView.spacing = 4
+      
     }
     func addPasswordStackView() {
         halfOfAuthorizationStackView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordTextField)
-        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
-        passwordStackView.heightAnchor.constraint(equalToConstant: 68).isActive = true
-        passwordStackView.spacing = 4
+     
     }
     func addSeparatorView() {
         authorizationStackView.addArrangedSubview(separatorHorizontalStackView)
@@ -303,26 +321,23 @@ class AuthorizationViewController: UIViewController {
         separatorHorizontalStackView.alignment = UIStackView.Alignment.center
         separatorHorizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         separatorHorizontalStackView.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        separatorHorizontalStackView.spacing = 11
     }
     func addOtherWaysToLogStackView() {
         authorizationStackView.addArrangedSubview(otherWaysToLoginStackView)
         otherWaysToLoginStackView.addArrangedSubview(useGoogleForLoginButton)
         otherWaysToLoginStackView.addArrangedSubview(useFacebookForLoginButton)
-        otherWaysToLoginStackView.translatesAutoresizingMaskIntoConstraints = false
-        otherWaysToLoginStackView.heightAnchor.constraint(equalToConstant: 112).isActive = true
-        otherWaysToLoginStackView.spacing = 16
     }
     func addHalfOfAuthorizationStackView() {
         addNameAndLastNameStack()
         addEmailStack()
         addPasswordStackView()
+        
         halfOfAuthorizationStackView.addArrangedSubview(logInButton)
         
         authorizationStackView.addArrangedSubview(halfOfAuthorizationStackView)
         halfOfAuthorizationStackView.setCustomSpacing(16, after: passwordStackView)
         halfOfAuthorizationStackView.translatesAutoresizingMaskIntoConstraints = false
-        halfOfAuthorizationStackView.spacing = 8
+        halfOfAuthorizationStackView.heightAnchor.constraint(equalToConstant: 282).isActive = true
     }
     
 }
