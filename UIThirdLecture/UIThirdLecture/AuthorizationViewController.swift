@@ -13,13 +13,13 @@ class AuthorizationViewController: UIViewController {
         let imageView = UIImageView(image: .logoLock)
         return imageView
     }()
-    let facebookImageView: UIImageView = {
-        let imageView = UIImageView(image: .facebook)
-        return imageView
+    let facebookImage: UIImage = {
+        let image = UIImage.facebook
+        return image
     }()
-    let googleImageView: UIImageView = {
-        let imageView = UIImageView(image: .google)
-        return imageView
+    let googleImage: UIImage = {
+        let image = UIImage.google
+        return image
     }()
     //MARK: UILabels-
     let greetingLabel: UILabel = {
@@ -226,6 +226,7 @@ class AuthorizationViewController: UIViewController {
         button.layer.cornerRadius = 12
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        button.setImage(.google, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 48).isActive = true
         return button
@@ -303,6 +304,21 @@ class AuthorizationViewController: UIViewController {
         halfOfAuthorizationStackView.addArrangedSubview(nameAndLastNameStackView)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameLabel)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameTextField)
+        nameAndLastNameTextField.addAction(UIAction(title: "Check Valid Name And Lastname", handler: { [weak self] _ in
+            guard let unwrappedTextField = self?.nameAndLastNameTextField.text else {return}
+            if unwrappedTextField == "" {
+                self?.nameAndLastNameTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
+                return
+            }
+            self?.nameAndLastNameTextField.deleteNeedlessSpaces()
+            for char in unwrappedTextField {
+                if (char >= "A" && char <= "Z") || (char >= "a" && char <= "z" || char == " ") {
+                    self?.nameAndLastNameTextField.layer.borderColor = UIColor.green.cgColor
+                }else {
+                    self?.nameAndLastNameTextField.layer.borderColor = UIColor.red.cgColor
+                }
+            }
+        }), for: .editingDidEnd)
     }
     func addEmailStack() {
         halfOfAuthorizationStackView.addArrangedSubview(emailStackView)
@@ -314,6 +330,10 @@ class AuthorizationViewController: UIViewController {
             var tempString = ""
             var index = 0
             guard let unwrappedTextField = self?.emailTextField.text else {return}
+            if unwrappedTextField == "" {
+                self?.emailTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
+                return
+            }
             for char in unwrappedTextField {
                 arrOfString.append(char)
             }
@@ -340,6 +360,17 @@ class AuthorizationViewController: UIViewController {
         halfOfAuthorizationStackView.addArrangedSubview(passwordStackView)
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordTextField)
+        passwordTextField.addAction(UIAction(title: "Restriction Of Symbols Count", handler: { [weak self] _ in
+            var password: String = ""
+            var textFieldArr: [Character] = []
+            guard let unwrappedPassword = self?.passwordTextField.text else {return}
+            password.append(unwrappedPassword)
+            for char in unwrappedPassword {
+                textFieldArr.append(char)
+            }
+            
+            
+        }), for: .editingChanged)
     }
     func addSeparatorView() {
         authorizationStackView.addArrangedSubview(separatorHorizontalStackView)
@@ -354,7 +385,12 @@ class AuthorizationViewController: UIViewController {
         authorizationStackView.addArrangedSubview(otherWaysToLoginStackView)
         otherWaysToLoginStackView.addArrangedSubview(useGoogleForLoginButton)
         otherWaysToLoginStackView.addArrangedSubview(useFacebookForLoginButton)
-        otherWaysToLoginStackView.translatesAutoresizingMaskIntoConstraints = false
+    let newFacebookImage = facebookImage.resized(toSize: CGSize(width: 24, height: 24))
+        let newGoogleImage = googleImage.resized(toSize: CGSize(width: 24, height: 24))
+        useFacebookForLoginButton.setImage(newFacebookImage, for: .normal)
+        useGoogleForLoginButton.setImage(newGoogleImage, for: .normal)
+        otherWaysToLoginStackView
+            .translatesAutoresizingMaskIntoConstraints = false
         otherWaysToLoginStackView.heightAnchor.constraint(equalToConstant: 112).isActive = true
     }
     func addHalfOfAuthorizationStackView() {
@@ -377,7 +413,38 @@ extension UITextField {
         self.leftView = paddingView
         self.leftViewMode = .always
     }
+    func deleteNeedlessSpaces() {
+        var arrOfMyString: [Character] = []
+        var index = 0
+        guard let unwrappedTextField = self.text else {return}
+        for char in unwrappedTextField {
+            arrOfMyString.append(char)
+        }
+        for _ in 0..<arrOfMyString.count - 1 {
+            if arrOfMyString[index] == " " && arrOfMyString[index + 1] == " "  {
+                arrOfMyString.remove(at: index)
+                continue
+            }
+            index += 1
+        }
+        if arrOfMyString[arrOfMyString.count - 1] == " " {
+            arrOfMyString.remove(at: arrOfMyString.count - 1)
+        }
+        self.text = ""
+        for char in arrOfMyString {
+            self.text?.append(char)
+        }
+    }
 }
+extension UIImage {
+    func resized(toSize newSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: newSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 
 
 #Preview {
