@@ -21,7 +21,6 @@ class AuthorizationViewController: UIViewController {
         let imageView = UIImageView(image: .google)
         return imageView
     }()
-    
     //MARK: UILabels-
     let greetingLabel: UILabel = {
         let label = UILabel()
@@ -77,7 +76,6 @@ class AuthorizationViewController: UIViewController {
         label.textColor = UIColor.orLabel
         return label
     }()
-    
     //MARK: UITextFields-
     let nameAndLastNameTextField: UITextField = {
         let textField = UITextField()
@@ -118,8 +116,6 @@ class AuthorizationViewController: UIViewController {
         textField.layer.borderColor = UIColor.textFieldBorder.cgColor
         return textField
     }()
-    
-    
     //MARK: UIStackViews-
     let greetingAndDescriptionStackView: UIStackView = {
         let stackView = UIStackView()
@@ -127,7 +123,6 @@ class AuthorizationViewController: UIViewController {
         stackView.alignment = .leading
         return stackView
     }()
-    
     let authorizationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -161,7 +156,7 @@ class AuthorizationViewController: UIViewController {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 4
-
+        
         return stackView
     }()
     let passwordStackView: UIStackView = {
@@ -170,7 +165,7 @@ class AuthorizationViewController: UIViewController {
         stackView.spacing = 4
         return stackView
     }()
-
+    
     let separatorHorizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -178,6 +173,7 @@ class AuthorizationViewController: UIViewController {
         stackView.spacing = 11
         return stackView
     }()
+    
     let otherWaysToLoginStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -193,7 +189,7 @@ class AuthorizationViewController: UIViewController {
         return view
     }()
     let horizontalViewFirst: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.horizontalViewBorder.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -252,7 +248,6 @@ class AuthorizationViewController: UIViewController {
         addLogoImage()
         addGreetingLabelAndDescriptionLabelInStackView()
         addFullAuthorizationStackView()
-        
     }
     //MARK: Functions For viewDidLoad-
     func addLogoImage () {
@@ -313,7 +308,33 @@ class AuthorizationViewController: UIViewController {
         halfOfAuthorizationStackView.addArrangedSubview(emailStackView)
         emailStackView.addArrangedSubview(emailLabel)
         emailStackView.addArrangedSubview(emailTextField)
-      
+        // MARK: -CheckValidGmail
+        emailTextField.addAction(UIAction(title: "Check Valid Gmail", handler: { [weak self] _ in
+            var arrOfString:[Character] = []
+            var tempString = ""
+            var index = 0
+            guard let unwrappedTextField = self?.emailTextField.text else {return}
+            for char in unwrappedTextField {
+                arrOfString.append(char)
+            }
+            for char in arrOfString {
+                if char != "@" {
+                    arrOfString.remove(at: index)
+                    continue
+                }else if char == "@" {
+                    break
+                }
+                index += 1
+            }
+            for char in arrOfString {
+                tempString.append(char)
+            }
+            if tempString == "@gmail.com" || tempString == "@mail.ru" {
+                self?.emailTextField.layer.borderColor = UIColor.green.cgColor
+            }else {
+                self?.emailTextField.layer.borderColor = UIColor.red.cgColor
+            }
+        }), for: .editingDidEnd)
     }
     func addPasswordStackView() {
         halfOfAuthorizationStackView.addArrangedSubview(passwordStackView)
@@ -349,6 +370,7 @@ class AuthorizationViewController: UIViewController {
 }
 
 
+
 extension UITextField {
     func addPaddingToTextField() {
         let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 12, height: 0))
@@ -356,6 +378,7 @@ extension UITextField {
         self.leftViewMode = .always
     }
 }
+
 
 #Preview {
     AuthorizationViewController()
