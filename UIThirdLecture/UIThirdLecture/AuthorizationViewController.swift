@@ -305,55 +305,15 @@ class AuthorizationViewController: UIViewController {
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameLabel)
         nameAndLastNameStackView.addArrangedSubview(nameAndLastNameTextField)
         nameAndLastNameTextField.addAction(UIAction(title: "Check Valid Name And Lastname", handler: { [weak self] _ in
-            guard let unwrappedTextField = self?.nameAndLastNameTextField.text else {return}
-            if unwrappedTextField == "" {
-                self?.nameAndLastNameTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
-                return
-            }
-            self?.nameAndLastNameTextField.deleteNeedlessSpaces()
-            for char in unwrappedTextField {
-                if (char >= "A" && char <= "Z") || (char >= "a" && char <= "z" || char == " ") {
-                    self?.nameAndLastNameTextField.layer.borderColor = UIColor.green.cgColor
-                }else {
-                    self?.nameAndLastNameTextField.layer.borderColor = UIColor.red.cgColor
-                }
-            }
+            self?.nameAndLastNameTextField.checkIsNameAndLastNameValid()
         }), for: .editingDidEnd)
     }
     func addEmailStack() {
         halfOfAuthorizationStackView.addArrangedSubview(emailStackView)
         emailStackView.addArrangedSubview(emailLabel)
         emailStackView.addArrangedSubview(emailTextField)
-        // MARK: -CheckValidGmail
         emailTextField.addAction(UIAction(title: "Check Valid Gmail", handler: { [weak self] _ in
-            var arrOfString:[Character] = []
-            var tempString = ""
-            var index = 0
-            guard let unwrappedTextField = self?.emailTextField.text else {return}
-            if unwrappedTextField == "" {
-                self?.emailTextField.layer.borderColor = UIColor.textFieldBorder.cgColor
-                return
-            }
-            for char in unwrappedTextField {
-                arrOfString.append(char)
-            }
-            for char in arrOfString {
-                if char != "@" {
-                    arrOfString.remove(at: index)
-                    continue
-                }else if char == "@" {
-                    break
-                }
-                index += 1
-            }
-            for char in arrOfString {
-                tempString.append(char)
-            }
-            if tempString == "@gmail.com" || tempString == "@mail.ru" {
-                self?.emailTextField.layer.borderColor = UIColor.green.cgColor
-            }else {
-                self?.emailTextField.layer.borderColor = UIColor.red.cgColor
-            }
+            self?.emailTextField.checkIsGmailValid()
         }), for: .editingDidEnd)
     }
     func addPasswordStackView() {
@@ -361,16 +321,8 @@ class AuthorizationViewController: UIViewController {
         passwordStackView.addArrangedSubview(passwordLabel)
         passwordStackView.addArrangedSubview(passwordTextField)
         passwordTextField.addAction(UIAction(title: "Restriction Of Symbols Count", handler: { [weak self] _ in
-            var password: String = ""
-            var textFieldArr: [Character] = []
-            guard let unwrappedPassword = self?.passwordTextField.text else {return}
-            password.append(unwrappedPassword)
-            for char in unwrappedPassword {
-                textFieldArr.append(char)
-            }
-            
-            
-        }), for: .editingChanged)
+            self?.passwordTextField.checkIsPasswordValid()
+        }), for: .editingDidEnd)
     }
     func addSeparatorView() {
         authorizationStackView.addArrangedSubview(separatorHorizontalStackView)
@@ -385,7 +337,7 @@ class AuthorizationViewController: UIViewController {
         authorizationStackView.addArrangedSubview(otherWaysToLoginStackView)
         otherWaysToLoginStackView.addArrangedSubview(useGoogleForLoginButton)
         otherWaysToLoginStackView.addArrangedSubview(useFacebookForLoginButton)
-    let newFacebookImage = facebookImage.resized(toSize: CGSize(width: 24, height: 24))
+        let newFacebookImage = facebookImage.resized(toSize: CGSize(width: 24, height: 24))
         let newGoogleImage = googleImage.resized(toSize: CGSize(width: 24, height: 24))
         useFacebookForLoginButton.setImage(newFacebookImage, for: .normal)
         useGoogleForLoginButton.setImage(newGoogleImage, for: .normal)
@@ -406,12 +358,27 @@ class AuthorizationViewController: UIViewController {
 }
 
 
-
+//MARK: extension For TextField
 extension UITextField {
     func addPaddingToTextField() {
         let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 12, height: 0))
         self.leftView = paddingView
         self.leftViewMode = .always
+    }
+    func checkIsNameAndLastNameValid() {
+        guard let unwrappedTextField = self.text else {return}
+        if unwrappedTextField == "" {
+            self.layer.borderColor = UIColor.red.cgColor
+            return
+        }
+        self.deleteNeedlessSpaces()
+        for char in unwrappedTextField {
+            if (char >= "A" && char <= "Z") || (char >= "a" && char <= "z" || char == " ") {
+                self.layer.borderColor = UIColor.green.cgColor
+            }else {
+                self.layer.borderColor = UIColor.red.cgColor
+            }
+        }
     }
     func deleteNeedlessSpaces() {
         var arrOfMyString: [Character] = []
@@ -435,7 +402,48 @@ extension UITextField {
             self.text?.append(char)
         }
     }
+    func checkIsPasswordValid() {
+        guard let unwrappedTextField = self.text else {return}
+        if unwrappedTextField == "" {
+            self.layer.borderColor = UIColor.red.cgColor
+        }
+        if unwrappedTextField.count < 6 || unwrappedTextField.count > 15 {
+            self.layer.borderColor = UIColor.red.cgColor
+        }else {
+            self.layer.borderColor = UIColor.green.cgColor
+        }
+    }
+    func checkIsGmailValid() {
+        var arrOfString:[Character] = []
+        var tempString = ""
+        var index = 0
+        guard let unwrappedTextField = self.text else {return}
+        if unwrappedTextField == "" {
+            self.layer.borderColor = UIColor.red.cgColor
+        }
+        for char in unwrappedTextField {
+            arrOfString.append(char)
+        }
+        for char in arrOfString {
+            if char != "@" {
+                arrOfString.remove(at: index)
+                continue
+            }else if char == "@" {
+                break
+            }
+            index += 1
+        }
+        for char in arrOfString {
+            tempString.append(char)
+        }
+        if tempString == "@gmail.com" || tempString == "@mail.ru" {
+            self.layer.borderColor = UIColor.green.cgColor
+        }else {
+            self.layer.borderColor = UIColor.red.cgColor
+        }
+    }
 }
+//MARK: extension For Image
 extension UIImage {
     func resized(toSize newSize: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
