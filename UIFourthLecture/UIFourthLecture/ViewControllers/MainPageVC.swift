@@ -7,11 +7,7 @@
 
 import UIKit
 
-
-
 class MainPageVC: UIViewController {
-    
-    
     //MARK: UI Components-
     let backgroundImage: UIImageView = {
         var image = UIImageView(image: .background)
@@ -90,7 +86,7 @@ class MainPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .viewBackground
-        addBackgroundImage()
+//        addBackgroundImage()
         addFullPageStackView()
     }
     
@@ -143,68 +139,68 @@ class MainPageVC: UIViewController {
     }
     //MARK: Button objc methods-
     @objc func tapGoToDescriptionButton() {
-        let DescriptionPageVC = DescriptionPageVC()
+        let descriptionPageVC = DescriptionPageVC()
         switch searchForZodiacTextField.text {
         case "ვერძი","Aries" :
-            DescriptionPageVC.zodiacSignNameLabel.text = aries.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = aries.description
-            DescriptionPageVC.zodiacSignImage = aries.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = aries.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = aries.description
+            descriptionPageVC.zodiacSignImage = aries.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "კურო", "Taurus" :
-            DescriptionPageVC.zodiacSignNameLabel.text = taurus.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = taurus.description
-            DescriptionPageVC.zodiacSignImage = taurus.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = taurus.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = taurus.description
+            descriptionPageVC.zodiacSignImage = taurus.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "ტყუპები", "Gemini" :
-            DescriptionPageVC.zodiacSignNameLabel.text = gemini.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = gemini.description
-            DescriptionPageVC.zodiacSignImage = gemini.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = gemini.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = gemini.description
+            descriptionPageVC.zodiacSignImage = gemini.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "კირჩხიბი", "Cancer" :
-            DescriptionPageVC.zodiacSignNameLabel.text = cancer.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = cancer.description
-            DescriptionPageVC.zodiacSignImage = cancer.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = cancer.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = cancer.description
+            descriptionPageVC.zodiacSignImage = cancer.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "ლომი", "Leo" :
-            DescriptionPageVC.zodiacSignNameLabel.text = leo.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = leo.description
-            DescriptionPageVC.zodiacSignImage = leo.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = leo.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = leo.description
+            descriptionPageVC.zodiacSignImage = leo.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "ქალწული", "Virgo" :
-            DescriptionPageVC.zodiacSignNameLabel.text = virgo.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = virgo.description
-            DescriptionPageVC.zodiacSignImage = virgo.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = virgo.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = virgo.description
+            descriptionPageVC.zodiacSignImage = virgo.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "სასწორი", "Libra" :
-            DescriptionPageVC.zodiacSignNameLabel.text = libra.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = libra.description
-            DescriptionPageVC.zodiacSignImage = libra.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = libra.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = libra.description
+            descriptionPageVC.zodiacSignImage = libra.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "მორიელი", "Scorpio" :
-            DescriptionPageVC.zodiacSignNameLabel.text = scorpio.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = scorpio.description
-            DescriptionPageVC.zodiacSignImage = scorpio.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = scorpio.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = scorpio.description
+            descriptionPageVC.zodiacSignImage = scorpio.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "მშვილდოსანი", "Sagittarius" :
-            DescriptionPageVC.zodiacSignNameLabel.text = sagittarius.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = sagittarius.description
-            DescriptionPageVC.zodiacSignImage = sagittarius.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = sagittarius.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = sagittarius.description
+            descriptionPageVC.zodiacSignImage = sagittarius.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "თხის რქა", "Capricorn" :
-            DescriptionPageVC.zodiacSignNameLabel.text = capricorn.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = capricorn.description
-            DescriptionPageVC.zodiacSignImage = capricorn.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = capricorn.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = capricorn.description
+            descriptionPageVC.zodiacSignImage = capricorn.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "მერწყული", "Aquarius" :
-            DescriptionPageVC.zodiacSignNameLabel.text = aquarius.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = aquarius.description
-            DescriptionPageVC.zodiacSignImage = aquarius.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = aquarius.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = aquarius.description
+            descriptionPageVC.zodiacSignImage = aquarius.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         case "თევზები", "Pisces" :
-            DescriptionPageVC.zodiacSignNameLabel.text = pisces.name
-            DescriptionPageVC.zodiacSignDescriptionTextView.text = pisces.description
-            DescriptionPageVC.zodiacSignImage = pisces.signImage
-            self.navigationController?.pushViewController(DescriptionPageVC, animated: true)
+            descriptionPageVC.zodiacSignNameLabel.text = pisces.name
+            descriptionPageVC.zodiacSignDescriptionTextView.text = pisces.description
+            descriptionPageVC.zodiacSignImage = pisces.signImage
+            self.navigationController?.pushViewController(descriptionPageVC, animated: true)
         default :
             self.present(FalseConditionVC(), animated: true)
         }
@@ -216,6 +212,11 @@ extension UITextField {
         let paddingView: UIView = UIView.init(frame: CGRect(x: 0, y: 0, width: 12, height: 0))
         self.leftView = paddingView
         self.leftViewMode = .always
+    }
+}
+extension UIViewController: ColorChangable {
+    func changeBackgroundColor(color: UIColor) {
+        view.backgroundColor = color
     }
 }
 

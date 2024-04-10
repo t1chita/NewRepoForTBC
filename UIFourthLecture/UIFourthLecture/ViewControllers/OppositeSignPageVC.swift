@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol ColorChangable {
+    func changeBackgroundColor(color: UIColor)
+}
 
 class OppositeSignPageVC: UIViewController {
     //MARK: -UI Components-
@@ -13,7 +16,7 @@ class OppositeSignPageVC: UIViewController {
         var image = UIImageView(image: .background)
         return image
     }()
-    let zodiacSignImage: UIImageView = {
+    var zodiacSignImage: UIImageView = {
         let image = UIImageView(image: .iconaquarius)
         return image
     }()
@@ -41,7 +44,7 @@ class OppositeSignPageVC: UIViewController {
         button.layer.cornerRadius = 12
         return button
     }()
-//    var action: ((UIColor) -> ())?
+    var delegate: ColorChangable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,9 +112,11 @@ class OppositeSignPageVC: UIViewController {
     }
     //MARK: Button objc methods-
     @objc func tapToRedButton() {
-        
+        delegate?.changeBackgroundColor(color: .red)
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func tapToBlueButton() {
-        
+        delegate?.changeBackgroundColor(color: .blue)
+        self.navigationController?.popViewController(animated: true)
     }
 }

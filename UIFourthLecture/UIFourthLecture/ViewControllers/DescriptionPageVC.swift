@@ -95,22 +95,63 @@ class DescriptionPageVC: UIViewController {
             zodiacSignDescriptionTextView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -122),
         ])
     }
-        func addGoToPoralButton() {
-            view.addSubview(goToPoralSignButton)
-            goToPoralSignButton.translatesAutoresizingMaskIntoConstraints = false
-            goToPoralSignButton.addTarget(self, action: #selector(tapGoToPoralSignButton), for: .touchUpInside)
-            
-            NSLayoutConstraint.activate([
-                goToPoralSignButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                goToPoralSignButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                goToPoralSignButton.topAnchor.constraint(equalTo: zodiacSignDescriptionTextView.bottomAnchor, constant: 46),
-                goToPoralSignButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
-            ])
+    func addGoToPoralButton() {
+        view.addSubview(goToPoralSignButton)
+        goToPoralSignButton.translatesAutoresizingMaskIntoConstraints = false
+        goToPoralSignButton.addTarget(self, action: #selector(tapGoToPoralSignButton), for: .touchUpInside)
+        
+        NSLayoutConstraint.activate([
+            goToPoralSignButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            goToPoralSignButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            goToPoralSignButton.topAnchor.constraint(equalTo: zodiacSignDescriptionTextView.bottomAnchor, constant: 46),
+            goToPoralSignButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
+        ])
     }
+    
     //MARK: Button objc methods-
     @objc func tapGoToPoralSignButton() {
-        let OppositeSignPageVC = OppositeSignPageVC()
-//        switch
-        self.navigationController?.pushViewController(OppositeSignPageVC, animated: true)
+        let oppositeSignPageVC = OppositeSignPageVC()
+        oppositeSignPageVC.delegate = self
+        switch zodiacSignNameLabel.text {
+        case "ვერძი" :
+            oppositeSignPageVC.zodiacSignImage = aries.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = aries.poralZodiacName
+        case "კურო" :
+            oppositeSignPageVC.zodiacSignImage = taurus.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = taurus.poralZodiacName
+        case "ტყუპები" :
+            oppositeSignPageVC.zodiacSignImage = gemini.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = gemini.poralZodiacName
+        case "კირჩხიბი" :
+            oppositeSignPageVC.zodiacSignImage = cancer.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = cancer.poralZodiacName
+        case "ლომი" :
+            oppositeSignPageVC.zodiacSignImage = leo.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = leo.poralZodiacName
+        case "ქალწული" :
+            oppositeSignPageVC.zodiacSignImage = virgo.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = virgo.poralZodiacName
+        case "სასწორი" :
+            oppositeSignPageVC.zodiacSignImage = libra.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = libra.poralZodiacName
+        case "მორიელი" :
+            oppositeSignPageVC.zodiacSignImage = scorpio.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = scorpio.poralZodiacName
+        case "მშვილდოსანი" :
+            oppositeSignPageVC.zodiacSignImage = sagittarius.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = sagittarius.poralZodiacName
+        case "თხის რქა" :
+            oppositeSignPageVC.zodiacSignImage = capricorn.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = capricorn.poralZodiacName
+        case "მერწყული" :
+            oppositeSignPageVC.zodiacSignImage = aquarius.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = aquarius.poralZodiacName
+        case "თევზები":
+            oppositeSignPageVC.zodiacSignImage = pisces.poralZodiacSignImage
+            oppositeSignPageVC.zodiacSignNameLabel.text = pisces.poralZodiacName
+        default :
+            break
+        }
+        self.navigationController?.pushViewController(oppositeSignPageVC, animated: true)
     }
 }
