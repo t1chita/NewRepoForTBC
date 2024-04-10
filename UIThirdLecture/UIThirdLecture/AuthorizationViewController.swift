@@ -436,7 +436,7 @@ extension UITextField {
         for char in arrOfString {
             tempString.append(char)
         }
-        if tempString == "@gmail.com" || tempString == "@mail.ru" {
+        if tempString == "@gmail.com" || tempString == "@mail.ru" || tempString == "@yahoo.com" {
             self.layer.borderColor = UIColor.green.cgColor
         }else {
             self.layer.borderColor = UIColor.red.cgColor
