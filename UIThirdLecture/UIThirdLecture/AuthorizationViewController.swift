@@ -349,7 +349,7 @@ class AuthorizationViewController: UIViewController {
         addNameAndLastNameStack()
         addEmailStack()
         addPasswordStackView()
-        
+      
         halfOfAuthorizationStackView.addArrangedSubview(logInButton)
         authorizationStackView.addArrangedSubview(halfOfAuthorizationStackView)
         halfOfAuthorizationStackView.setCustomSpacing(16, after: passwordStackView)
