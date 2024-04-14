@@ -18,6 +18,11 @@
 		269227642BCC750000F98E03 /* AddNewCardPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269227632BCC750000F98E03 /* AddNewCardPageVC.swift */; };
 		269227672BCC75E000F98E03 /* FiraGO-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 269227652BCC75E000F98E03 /* FiraGO-Regular.ttf */; };
 		269227682BCC75E000F98E03 /* FiraGO-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 269227662BCC75E000F98E03 /* FiraGO-Medium.ttf */; };
+		26FEC67A2BCC811400327E1D /* CustomBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC6792BCC811400327E1D /* CustomBackgroundImage.swift */; };
+		26FEC67C2BCC85B800327E1D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC67B2BCC85B800327E1D /* CustomButton.swift */; };
+		26FEC67E2BCC8E0100327E1D /* CustomIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC67D2BCC8E0100327E1D /* CustomIconButton.swift */; };
+		26FEC6802BCC91DD00327E1D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC67F2BCC91DD00327E1D /* CustomTextField.swift */; };
+		26FEC6822BCC931D00327E1D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC6812BCC931D00327E1D /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		269227632BCC750000F98E03 /* AddNewCardPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardPageVC.swift; sourceTree = "<group>"; };
 		269227652BCC75E000F98E03 /* FiraGO-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FiraGO-Regular.ttf"; path = "../../../../../Downloads/Download_Folder_FiraGO_1001/Fonts/FiraGO_TTF_1001/Roman/FiraGO-Regular.ttf"; sourceTree = "<group>"; };
 		269227662BCC75E000F98E03 /* FiraGO-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FiraGO-Medium.ttf"; path = "../../../../../Downloads/Download_Folder_FiraGO_1001/Fonts/FiraGO_TTF_1001/Roman/FiraGO-Medium.ttf"; sourceTree = "<group>"; };
+		26FEC6792BCC811400327E1D /* CustomBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackgroundImage.swift; sourceTree = "<group>"; };
+		26FEC67B2BCC85B800327E1D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		26FEC67D2BCC8E0100327E1D /* CustomIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIconButton.swift; sourceTree = "<group>"; };
+		26FEC67F2BCC91DD00327E1D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		26FEC6812BCC931D00327E1D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +78,7 @@
 			children = (
 				2692275C2BCC73FA00F98E03 /* CustomFonts */,
 				269227592BCC73E000F98E03 /* App */,
+				26FEC6782BCC80DE00327E1D /* CustomViews */,
 				2692275A2BCC73E600F98E03 /* Model */,
 				2692275B2BCC73ED00F98E03 /* CollectionViewCells */,
 				269227582BCC73CE00F98E03 /* ViewControllers */,
@@ -120,6 +131,18 @@
 				269227652BCC75E000F98E03 /* FiraGO-Regular.ttf */,
 			);
 			path = CustomFonts;
+			sourceTree = "<group>";
+		};
+		26FEC6782BCC80DE00327E1D /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				26FEC6792BCC811400327E1D /* CustomBackgroundImage.swift */,
+				26FEC67F2BCC91DD00327E1D /* CustomTextField.swift */,
+				26FEC67D2BCC8E0100327E1D /* CustomIconButton.swift */,
+				26FEC67B2BCC85B800327E1D /* CustomButton.swift */,
+				26FEC6812BCC931D00327E1D /* CustomLabel.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,12 +218,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				269227622BCC74F100F98E03 /* MainPageVC.swift in Sources */,
+				26FEC6802BCC91DD00327E1D /* CustomTextField.swift in Sources */,
 				2692275E2BCC749F00F98E03 /* PostDetails.swift in Sources */,
 				269227642BCC750000F98E03 /* AddNewCardPageVC.swift in Sources */,
 				269227602BCC74C700F98E03 /* PostsCell.swift in Sources */,
+				26FEC67A2BCC811400327E1D /* CustomBackgroundImage.swift in Sources */,
 				269227492BCC73A600F98E03 /* OnboardingVC.swift in Sources */,
+				26FEC6822BCC931D00327E1D /* CustomLabel.swift in Sources */,
 				269227452BCC73A600F98E03 /* AppDelegate.swift in Sources */,
+				26FEC67E2BCC8E0100327E1D /* CustomIconButton.swift in Sources */,
 				269227472BCC73A600F98E03 /* SceneDelegate.swift in Sources */,
+				26FEC67C2BCC85B800327E1D /* CustomButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

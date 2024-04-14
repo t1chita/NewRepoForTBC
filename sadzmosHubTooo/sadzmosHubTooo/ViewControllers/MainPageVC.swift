@@ -14,16 +14,16 @@ class MainPageVC: UIViewController,PostAddable {
     //MARK: UI Components-
     var postsCollectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
-        collectionViewFlowLayout.scrollDirection         = .horizontal
-        collectionViewFlowLayout.estimatedItemSize       = UICollectionViewFlowLayout.automaticSize
-        collectionViewFlowLayout.minimumLineSpacing      = 16
+        collectionViewFlowLayout.scrollDirection = .horizontal
+        collectionViewFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        collectionViewFlowLayout.minimumLineSpacing = 16
         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 327, height: 448), collectionViewLayout: collectionViewFlowLayout)
         return collectionView
     }()
     
     var postsInformation: [Post] = []
-    let addNewSadzmosPostButton  = UIButton()
-    let backgroundImage          = UIImageView()
+    let addNewSadzmosPostButton  = CustomButton()
+    let backgroundImage = CustomBackgroundImage(image: .background)
     var delegate: PostAddable?
     
     //MARK: Life Cycles-
@@ -49,9 +49,6 @@ class MainPageVC: UIViewController,PostAddable {
     func setBackgroundImage() {
         view.addSubview(backgroundImage)
         setConstraintsToBackgroundImage()
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.contentMode                               = .scaleAspectFill
-        backgroundImage.image                                     = .background
     }
     
     func setPostsCollectionView() {
@@ -67,13 +64,6 @@ class MainPageVC: UIViewController,PostAddable {
     func setAddNewSadzmosPostButton() {
         view.addSubview(addNewSadzmosPostButton)
         setConstraintsAddNewSadzmosPostButton()
-        addNewSadzmosPostButton.translatesAutoresizingMaskIntoConstraints = false
-        addNewSadzmosPostButton.titleLabel?.textAlignment                 = .center
-        addNewSadzmosPostButton.layer.cornerRadius                        = 25
-        addNewSadzmosPostButton.titleLabel?.font                          = UIFont(name: "FiraGO-Medium", size: 14)
-        addNewSadzmosPostButton.backgroundColor                           = .startButtonBackground
-        addNewSadzmosPostButton.clipsToBounds                             = true
-        addNewSadzmosPostButton.setTitleColor(.white, for: .normal)
         addNewSadzmosPostButton.setTitle("ახალი საძმოს პოსტის დამატება", for: .normal)
         addNewSadzmosPostButton.addAction(UIAction(title: "Go To Add New Card Page", handler: {[weak self] _ in
             self?.goToAddNewCardPageVC()
@@ -118,10 +108,6 @@ class MainPageVC: UIViewController,PostAddable {
 }
 
 //MARK: Extensions For MainPageVC
-extension MainPageVC: UICollectionViewDelegate {
-    
-}
-
 extension MainPageVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         postsInformation.count

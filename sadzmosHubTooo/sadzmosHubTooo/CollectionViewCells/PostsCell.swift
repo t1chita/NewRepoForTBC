@@ -11,14 +11,14 @@ class PostsCell: UICollectionViewCell {
     static let identifier = "PostsCell"
     
     //MARK: UI Components-
-    var iconImage         = UIImageView()
+    var iconImage = UIImageView()
     let stackViewOfLabels = UIStackView()
-    var headerLabel       = UILabel()
-    var descriptionLAbel  = UILabel()
+    var headerLabel = UILabel()
+    var descriptionLAbel = UILabel()
     
     func configuration(image: UIImageView, headerText: String, descriptionText: String ) {
-        iconImage.image        = image.image
-        headerLabel.text       = headerText
+        iconImage.image = image.image
+        headerLabel.text = headerText
         descriptionLAbel.text  = descriptionText
         setupUI()
     }
@@ -36,34 +36,34 @@ class PostsCell: UICollectionViewCell {
     
     //MARK: configuration Of UI Components-
     func setStackViewOfLabels() {
-        setConstraintsToStackViewOfLabels()
         stackViewOfLabels.addArrangedSubview(headerLabel)
         stackViewOfLabels.addArrangedSubview(descriptionLAbel)
         setHeaderLabel()
         setDescriptionLabel()
+        setConstraintsToStackViewOfLabels()
         stackViewOfLabels.translatesAutoresizingMaskIntoConstraints = false
-        stackViewOfLabels.axis                                      = .vertical
-        stackViewOfLabels.alignment                                 = .fill
-        stackViewOfLabels.distribution                              = .fillProportionally
+        stackViewOfLabels.axis = .vertical
+        stackViewOfLabels.alignment = .fill
+        stackViewOfLabels.distribution = .fillProportionally
     }
     
     func setIconImage() {
         setConstraintsToIconImage()
-        iconImage.contentMode                               = .scaleAspectFill
+        iconImage.contentMode = .scaleAspectFill
         iconImage.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setHeaderLabel() {
-        headerLabel.font          = UIFont(name: "FiraGO-Medium", size: 16)
-        headerLabel.textColor     = .white
+        headerLabel.font = UIFont(name: "FiraGO-Medium", size: 16)
+        headerLabel.textColor = .white
         headerLabel.numberOfLines = 0
         headerLabel.widthAnchor.constraint(equalTo: stackViewOfLabels.widthAnchor).isActive = true
         headerLabel.heightAnchor.constraint(equalToConstant: 72).isActive = true
     }
     
     func setDescriptionLabel() {
-        descriptionLAbel.font          = UIFont(name: "FiraGO-Medium", size: 10)
-        descriptionLAbel.textColor     = .descriptionTextcolor
+        descriptionLAbel.font = UIFont(name: "FiraGO-Medium", size: 10)
+        descriptionLAbel.textColor = .descriptionTextcolor
         descriptionLAbel.numberOfLines = 0
         descriptionLAbel.widthAnchor.constraint(equalTo: stackViewOfLabels.widthAnchor).isActive = true
         descriptionLAbel.heightAnchor.constraint(equalToConstant: 30).isActive = true

@@ -11,26 +11,26 @@ class AddNewCardPageVC: UIViewController {
     
     
     //MARK: UI Components-
-    let backgroundImage = UIImageView()
+    let backgroundImage = CustomBackgroundImage(image: .background)
     
-    let fullStackView              = UIStackView()
-    let headerStackView            = UIStackView()
-    let descriptionStackView       = UIStackView()
+    let fullStackView = UIStackView()
+    let headerStackView = UIStackView()
+    let descriptionStackView = UIStackView()
     let fullChooseButtonsStackView = UIStackView()
-    let buttonsStackView           = UIStackView()
+    let buttonsStackView = UIStackView()
     
-    let headerLabel      = UILabel()
-    let descriptionLabel = UILabel()
-    let chooseIconLabel  = UILabel()
+    let headerLabel = CustomLabel(frame: CGRect(x: 0, y: 0, width: 62, height: 24))
+    let descriptionLabel = CustomLabel(frame: CGRect(x: 0, y: 0, width: 62, height: 24))
+    let chooseIconLabel = CustomLabel(frame: CGRect(x: 0, y: 0, width: 116, height: 24))
     
-    let headerTextField      = UITextField()
-    let descriptionTextField = UITextField()
-
-    let redIcon    = UIButton()
-    let purpleIcon = UIButton()
-    let greenIcon  = UIButton()
-    let goldIcon   = UIButton()
-    let addButton  = UIButton()
+    let headerTextField = CustomTextField()
+    let descriptionTextField = CustomTextField()
+    
+    let redIcon = CustomIconButton(image: .redIcon)
+    let purpleIcon = CustomIconButton(image: .purpleIcon)
+    let greenIcon = CustomIconButton(image: .greenIcon)
+    let goldIcon = CustomIconButton(image: .goldIcon)
+    let addButton = CustomButton()
     
     var delegate: PostAddable?
     var newPostForSend = Post(icon: UIImageView(image: .defaultAlert), headerLabel: "", descriptionLabel: "")
@@ -52,18 +52,15 @@ class AddNewCardPageVC: UIViewController {
     func setBackgroundImage() {
         view.addSubview(backgroundImage)
         setConstraintsToBackgroundImage()
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.contentMode                               = .scaleAspectFill
-        backgroundImage.image                                     = .background
     }
     
     func setHeaderStackView() {
+        view.addSubview(headerStackView)
         headerStackView.addArrangedSubview(headerLabel)
         headerStackView.addArrangedSubview(headerTextField)
-        view.addSubview(headerStackView)
-        setConstraintsToHeaderStackView()
         setHeaderTextField()
         setHeaderLabel()
+        setConstraintsToHeaderStackView()
         headerStackView.translatesAutoresizingMaskIntoConstraints = false
         headerStackView.distribution = .fillProportionally
         headerStackView.alignment    = .fill
@@ -72,20 +69,10 @@ class AddNewCardPageVC: UIViewController {
     }
     
     func setHeaderLabel() {
-        headerLabel.textColor = .white
-        headerLabel.frame     = CGRect(x: 0, y: 0, width: 62, height: 24)
-        headerLabel.text      = "სათაური"
-        headerLabel.font      = UIFont(name: "FiraGO-SemiBold", size: 14)
+        headerLabel.text = "სათაური"
     }
     
     func setHeaderTextField() {
-        headerTextField.addPaddingToTextField()
-        headerTextField.layer.cornerRadius    = 9
-        headerTextField.layer.borderWidth     = 1
-        headerTextField.layer.borderColor     = UIColor.textFieldBorder.cgColor
-        headerTextField.clipsToBounds         = true
-        headerTextField.textColor             = .white
-        headerTextField.frame                 = CGRect(x: 0, y: 0, width: 310, height: 45)
         headerTextField.attributedPlaceholder = NSAttributedString(
             string: "მაგ: დალევა და ქეიფი,როგორ დავანებოთ მოწევას თავი",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderText,
@@ -94,12 +81,12 @@ class AddNewCardPageVC: UIViewController {
     }
     
     func setDescriptionStackView() {
+        view.addSubview(descriptionStackView)
         descriptionStackView.addArrangedSubview(descriptionLabel)
         descriptionStackView.addArrangedSubview(descriptionTextField)
-        view.addSubview(descriptionStackView)
-        setConstraintsToDescriptionStackView()
         setDescriptionLabel()
         setDescriptinTextField()
+        setConstraintsToDescriptionStackView()
         descriptionStackView.translatesAutoresizingMaskIntoConstraints = false
         descriptionStackView.distribution = .fillProportionally
         descriptionStackView.alignment    = .fill
@@ -108,20 +95,10 @@ class AddNewCardPageVC: UIViewController {
     }
     
     func setDescriptionLabel() {
-        descriptionLabel.textColor = .white
-        descriptionLabel.frame     = CGRect(x: 0, y: 0, width: 62, height: 24)
-        descriptionLabel.text      = "აღწერა"
-        descriptionLabel.font      = UIFont(name: "FiraGO-Medium", size: 14)
+        descriptionLabel.text = "აღწერა"
     }
     
     func setDescriptinTextField() {
-        descriptionTextField.addPaddingToTextField()
-        descriptionTextField.layer.cornerRadius    = 9
-        descriptionTextField.layer.borderWidth     = 1
-        descriptionTextField.layer.borderColor     = UIColor.textFieldBorder.cgColor
-        descriptionTextField.clipsToBounds         = true
-        descriptionTextField.textColor             = .white
-        descriptionTextField.frame                 = CGRect(x: 0, y: 0, width: 310, height: 45)
         descriptionTextField.attributedPlaceholder = NSAttributedString(
             string: "მაგ: წავიდეთ ფიროსმანში ვალიკო პაპასთან",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.placeholderText,
@@ -132,12 +109,12 @@ class AddNewCardPageVC: UIViewController {
     
     func setFullChooseButtonsStackView() {
         view.addSubview(fullChooseButtonsStackView)
-        fullChooseButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        setConstraintsTofullChooseButtonsStackView()
         fullChooseButtonsStackView.addArrangedSubview(chooseIconLabel)
         fullChooseButtonsStackView.addArrangedSubview(buttonsStackView)
+        fullChooseButtonsStackView.translatesAutoresizingMaskIntoConstraints = false
         setButtonsStackView()
         setChooseIconLabel()
+        setConstraintsTofullChooseButtonsStackView()
         fullChooseButtonsStackView.distribution = .fillProportionally
         fullChooseButtonsStackView.alignment    = .fill
         fullChooseButtonsStackView.spacing      = 14
@@ -157,30 +134,22 @@ class AddNewCardPageVC: UIViewController {
     }
     
     func setChooseIconLabel() {
-        chooseIconLabel.textColor = .white
-        chooseIconLabel.frame     = CGRect(x: 0, y: 0, width: 116, height: 24)
-        chooseIconLabel.text      = "აირჩიეთ აიქონი"
-        chooseIconLabel.font      = UIFont(name: "FiraGO-Medium", size: 14)
+        chooseIconLabel.text = "აირჩიეთ აიქონი"
     }
     
     func setAllButtonIcons() {
-        redIcon.setImage(.redIcon, for: .normal)
-        redIcon.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         redIcon.addAction(UIAction(title: "Store Data In New Post", handler: { [weak self] _ in
-            self?.storeDataInNewPost(image: self!.purpleIcon.currentImage!)
+            self?.storeDataInNewPost(image: self!.redIcon.currentImage!)
         }), for: .touchUpInside)
-        purpleIcon.setImage(.purpleIcon, for: .normal)
-        purpleIcon.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        
         purpleIcon.addAction(UIAction(title: "Store Data In New Post", handler: { [weak self] _ in
             self?.storeDataInNewPost(image: self!.purpleIcon.currentImage!)
         }), for: .touchUpInside)
-        greenIcon.setImage(.greenIcon, for: .normal)
-        greenIcon.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        
         greenIcon.addAction(UIAction(title: "Store Data In New Post", handler: { [weak self] _ in
             self?.storeDataInNewPost(image: self!.greenIcon.currentImage!)
         }), for: .touchUpInside)
-        goldIcon.setImage(.goldIcon, for: .normal)
-        goldIcon.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        
         goldIcon.addAction(UIAction(title: "Store Data In New Post", handler: { [weak self] _ in
             self?.storeDataInNewPost(image: self!.goldIcon.currentImage!)
         }), for: .touchUpInside)
@@ -189,13 +158,7 @@ class AddNewCardPageVC: UIViewController {
     func setAddButton() {
         view.addSubview(addButton)
         setConstraintsToAddButton()
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.titleLabel?.textAlignment                 = .center
-        addButton.layer.cornerRadius                        = 25
-        addButton.backgroundColor                           = .addButton
-        addButton.clipsToBounds                             = true
-        addButton.titleLabel?.font                          = UIFont(name: "FiraGO-Medium", size: 14)
-        addButton.setTitleColor(.white, for: .normal)
+        addButton.backgroundColor = .addButton
         addButton.setTitle("დამატება", for: .normal)
         addButton.addAction(UIAction(title: "Add New Post On Main Page And Go To Main Page", handler: { [weak self] _ in
             self?.addNewPostOnMainPageAndGoToMainPage()

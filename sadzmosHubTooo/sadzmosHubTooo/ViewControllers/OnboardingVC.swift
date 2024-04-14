@@ -9,9 +9,9 @@ import UIKit
 
 class OnboardingVC: UIViewController {
     //MARK: UI Components-
-    let backgroundImage = UIImageView()
-    let titleLabel      = UILabel()
-    let startButton     = UIButton()
+    let backgroundImage = CustomBackgroundImage(image: .onboarding)
+    let titleLabel = UILabel()
+    let startButton = CustomButton()
     
     //MARK: Life Cycles-
     override func viewDidLoad() {
@@ -30,32 +30,22 @@ class OnboardingVC: UIViewController {
     func setBackgroundImage() {
         view.addSubview(backgroundImage)
         setConstraintsToBackgroundImage()
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        backgroundImage.contentMode                               = .scaleAspectFill
-        backgroundImage.image                                     = .onboarding
     }
     
     func setTitleLabel() {
         view.addSubview(titleLabel)
         setConstraintsToTitleLabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.numberOfLines                             = 0
-        titleLabel.textAlignment                             = .left
-        titleLabel.textColor                                 = .white
-        titleLabel.text                                      = "შედი აპლიკაციაში და გაეცანი საძმოს ახალ ამბებს"
-        titleLabel.font                                      = UIFont(name: "FiraGO-Regular", size: 30)
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .left
+        titleLabel.textColor = .white
+        titleLabel.text = "შედი აპლიკაციაში და გაეცანი საძმოს ახალ ამბებს"
+        titleLabel.font = UIFont(name: "FiraGO-Regular", size: 30)
     }
     
     func setStartButton() {
         view.addSubview(startButton)
         setConstraintsToStartButton()
-        startButton.translatesAutoresizingMaskIntoConstraints = false
-        startButton.titleLabel?.textAlignment                 = .center
-        startButton.layer.cornerRadius                        = 25
-        startButton.backgroundColor                           = .startButtonBackground
-        startButton.clipsToBounds                             = true
-        startButton.titleLabel?.font = UIFont(name: "FiraGO-Medium", size: 14)
-        startButton.setTitleColor(.white, for: .normal)
         startButton.setTitle("დაწყება", for: .normal)
         startButton.addAction(UIAction(title: "Go To Main Page", handler: { [weak self] _ in
             self?.goToMainPageVC()
