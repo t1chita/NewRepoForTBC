@@ -24,7 +24,6 @@ class MainPageVC: UIViewController,PostAddable {
     var postsInformation: [Post] = []
     let addNewSadzmosPostButton  = CustomButton()
     let backgroundImage = CustomBackgroundImage(image: .background)
-    var delegate: PostAddable?
     
     //MARK: Life Cycles-
     override func viewDidLoad() {
@@ -116,6 +115,22 @@ extension MainPageVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostsCell.identifier, for: indexPath) as! PostsCell
         cell.configuration(image: postsInformation[indexPath.row].icon, headerText: postsInformation[indexPath.row].headerLabel, descriptionText: postsInformation[indexPath.row].descriptionLabel)
+//        cell.delegate = self
+        
+        cell.goToPostsDetailsAction = { [weak self]  in
+            let postsDetailsPageVC = PostDetailsPageVC()
+//dasafixia indexpath row out of index ichiteba 🚨 internetshi
+//naxe rogor mushaobs collectionviews indexpathebi
+            postsDetailsPageVC.headerLabel.text = self?.postsInformation[indexPath.row].headerLabel
+            postsDetailsPageVC.descriptionLabel.text = self?.postsInformation[indexPath.row].descriptionLabel
+            postsDetailsPageVC.iconImage = self?.postsInformation[indexPath.row].icon ?? UIImageView(image: .defaultAlert)
+            if let indexPath = self?.postsCollectionView.indexPath(for: cell) {
+                self?.postsInformation.remove(at: indexPath.row)
+                self?.postsCollectionView.deleteItems(at: [indexPath])
+                self?.postsCollectionView.reloadData()
+                self?.navigationController?.pushViewController(postsDetailsPageVC, animated: true)
+            }
+        }
         return cell
     }
 }

@@ -23,6 +23,7 @@
 		26FEC67E2BCC8E0100327E1D /* CustomIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC67D2BCC8E0100327E1D /* CustomIconButton.swift */; };
 		26FEC6802BCC91DD00327E1D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC67F2BCC91DD00327E1D /* CustomTextField.swift */; };
 		26FEC6822BCC931D00327E1D /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC6812BCC931D00327E1D /* CustomLabel.swift */; };
+		26FEC6842BCC9BF900327E1D /* PostDetailsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FEC6832BCC9BF900327E1D /* PostDetailsPageVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		26FEC67D2BCC8E0100327E1D /* CustomIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIconButton.swift; sourceTree = "<group>"; };
 		26FEC67F2BCC91DD00327E1D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		26FEC6812BCC931D00327E1D /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		26FEC6832BCC9BF900327E1D /* PostDetailsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsPageVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				269227482BCC73A600F98E03 /* OnboardingVC.swift */,
 				269227612BCC74F100F98E03 /* MainPageVC.swift */,
+				26FEC6832BCC9BF900327E1D /* PostDetailsPageVC.swift */,
 				269227632BCC750000F98E03 /* AddNewCardPageVC.swift */,
 			);
 			path = ViewControllers;
@@ -225,6 +228,7 @@
 				26FEC67A2BCC811400327E1D /* CustomBackgroundImage.swift in Sources */,
 				269227492BCC73A600F98E03 /* OnboardingVC.swift in Sources */,
 				26FEC6822BCC931D00327E1D /* CustomLabel.swift in Sources */,
+				26FEC6842BCC9BF900327E1D /* PostDetailsPageVC.swift in Sources */,
 				269227452BCC73A600F98E03 /* AppDelegate.swift in Sources */,
 				26FEC67E2BCC8E0100327E1D /* CustomIconButton.swift in Sources */,
 				269227472BCC73A600F98E03 /* SceneDelegate.swift in Sources */,

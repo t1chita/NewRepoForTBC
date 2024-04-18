@@ -82,8 +82,7 @@ class OnboardingVC: UIViewController {
     
     func goToMainPageVC() {
         let mainPageVC = MainPageVC()
-        mainPageVC.navigationItem.setHidesBackButton(true, animated: true)
-        self.navigationController?.pushViewController(mainPageVC, animated: true)
+        navigationController?.setViewControllers([mainPageVC], animated: true)
     }
 }
 

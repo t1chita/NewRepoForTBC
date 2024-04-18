@@ -18,7 +18,8 @@ class CustomLabel: UILabel{
     }
     
     func setup() {
-       textColor = .white
-       font      = UIFont(name: "FiraGO-Medium", size: 14)
+        translatesAutoresizingMaskIntoConstraints = false
+        textColor = .white
+        font      = UIFont(name: "FiraGO-Medium", size: 14)
     }
 }

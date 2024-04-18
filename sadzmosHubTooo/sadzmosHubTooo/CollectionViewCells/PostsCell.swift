@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol PostRemoveable {
+    func remove(cell: PostsCell)
+}
 class PostsCell: UICollectionViewCell {
     static let identifier = "PostsCell"
     
@@ -15,19 +17,21 @@ class PostsCell: UICollectionViewCell {
     let stackViewOfLabels = UIStackView()
     var headerLabel = UILabel()
     var descriptionLAbel = UILabel()
+    let goToPostsDetailsPage = UIButton()
+    
+    var goToPostsDetailsAction: (() -> (Void))?
     
     func configuration(image: UIImageView, headerText: String, descriptionText: String ) {
         iconImage.image = image.image
         headerLabel.text = headerText
-        descriptionLAbel.text  = descriptionText
+        descriptionLAbel.text = descriptionText
         setupUI()
     }
     
     func setupUI() {
-        addSubview(iconImage)
-        addSubview(stackViewOfLabels)
-        setStackViewOfLabels()
         setIconImage()
+        setStackViewOfLabels()
+        setGoToPostsDetailsPage()
         backgroundColor    = .cellBackground
         clipsToBounds      = true
         layer.opacity      = 0.5
@@ -36,6 +40,7 @@ class PostsCell: UICollectionViewCell {
     
     //MARK: configuration Of UI Components-
     func setStackViewOfLabels() {
+        addSubview(stackViewOfLabels)
         stackViewOfLabels.addArrangedSubview(headerLabel)
         stackViewOfLabels.addArrangedSubview(descriptionLAbel)
         setHeaderLabel()
@@ -47,7 +52,19 @@ class PostsCell: UICollectionViewCell {
         stackViewOfLabels.distribution = .fillProportionally
     }
     
+    func setGoToPostsDetailsPage() {
+        addSubview(goToPostsDetailsPage)
+        setConstraintsToGoToPostsDetailsPage()
+        goToPostsDetailsPage.translatesAutoresizingMaskIntoConstraints = false
+        goToPostsDetailsPage.sizeThatFits(CGSize(width: 40, height: 40))
+        goToPostsDetailsPage.setImage(.readMeButon, for: .normal)
+        goToPostsDetailsPage.addAction(UIAction(title: "Go To Posts Details Page", handler: { [weak self] _ in
+            self?.moveButtonTapped()
+        }), for: .touchUpInside)
+    }
+    
     func setIconImage() {
+        addSubview(iconImage)
         setConstraintsToIconImage()
         iconImage.contentMode = .scaleAspectFill
         iconImage.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +87,15 @@ class PostsCell: UICollectionViewCell {
     }
     
     //MARK: setConstraints-
+    func setConstraintsToGoToPostsDetailsPage() {
+        NSLayoutConstraint.activate([
+            goToPostsDetailsPage.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+            goToPostsDetailsPage.heightAnchor.constraint(equalToConstant: 40),
+            goToPostsDetailsPage.leadingAnchor.constraint(equalTo: iconImage.trailingAnchor, constant: 36),
+            goToPostsDetailsPage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+        ])
+    }
+    
     func setConstraintsToStackViewOfLabels() {
         NSLayoutConstraint.activate([
             stackViewOfLabels.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -87,5 +113,9 @@ class PostsCell: UICollectionViewCell {
             iconImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             iconImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -96)
         ])
+    }
+    
+    func moveButtonTapped() {
+        goToPostsDetailsAction?()
     }
 }
