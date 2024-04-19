@@ -9,10 +9,21 @@ import UIKit
 
 extension MainPageVC: UITableViewDelegate {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          
             let postDetailsVC = PostDetailsVC()
             postDetailsVC.postsDescriptionTextView.text = postsArray[indexPath.section].title
             postDetailsVC.postsTime.text = postsArray[indexPath.section].time
-            postDetailsVC.postsImage = UIImageView(image: .temporaryBackground)
+            if let photoUrl = URL(string: postsArray[indexPath.section].photoUrl) {
+                DispatchQueue.global().async {
+                    if let imageData = try? Data(contentsOf: photoUrl) {
+                        DispatchQueue.main.async {
+                            postDetailsVC.postsImage.image = UIImage(data: imageData)
+                        }
+                    }
+                }
+            }
+            postDetailsVC.postsImage.clipsToBounds = true
+            postDetailsVC.postsImage.layer.cornerRadius = 15
             navigationController?.pushViewController(postDetailsVC, animated: true)
         }
     
@@ -41,10 +52,19 @@ extension MainPageVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = postsTableView.dequeueReusableCell(withIdentifier: PostsCell.identifier, for: indexPath) as? PostsCell
         cell?.configure(time: postsArray[indexPath.section].time, header: postsArray[indexPath.section].title)
-        cell?.backgroundView = UIImageView(image: .temporaryBackground)
         cell?.clipsToBounds = true
         cell?.layer.cornerRadius = 15
-        
+        if let photoUrl = URL(string: postsArray[indexPath.section].photoUrl) {
+            DispatchQueue.global().async {
+                if let imageData = try? Data(contentsOf: photoUrl) {
+                    DispatchQueue.main.async {
+                        cell?.photoImageView.image = UIImage(data: imageData)
+                    }
+                }
+            }
+        }
+        cell?.backgroundView = cell?.photoImageView
+
         return cell ?? UITableViewCell()
     }
 }

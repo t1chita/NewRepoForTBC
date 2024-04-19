@@ -11,6 +11,7 @@ class PostsCell: UITableViewCell {
     //MARK: UI Components-
     var timeLabel = UILabel()
     var headerLabel = UILabel()
+    var photoImageView = UIImageView()
     static let identifier = "PostsCell"
     
     //MARK: init-
