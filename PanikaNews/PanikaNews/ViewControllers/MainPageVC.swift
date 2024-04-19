@@ -11,18 +11,26 @@ class MainPageVC: UIViewController {
     //MARK: UI Components -
     let headerLabel = UILabel()
     let postsTableView = UITableView()
+    var postsArray: [Post] = []
+    let imediNewsAPI = "https://imedinews.ge/api/categorysidebarnews/get#"
+    
     //MARK: Life Cylces-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         setupUi()
-        
+        NetworkService().getPosts(urlString: imediNewsAPI) { (result: PostsResponseData?, error: Error?) in
+            self.postsArray = result?.postsData ?? []
+            self.postsTableView.reloadData()
+        }
     }
+    
     //MARK: SetUP Method-
     func setupUi() {
         setHeaderLabel()
         setPostsTableView()
     }
+    
     //MARK: Set UI Components-
     func setHeaderLabel() {
         view.addSubview(headerLabel)
@@ -40,15 +48,17 @@ class MainPageVC: UIViewController {
         postsTableView.delegate = self
         postsTableView.dataSource = self
         postsTableView.rowHeight = 108
-        postsTableView.backgroundColor = .green
+        postsTableView.backgroundColor = .clear
+        postsTableView.register(PostsCell.self, forCellReuseIdentifier: PostsCell.identifier)
     }
+    
     //MARK: Set Constraints To UI Components-
     func setConstraintsToHeaderLabel() {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
             headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             headerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -192),
-            headerLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -711),
+            headerLabel.heightAnchor.constraint(equalToConstant: 31),
         ])
     }
     
@@ -60,6 +70,5 @@ class MainPageVC: UIViewController {
             postsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
 }
 
