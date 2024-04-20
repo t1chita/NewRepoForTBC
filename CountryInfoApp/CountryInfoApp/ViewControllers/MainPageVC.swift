@@ -11,11 +11,17 @@ class MainPageVC: UIViewController {
     //MARK: UI Components-
     let pageTitle = UILabel()
     let countriesTableView = UITableView()
+    var countryArray: [Country] = []
+    var countryInfoUrl = "https://restcountries.com/v3.1/all#"
 
     //MARK: Life Cycles-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        NetworkService().getCountryInfo(urlString: countryInfoUrl) { (result: [Country]?, error: Error?) in
+            self.countryArray = result ?? []
+//            self.countriesTableView.reloadData()
+        }
         setupUI()
     }
     //MARK: Setup UI-

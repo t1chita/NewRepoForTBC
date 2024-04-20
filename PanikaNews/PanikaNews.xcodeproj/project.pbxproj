@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2658E9A62BD46FDD00AC90AA /* FiraGO-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2658E9A42BD46FDD00AC90AA /* FiraGO-Medium.ttf */; };
+		2658E9A72BD46FDD00AC90AA /* SpaceGrotesk-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2658E9A52BD46FDD00AC90AA /* SpaceGrotesk-SemiBold.ttf */; };
 		26832D6C2BD1C95E006BC6A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D6B2BD1C95E006BC6A0 /* AppDelegate.swift */; };
 		26832D6E2BD1C95E006BC6A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D6D2BD1C95E006BC6A0 /* SceneDelegate.swift */; };
 		26832D702BD1C95E006BC6A0 /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D6F2BD1C95E006BC6A0 /* MainPageVC.swift */; };
@@ -14,14 +16,14 @@
 		26832D782BD1C960006BC6A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26832D762BD1C960006BC6A0 /* LaunchScreen.storyboard */; };
 		26832D822BD1C9AD006BC6A0 /* PostDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D812BD1C9AD006BC6A0 /* PostDetailsVC.swift */; };
 		26832D842BD1CA60006BC6A0 /* MainPageVC + PostsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D832BD1CA60006BC6A0 /* MainPageVC + PostsTableView.swift */; };
-		26832D872BD1CD9A006BC6A0 /* SpaceGrotesk-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26832D862BD1CD9A006BC6A0 /* SpaceGrotesk-SemiBold.ttf */; };
-		26832D892BD1CDD9006BC6A0 /* FiraGO-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26832D882BD1CDD9006BC6A0 /* FiraGO-Medium.ttf */; };
 		26832D8B2BD1D058006BC6A0 /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D8A2BD1D058006BC6A0 /* PostsCell.swift */; };
 		26832D8F2BD1D6BD006BC6A0 /* PostsResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D8E2BD1D6BD006BC6A0 /* PostsResponseData.swift */; };
 		26832D912BD1D89C006BC6A0 /* GetObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26832D902BD1D89C006BC6A0 /* GetObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2658E9A42BD46FDD00AC90AA /* FiraGO-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Medium.ttf"; sourceTree = "<group>"; };
+		2658E9A52BD46FDD00AC90AA /* SpaceGrotesk-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-SemiBold.ttf"; sourceTree = "<group>"; };
 		26832D682BD1C95E006BC6A0 /* PanikaNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PanikaNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26832D6B2BD1C95E006BC6A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26832D6D2BD1C95E006BC6A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,8 +33,6 @@
 		26832D792BD1C960006BC6A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26832D812BD1C9AD006BC6A0 /* PostDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsVC.swift; sourceTree = "<group>"; };
 		26832D832BD1CA60006BC6A0 /* MainPageVC + PostsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPageVC + PostsTableView.swift"; sourceTree = "<group>"; };
-		26832D862BD1CD9A006BC6A0 /* SpaceGrotesk-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SpaceGrotesk-SemiBold.ttf"; path = "../../../../../Downloads/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf"; sourceTree = "<group>"; };
-		26832D882BD1CDD9006BC6A0 /* FiraGO-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "FiraGO-Medium.ttf"; path = "../../../../../Downloads/Download_Folder_FiraGO_1001/Fonts/FiraGO_TTF_1001/Roman/FiraGO-Medium.ttf"; sourceTree = "<group>"; };
 		26832D8A2BD1D058006BC6A0 /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
 		26832D8E2BD1D6BD006BC6A0 /* PostsResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsResponseData.swift; sourceTree = "<group>"; };
 		26832D902BD1D89C006BC6A0 /* GetObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetObjects.swift; sourceTree = "<group>"; };
@@ -49,6 +49,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2658E9A32BD46FC300AC90AA /* CustomFonts */ = {
+			isa = PBXGroup;
+			children = (
+				2658E9A42BD46FDD00AC90AA /* FiraGO-Medium.ttf */,
+				2658E9A52BD46FDD00AC90AA /* SpaceGrotesk-SemiBold.ttf */,
+			);
+			path = CustomFonts;
+			sourceTree = "<group>";
+		};
 		26832D5F2BD1C95E006BC6A0 = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +77,7 @@
 		26832D6A2BD1C95E006BC6A0 /* PanikaNews */ = {
 			isa = PBXGroup;
 			children = (
-				26832D852BD1CD78006BC6A0 /* CustomFonts */,
+				2658E9A32BD46FC300AC90AA /* CustomFonts */,
 				26832D7F2BD1C98B006BC6A0 /* App */,
 				26832D8D2BD1D6A1006BC6A0 /* Model */,
 				26832D8C2BD1D063006BC6A0 /* TableViewCells */,
@@ -98,15 +107,6 @@
 				26832D832BD1CA60006BC6A0 /* MainPageVC + PostsTableView.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		26832D852BD1CD78006BC6A0 /* CustomFonts */ = {
-			isa = PBXGroup;
-			children = (
-				26832D862BD1CD9A006BC6A0 /* SpaceGrotesk-SemiBold.ttf */,
-				26832D882BD1CDD9006BC6A0 /* FiraGO-Medium.ttf */,
-			);
-			path = CustomFonts;
 			sourceTree = "<group>";
 		};
 		26832D8C2BD1D063006BC6A0 /* TableViewCells */ = {
@@ -183,10 +183,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2658E9A72BD46FDD00AC90AA /* SpaceGrotesk-SemiBold.ttf in Resources */,
 				26832D782BD1C960006BC6A0 /* LaunchScreen.storyboard in Resources */,
 				26832D752BD1C960006BC6A0 /* Assets.xcassets in Resources */,
-				26832D872BD1CD9A006BC6A0 /* SpaceGrotesk-SemiBold.ttf in Resources */,
-				26832D892BD1CDD9006BC6A0 /* FiraGO-Medium.ttf in Resources */,
+				2658E9A62BD46FDD00AC90AA /* FiraGO-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

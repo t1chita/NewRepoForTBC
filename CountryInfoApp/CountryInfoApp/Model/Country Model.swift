@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct CountryList: Codable {
+struct CountryListResponseData: Codable {
     let countryList: [Country]?
 }
 struct Country: Codable {
@@ -51,10 +51,14 @@ struct Country: Codable {
 struct Name: Codable {
     let common: String?
     let official: String?
-    let nativeName: [String: NativeName]?
+    let nativeName: NativeName?
 }
 
 struct NativeName: Codable {
+    let ron: NativeNameValues?
+}
+
+struct NativeNameValues: Codable {
     let official: String?
     let common: String?
 }
@@ -70,37 +74,43 @@ struct Idd: Codable {
     
 }
 
+struct Translations: Codable {
+    let ara: Translation?
+    let bre: Translation?
+    let ces: Translation?
+    let cym: Translation?
+    let deu: Translation?
+    let est: Translation?
+    let fin: Translation?
+    let fra: Translation?
+    let hrw: Translation?
+    let hun: Translation?
+    let ita: Translation?
+    let jpn: Translation?
+    let kor: Translation?
+    let nld: Translation?
+    let per: Translation?
+    let pol: Translation?
+    let por: Translation?
+    let rus: Translation?
+    let slk: Translation?
+    let spa: Translation?
+    let srp: Translation?
+    let swe: Translation?
+    let tur: Translation?
+    let urd: Translation?
+    let zho: Translation?
+}
+
 struct Translation: Codable {
     let official: String?
     let common: String?
 }
 
-struct Translations: Codable {
-        let ara: Translation?
-        let bre: Translation?
-        let ces: Translation?
-        let cym: Translation?
-        let deu: Translation?
-        let est: Translation?
-        let fin: Translation?
-        let fra: Translation?
-        let hrw: Translation?
-        let hun: Translation?
-        let ita: Translation?
-        let jpn: Translation?
-        let kor: Translation?
-        let nld: Translation?
-        let per: Translation?
-        let pol: Translation?
-        let por: Translation?
-        let rus: Translation?
-        let slk: Translation?
-        let spa: Translation?
-        let srp: Translation?
-        let swe: Translation?
-        let tur: Translation?
-        let urd: Translation?
-        let zho: Translation?
+
+struct Demonyms: Codable {
+    let eng: Demonym?
+    let fra: Demonym?
 }
 
 struct Demonym: Codable {
@@ -108,10 +118,6 @@ struct Demonym: Codable {
     let m: String?
 }
 
-struct Demonyms: Codable {
-    let eng: Demonym?
-    let fra: Demonym?
-}
 
 struct Maps: Codable {
     let googleMaps: String?
