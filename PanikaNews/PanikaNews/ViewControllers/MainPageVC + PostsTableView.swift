@@ -63,8 +63,6 @@ extension MainPageVC: UITableViewDataSource {
                 }
             }
         }
-        cell?.backgroundView = cell?.photoImageView
-
         return cell ?? UITableViewCell()
     }
 }

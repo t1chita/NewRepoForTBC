@@ -28,6 +28,8 @@ class PostsCell: UITableViewCell {
     func setupUI() {
         setTimeLabel()
         setHeaderLabel()
+        setasdasa()
+        asasa()
     }
     
     func configure(time: String, header: String) {
@@ -54,6 +56,14 @@ class PostsCell: UITableViewCell {
         headerLabel.textColor = .white
         headerLabel.numberOfLines = 0
     }
+    func setasdasa() {
+        addSubview(photoImageView)
+        sendSubviewToBack(photoImageView)
+        photoImageView.translatesAutoresizingMaskIntoConstraints = false
+        photoImageView.clipsToBounds = true
+        photoImageView.image = .temporaryBackground
+        photoImageView.contentMode = .scaleAspectFill
+    }
     //MARK: set Constraints To UI Components-
     func setConstraintsToTimeLabel() {
         NSLayoutConstraint.activate([
@@ -70,6 +80,15 @@ class PostsCell: UITableViewCell {
             headerLabel.heightAnchor.constraint(equalToConstant: 38),
             headerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+        ])
+    }
+    
+    func asasa() {
+        NSLayoutConstraint.activate([
+        photoImageView.topAnchor.constraint(equalTo: topAnchor),
+        photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+        photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
 }
