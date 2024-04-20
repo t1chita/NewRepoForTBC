@@ -28,8 +28,7 @@ class PostsCell: UITableViewCell {
     func setupUI() {
         setTimeLabel()
         setHeaderLabel()
-        setasdasa()
-        asasa()
+        setPhotoImageView()
     }
     
     func configure(time: String, header: String) {
@@ -56,10 +55,11 @@ class PostsCell: UITableViewCell {
         headerLabel.textColor = .white
         headerLabel.numberOfLines = 0
     }
-    func setasdasa() {
+    func setPhotoImageView() {
         addSubview(photoImageView)
         sendSubviewToBack(photoImageView)
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
+        setPhotoImageViewConstraints()
         photoImageView.clipsToBounds = true
         photoImageView.image = .temporaryBackground
         photoImageView.contentMode = .scaleAspectFill
@@ -83,7 +83,7 @@ class PostsCell: UITableViewCell {
         ])
     }
     
-    func asasa() {
+    func setPhotoImageViewConstraints() {
         NSLayoutConstraint.activate([
         photoImageView.topAnchor.constraint(equalTo: topAnchor),
         photoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
