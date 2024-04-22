@@ -13,7 +13,6 @@ enum NetworkError: Error {
     case wrongStatusCode(code: Int)
 }
 
-
 class NetworkService {
     func getCountryInfo(urlString: String, completion: @escaping([Country]?,Error?) -> (Void)) {
         let url = URL(string: urlString)!

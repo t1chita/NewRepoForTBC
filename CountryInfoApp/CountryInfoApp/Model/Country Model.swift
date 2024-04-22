@@ -7,16 +7,9 @@
 
 import UIKit
 
-struct CountryListResponseData: Codable {
-    let countryList: [Country]?
-}
 struct Country: Codable {
     let name: Name?
     let tld: [String]?
-    let cca2: String?
-    let ccn3: String?
-    let cca3: String?
-    let cioc: String?
     let independent: Bool?
     let status: String?
     let unMember: Bool?
@@ -27,17 +20,14 @@ struct Country: Codable {
     let region: String?
     let subregion: String?
     let languages: [String: String]?
-    let translations: Translations?
     let latlng: [Double]?
     let landlocked: Bool?
     let borders: [String]?
-    let area: Int?
+    let area: Double?
     let demonyms: Demonyms?
     let flag: String?
     let maps: Maps?
     let population: Int?
-    let gini: [String: Double]?
-    let fifa: String?
     let car: Car?
     let timezones: [String]?
     let continents: [String]?
@@ -51,16 +41,6 @@ struct Country: Codable {
 struct Name: Codable {
     let common: String?
     let official: String?
-    let nativeName: NativeName?
-}
-
-struct NativeName: Codable {
-    let ron: NativeNameValues?
-}
-
-struct NativeNameValues: Codable {
-    let official: String?
-    let common: String?
 }
 
 struct Currency: Codable {
@@ -74,40 +54,6 @@ struct Idd: Codable {
     
 }
 
-struct Translations: Codable {
-    let ara: Translation?
-    let bre: Translation?
-    let ces: Translation?
-    let cym: Translation?
-    let deu: Translation?
-    let est: Translation?
-    let fin: Translation?
-    let fra: Translation?
-    let hrw: Translation?
-    let hun: Translation?
-    let ita: Translation?
-    let jpn: Translation?
-    let kor: Translation?
-    let nld: Translation?
-    let per: Translation?
-    let pol: Translation?
-    let por: Translation?
-    let rus: Translation?
-    let slk: Translation?
-    let spa: Translation?
-    let srp: Translation?
-    let swe: Translation?
-    let tur: Translation?
-    let urd: Translation?
-    let zho: Translation?
-}
-
-struct Translation: Codable {
-    let official: String?
-    let common: String?
-}
-
-
 struct Demonyms: Codable {
     let eng: Demonym?
     let fra: Demonym?
@@ -117,7 +63,6 @@ struct Demonym: Codable {
     let f: String?
     let m: String?
 }
-
 
 struct Maps: Codable {
     let googleMaps: String?
@@ -131,7 +76,6 @@ struct Car: Codable {
 
 struct Flags: Codable {
     let png: String?
-    let svg: String?
     let alt: String?
 }
 
@@ -141,10 +85,10 @@ struct CoatOfArms: Codable {
 }
 
 struct CapitalInfo: Codable {
-    let latlng: [Double]
+    let latlng: [Double]?
 }
 
 struct PostalCode: Codable {
-    let format: String
-    let regex: String
+    let format: String?
+    let regex: String?
 }

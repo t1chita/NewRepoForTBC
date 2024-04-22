@@ -9,9 +9,9 @@ import UIKit
 
 class MainPageVC: UIViewController {
     //MARK: UI Components-
-    let pageTitle = UILabel()
+    private let pageTitle = UILabel()
     let countriesTableView = UITableView()
-    var countryArray: [Country] = []
+    var countriesArray: [Country] = []
     var countryInfoUrl = "https://restcountries.com/v3.1/all#"
 
     //MARK: Life Cycles-
@@ -19,18 +19,20 @@ class MainPageVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         NetworkService().getCountryInfo(urlString: countryInfoUrl) { (result: [Country]?, error: Error?) in
-            self.countryArray = result ?? []
-//            self.countriesTableView.reloadData()
+            self.countriesArray = result ?? []
+            self.countriesTableView.reloadData()
         }
         setupUI()
     }
+    
     //MARK: Setup UI-
-    func setupUI() {
+    private func setupUI() {
         setPageTitle()
         setCountriesTableView()
     }
+    
     //MARK: Set Ui Components-
-    func setPageTitle() {
+    private func setPageTitle() {
         view.addSubview(pageTitle)
         pageTitle.translatesAutoresizingMaskIntoConstraints = false
         setConstraintsToPageTitle()
@@ -40,18 +42,18 @@ class MainPageVC: UIViewController {
         pageTitle.textColor = .black
     }
     
-    func setCountriesTableView() {
+    private func setCountriesTableView() {
         view.addSubview(countriesTableView)
         countriesTableView.translatesAutoresizingMaskIntoConstraints = false
         setConstraintsToCountriesTableView()
         countriesTableView.dataSource = self
         countriesTableView.delegate = self
-        countriesTableView.rowHeight = 30
-        countriesTableView.backgroundColor = .green
+        countriesTableView.rowHeight = 50
+        countriesTableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.identifier)
     }
 
     //MARK: Set Constraints To UI Components-
-    func setConstraintsToPageTitle() {
+    private func setConstraintsToPageTitle() {
         NSLayoutConstraint.activate([
         pageTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 66),
         pageTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
@@ -60,7 +62,7 @@ class MainPageVC: UIViewController {
         ])
     }
     
-    func setConstraintsToCountriesTableView() {
+    private func setConstraintsToCountriesTableView() {
         NSLayoutConstraint.activate([
             countriesTableView.topAnchor.constraint(equalTo: pageTitle.bottomAnchor, constant: 14),
             countriesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
