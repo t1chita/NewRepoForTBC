@@ -188,24 +188,16 @@ class CountryDetailsPageVC: UIViewController {
     
     func setIosMapButton() {
         mapsStackView.addArrangedSubview(iosMapButton)
-        let image = UIImage(named: "openStreetMapImage")?.resized(toSize: CGSize(width: 50, height: 29))
-        iosMapButton.setImage(image, for: .normal)
+        iosMapButton.setImage(.openStreetMap, for: .normal)
         iosMapButton.frame.size = CGSize(width: 50, height: 50)
-        iosMapButton.clipsToBounds = true
-        iosMapButton.layer.borderWidth = 1
-        iosMapButton.layer.cornerRadius = iosMapButton.frame.size.height / 2
         iosMapButton.layer.borderColor = UIColor.black.cgColor
     }
     
     func setGoogleMapButton() {
         mapsStackView.addArrangedSubview(googleMapButton)
-        let image = UIImage(named: "googleMapImage")?.resized(toSize: CGSize(width: 50, height: 29))
-        googleMapButton.setImage(image, for: .normal)
+        googleMapButton.setImage(.googleMap, for: .normal)
         googleMapButton.frame.size = CGSize(width: 50, height: 50)
-        googleMapButton.clipsToBounds = true
-        googleMapButton.layer.borderWidth = 1
         googleMapButton.layer.cornerRadius = googleMapButton.frame.size.height / 2
-        googleMapButton.layer.borderColor = UIColor.black.cgColor
     }
     
     //MARK: Set Constraints To UI Components-
@@ -302,8 +294,4 @@ class CountryDetailsPageVC: UIViewController {
             mapsStackView.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-}
-
-#Preview {
-    CountryDetailsPageVC()
 }
