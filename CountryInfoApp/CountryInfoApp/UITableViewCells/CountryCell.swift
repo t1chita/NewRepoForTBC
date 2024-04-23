@@ -91,7 +91,7 @@ class CountryCell: UITableViewCell {
     private func setConstraintsToChevronSymbol() {
         NSLayoutConstraint.activate([
             chevronSymbol.centerYAnchor.constraint(equalTo: centerYAnchor),
-            chevronSymbol.heightAnchor.constraint(equalToConstant: 11),
+            chevronSymbol.heightAnchor.constraint(equalToConstant: 15),
             chevronSymbol.widthAnchor.constraint(equalToConstant: 11),
             chevronSymbol.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -23),
         ])

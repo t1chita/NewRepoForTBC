@@ -14,7 +14,7 @@ extension MainPageVC {
         statusStackView.countryLabel.text = countriesArray[index].status
         currenciesStackView.countryLabel.text = "Name: \(countriesArray[index].currencies?.first?.value.name ?? "ვი დონთ ჰევ"),  " + "        Symbol: \(countriesArray[index].currencies?.first?.value.symbol ?? "ვი დონთ ჰევ")"
         capitalStackView.countryLabel.text = countriesArray[index].capital?.seperateStringWithCommon()
-        altSpellingsStackView.countryLabel.text = countriesArray[index].altSpellings?[1] ??  countriesArray[index].altSpellings?[0]
+        altSpellingsStackView.countryLabel.text = countriesArray[index].altSpellings?.seperateStringWithCommon()
         regionStackView.countryLabel.text = countriesArray[index].region
         subregionStackView.countryLabel.text = countriesArray[index].subregion
         languagesStackView.countryLabel.text = countriesArray[index].languages?.getArrayFromDictionary().seperateStringWithCommon()
