@@ -31,7 +31,6 @@ class CustomStackView: UIStackView {
     }
     
     func setGeneralLabel() {
-        generalLabel.text = "Country Name:"
         generalLabel.translatesAutoresizingMaskIntoConstraints = false
         generalLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         generalLabel.textColor = .black
@@ -39,7 +38,6 @@ class CustomStackView: UIStackView {
     }
     
     func setCountryLabel() {
-        countryLabel.text = "საქართველო"
         countryLabel.translatesAutoresizingMaskIntoConstraints = false
         countryLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         countryLabel.textColor = .black

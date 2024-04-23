@@ -18,3 +18,12 @@ extension UIImageView {
         }.resume()
     }
 }
+
+extension UIImage {
+    func resized(toSize newSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: newSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}

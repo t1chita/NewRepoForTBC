@@ -12,8 +12,20 @@ extension MainPageVC: UITableViewDelegate {
         let countryDetailsPageVC = CountryDetailsPageVC()
         countryDetailsPageVC.countriesName.text = countriesArray[indexPath.section].name?.common
         countryDetailsPageVC.countriesFlag.loadImage(from: URL(string: countriesArray[indexPath.section].flags!.png!)!)
-        countryDetailsPageVC.aboutTheFlagDescription.text = countriesArray[indexPath.section].flags?.alt
+        countryDetailsPageVC.aboutTheFlagDescription.text = countriesArray[indexPath.section].flags?.alt ?? "არ ალი"
+        
         configureDetails(countriesArray: countriesArray, index: indexPath.section)
+        
+        countryDetailsPageVC.iosMapButton.addAction(UIAction(title: "Go To OpenStreet Map", handler: { [weak self] _ in
+            if let urlOfIosMap = URL(string: self?.countriesArray[indexPath.section].maps?.openStreetMaps ?? "") {
+                UIApplication.shared.open(urlOfIosMap)
+            }
+        }), for: .touchUpInside)
+        countryDetailsPageVC.googleMapButton.addAction(UIAction(title: "Go To Google Map", handler: { [weak self] _ in
+            if let urlOfGoogleMap = URL(string: self?.countriesArray[indexPath.section].maps?.googleMaps ?? "") {
+                UIApplication.shared.open(urlOfGoogleMap)
+            }
+        }), for: .touchUpInside)
         navigationController?.pushViewController(countryDetailsPageVC, animated: true)
     }
 }

@@ -21,6 +21,10 @@ class CountryDetailsPageVC: UIViewController {
     let basicInformationLabel = UILabel()
     let lineViewTwo = UIView()
     let basicInformationStackView = UIStackView()
+    let mapsStackView = UIStackView()
+    let mapsHeaderLabel = UILabel()
+    let iosMapButton = UIButton()
+    let googleMapButton = UIButton()
     
     //MARK: Life Cycles-
     override func viewDidLoad() {
@@ -34,6 +38,8 @@ class CountryDetailsPageVC: UIViewController {
         setChevronSymbol()
         setCountriesName()
         setScrollView()
+        setMapsHeaderLabel()
+        setMapsStackView()
     }
     
     //MARK: Set UI Components-
@@ -123,17 +129,7 @@ class CountryDetailsPageVC: UIViewController {
         lineViewOne.translatesAutoresizingMaskIntoConstraints = false
         lineViewTwo.backgroundColor = UIColor.line
         lineViewTwo.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            lineViewOne.topAnchor.constraint(equalTo: countriesHeaderStackView.bottomAnchor, constant: 1),
-            lineViewOne.heightAnchor.constraint(equalToConstant: 1),
-            lineViewOne.widthAnchor.constraint(equalTo: countriesHeaderStackView.widthAnchor),
-            lineViewOne.centerXAnchor.constraint(equalTo: conteinerView.centerXAnchor),
-            lineViewTwo.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133),
-            lineViewTwo.heightAnchor.constraint(equalToConstant: 1),
-            lineViewTwo.widthAnchor.constraint(equalTo: conteinerView.widthAnchor),
-            lineViewTwo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        ])
+        setConstraintsToLineViews()
     }
     
     func setBasicInformationLAbel() {
@@ -153,10 +149,10 @@ class CountryDetailsPageVC: UIViewController {
         basicInformationStackView.alignment = .fill
         basicInformationStackView.distribution = .fillProportionally
         basicInformationStackView.spacing = 15
-        setNameStackView()
+        setbasicInformationStackView()
     }
     
-    func setNameStackView() {
+    func setbasicInformationStackView() {
         var index = 0
         for stackView in stackViews {
             basicInformationStackView.addArrangedSubview(stackView)
@@ -165,6 +161,51 @@ class CountryDetailsPageVC: UIViewController {
             stackView.generalLabel.text = generalLabelsTexts[index]
             index += 1
         }
+    }
+    
+    func setMapsStackView() {
+        view.addSubview(mapsStackView)
+        mapsStackView.translatesAutoresizingMaskIntoConstraints = false
+        setConstraintsToMapsStackView()
+        mapsStackView.axis = .horizontal
+        mapsStackView.alignment = .fill
+        mapsStackView.distribution = .equalSpacing
+        setIosMapButton()
+        setGoogleMapButton()
+    }
+    
+    func setMapsHeaderLabel() {
+        view.addSubview(mapsHeaderLabel)
+        setConstraintsToMapsHeaderLabel()
+        mapsHeaderLabel.translatesAutoresizingMaskIntoConstraints = false
+        mapsHeaderLabel.text = "Useful Links:"
+        mapsHeaderLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        mapsHeaderLabel.textColor = .black
+        mapsHeaderLabel.textAlignment = .left
+        setIosMapButton()
+        setGoogleMapButton()
+    }
+    
+    func setIosMapButton() {
+        mapsStackView.addArrangedSubview(iosMapButton)
+        let image = UIImage(named: "openStreetMapImage")?.resized(toSize: CGSize(width: 50, height: 29))
+        iosMapButton.setImage(image, for: .normal)
+        iosMapButton.frame.size = CGSize(width: 50, height: 50)
+        iosMapButton.clipsToBounds = true
+        iosMapButton.layer.borderWidth = 1
+        iosMapButton.layer.cornerRadius = iosMapButton.frame.size.height / 2
+        iosMapButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setGoogleMapButton() {
+        mapsStackView.addArrangedSubview(googleMapButton)
+        let image = UIImage(named: "googleMapImage")?.resized(toSize: CGSize(width: 50, height: 29))
+        googleMapButton.setImage(image, for: .normal)
+        googleMapButton.frame.size = CGSize(width: 50, height: 50)
+        googleMapButton.clipsToBounds = true
+        googleMapButton.layer.borderWidth = 1
+        googleMapButton.layer.cornerRadius = googleMapButton.frame.size.height / 2
+        googleMapButton.layer.borderColor = UIColor.black.cgColor
     }
     
     //MARK: Set Constraints To UI Components-
@@ -228,4 +269,41 @@ class CountryDetailsPageVC: UIViewController {
             basicInformationStackView.widthAnchor.constraint(equalTo: countriesHeaderStackView.widthAnchor),
         ])
     }
+    
+    func setConstraintsToLineViews() {
+        NSLayoutConstraint.activate([
+            lineViewOne.topAnchor.constraint(equalTo: countriesHeaderStackView.bottomAnchor, constant: 1),
+            lineViewOne.heightAnchor.constraint(equalToConstant: 1),
+            lineViewOne.widthAnchor.constraint(equalTo: countriesHeaderStackView.widthAnchor),
+            lineViewOne.centerXAnchor.constraint(equalTo: conteinerView.centerXAnchor),
+            lineViewTwo.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133),
+            lineViewTwo.heightAnchor.constraint(equalToConstant: 1),
+            lineViewTwo.widthAnchor.constraint(equalTo: conteinerView.widthAnchor),
+            lineViewTwo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+    }
+    
+    func setConstraintsToMapsHeaderLabel() {
+        NSLayoutConstraint.activate([
+            mapsHeaderLabel.topAnchor.constraint(equalTo: lineViewTwo.bottomAnchor, constant: 24),
+            mapsHeaderLabel.leadingAnchor.constraint(equalTo: lineViewTwo.leadingAnchor),
+            mapsHeaderLabel.widthAnchor.constraint(equalTo: lineViewTwo.widthAnchor),
+            mapsHeaderLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90),
+        ])
+    }
+    
+    func setConstraintsToMapsStackView() {
+        NSLayoutConstraint.activate([
+            mapsStackView.topAnchor.constraint(equalTo: mapsHeaderLabel.bottomAnchor, constant: 15),
+            mapsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 94),
+            mapsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -94),
+            mapsStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
+            mapsStackView.widthAnchor.constraint(equalToConstant: 187),
+            mapsStackView.heightAnchor.constraint(equalToConstant: 50),
+        ])
+    }
+}
+
+#Preview {
+    CountryDetailsPageVC()
 }
