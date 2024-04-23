@@ -14,7 +14,7 @@ enum NetworkError: Error {
 }
 
 class NetworkService {
-    func getCountryInfo(urlString: String, completion: @escaping([Country]?,Error?) -> (Void)) {
+    func getCountryInfo<T: Decodable>(urlString: String, completion: @escaping(Result<[T],Error>) -> (Void)) {
         let url = URL(string: urlString)!
         
         URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
@@ -39,10 +39,10 @@ class NetworkService {
             
             do {
                 let decoder = JSONDecoder()
-                let object = try decoder.decode([Country].self, from: data)
+                let object = try decoder.decode([T].self, from: data)
                 
                 DispatchQueue.main.async {
-                    completion(object, nil)
+                    completion(.success((object)))
                 }
             } catch {
                 if let decodingError = error as? DecodingError {
@@ -61,7 +61,7 @@ class NetworkService {
                   } else {
                       print("Error decoding JSON: \(error)")
                   }
-                completion(nil, NetworkError.decodeError)
+                completion(.failure(NetworkError.decodeError))
             }
         }.resume()
     }

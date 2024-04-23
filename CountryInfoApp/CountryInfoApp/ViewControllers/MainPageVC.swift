@@ -18,8 +18,13 @@ class MainPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        NetworkService().getCountryInfo(urlString: countryInfoUrl) { (result: [Country]?, error: Error?) in
-            self.countriesArray = result ?? []
+        NetworkService().getCountryInfo(urlString: countryInfoUrl) { (result: Result<[Country],Error>) in
+            switch result {
+            case .success(let success):
+                self.countriesArray = success
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
             self.countriesTableView.reloadData()
         }
         setupUI()
