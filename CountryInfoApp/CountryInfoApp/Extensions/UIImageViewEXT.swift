@@ -19,6 +19,8 @@ extension UIImageView {
     }
 }
 
+
+
 extension UIImage {
     func resized(toSize newSize: CGSize) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
@@ -27,3 +29,17 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
+
+//extension UIStackView {
+//
+//    func addArrangedSubviews(_ views: UIView...) {
+//
+//        views.forEach {
+//
+//            self.addArrangedSubview($0)
+//
+//        }
+//
+//    }
+//
+//}

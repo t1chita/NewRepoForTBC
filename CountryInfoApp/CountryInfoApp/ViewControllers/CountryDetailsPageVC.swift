@@ -9,18 +9,25 @@ import UIKit
 
 class CountryDetailsPageVC: UIViewController {
     //MARK: UI Components-
-    let scrollView = UIScrollView()
-    let conteinerView = UIView()
     let chevronSymbol = UIButton()
     let countriesName = UILabel()
+    
+    let scrollView = UIScrollView()
+    
+    let conteinerView = UIView()
+    
     let countriesHeaderStackView = UIStackView()
     let countriesFlag = UIImageView()
     let aboutTheFlagTitle = UILabel()
     let aboutTheFlagDescription = UITextView()
+    
     let lineViewOne = UIView()
+    
     let basicInformationLabel = UILabel()
-    let lineViewTwo = UIView()
     let basicInformationStackView = UIStackView()
+    
+    let lineViewTwo = UIView()
+    
     let mapsStackView = UIStackView()
     let mapsHeaderLabel = UILabel()
     let iosMapButton = UIButton()

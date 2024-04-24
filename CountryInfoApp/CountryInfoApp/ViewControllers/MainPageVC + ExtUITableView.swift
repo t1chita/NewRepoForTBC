@@ -32,7 +32,7 @@ extension MainPageVC: UITableViewDelegate {
 
 extension MainPageVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        10
+        5
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
