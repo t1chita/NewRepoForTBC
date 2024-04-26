@@ -32,7 +32,6 @@ class MainPageView: UIView {
         countriesTableView.translatesAutoresizingMaskIntoConstraints = false
         setConstraintsToCountriesTableView()
         countriesTableView.separatorStyle = .none
-        countriesTableView.rowHeight = 50
         countriesTableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.identifier)
     }
 
