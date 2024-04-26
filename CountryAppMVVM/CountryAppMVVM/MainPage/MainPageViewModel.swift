@@ -11,9 +11,13 @@ class MainPageViewModel {
     
     private var mainPageModel: MainPageModel
     
+    weak var delegate: MainPageViewControllerDelegate?
+    
     var countriesArray: [Country] {
         return mainPageModel.countriesArray
     }
+    
+    var filteredCountries: [Country] = []
     
     var stackViews: [CustomStackView] {
         get {
@@ -28,7 +32,11 @@ class MainPageViewModel {
         self.mainPageModel = mainPageModel
     }
     
-    func fetchData(for tableView: UITableView) {
+    func setup() {
+        fetchData()
+    }
+    
+   private func fetchData() {
         NetworkService().getInfo(urlString: mainPageModel.countryInfoUrl) { [weak self] (result: Result<[Country],Error>) in
             switch result {
             case .success(let success):
@@ -36,7 +44,32 @@ class MainPageViewModel {
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
-            tableView.reloadData()
+            self?.delegate?.reloadData()
+        }
+    }
+}
+
+//MARK: SearchController Methods
+extension MainPageViewModel {
+    
+    func inSearchMode(_ searchController: UISearchController) -> Bool {
+        let isActive = searchController.isActive
+        let searchText = searchController.searchBar.text ?? ""
+        return isActive && !searchText.isEmpty
+    }
+    
+    func updateSearchResults(for searchText: String?) {
+        
+        guard let searchText = searchText?.lowercased(), !searchText.isEmpty else {
+            self.filteredCountries = countriesArray
+            return
+        }
+        
+        filteredCountries = countriesArray.filter { country in
+            if let commonName = country.name?.common?.lowercased() {
+                return commonName.contains(searchText)
+            }
+            return false
         }
     }
 }

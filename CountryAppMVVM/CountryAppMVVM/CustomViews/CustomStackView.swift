@@ -8,8 +8,8 @@
 import UIKit
 
 class CustomStackView: UIStackView {
-    let generalLabel = UILabel()
-    let countryLabel = UILabel()
+    var generalLabel = UILabel()
+    var countryLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

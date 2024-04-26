@@ -23,7 +23,7 @@ class MainPageView: UIView {
     
     private func setupUI() {
         setCountriesTableView()
-        backgroundColor = .background
+        backgroundColor = .systemBackground
     }
     
     //MARK: Set Ui Components-
@@ -31,6 +31,7 @@ class MainPageView: UIView {
         addSubview(countriesTableView)
         countriesTableView.translatesAutoresizingMaskIntoConstraints = false
         setConstraintsToCountriesTableView()
+        countriesTableView.separatorStyle = .none
         countriesTableView.rowHeight = 50
         countriesTableView.register(CountryCell.self, forCellReuseIdentifier: CountryCell.identifier)
     }

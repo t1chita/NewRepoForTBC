@@ -192,6 +192,7 @@ class CountryDetailsPageView: UIView {
         googleMapButton.frame.size = CGSize(width: 50, height: 50)
         googleMapButton.layer.cornerRadius = googleMapButton.frame.size.height / 2
     }
+    
     //MARK: Set Constraints To UI Components-
     func setConstraintsToChevronSymbol() {
         NSLayoutConstraint.activate([

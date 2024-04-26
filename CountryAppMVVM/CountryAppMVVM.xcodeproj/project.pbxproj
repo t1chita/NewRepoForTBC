@@ -22,8 +22,7 @@
 		2603A8F32BD9C0C600B45B1C /* MainPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8F22BD9C0C600B45B1C /* MainPageModel.swift */; };
 		2603A8F52BD9C0D300B45B1C /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8F42BD9C0D300B45B1C /* MainPageViewController.swift */; };
 		2603A8F72BD9C0E200B45B1C /* CountryDetailsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8F62BD9C0E200B45B1C /* CountryDetailsPageView.swift */; };
-		2603A8F92BD9C0F400B45B1C /* CountryDetailsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8F82BD9C0F400B45B1C /* CountryDetailsPageViewModel.swift */; };
-		2603A8FB2BD9C10A00B45B1C /* CountryDetailsPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8FA2BD9C10A00B45B1C /* CountryDetailsPageModel.swift */; };
+		2603A8FB2BD9C10A00B45B1C /* CountryDetailsPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8FA2BD9C10A00B45B1C /* CountryDetailsPageViewModel.swift */; };
 		2603A8FD2BD9C12100B45B1C /* CountryDetailsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8FC2BD9C12100B45B1C /* CountryDetailsPageViewController.swift */; };
 		2603A8FF2BD9C4AB00B45B1C /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A8FE2BD9C4AB00B45B1C /* CountryCell.swift */; };
 		2603A9022BD9CDEC00B45B1C /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2603A9012BD9CDEC00B45B1C /* CustomStackView.swift */; };
@@ -48,8 +47,7 @@
 		2603A8F22BD9C0C600B45B1C /* MainPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageModel.swift; sourceTree = "<group>"; };
 		2603A8F42BD9C0D300B45B1C /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		2603A8F62BD9C0E200B45B1C /* CountryDetailsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsPageView.swift; sourceTree = "<group>"; };
-		2603A8F82BD9C0F400B45B1C /* CountryDetailsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsPageViewModel.swift; sourceTree = "<group>"; };
-		2603A8FA2BD9C10A00B45B1C /* CountryDetailsPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsPageModel.swift; sourceTree = "<group>"; };
+		2603A8FA2BD9C10A00B45B1C /* CountryDetailsPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsPageViewModel.swift; sourceTree = "<group>"; };
 		2603A8FC2BD9C12100B45B1C /* CountryDetailsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsPageViewController.swift; sourceTree = "<group>"; };
 		2603A8FE2BD9C4AB00B45B1C /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		2603A9012BD9CDEC00B45B1C /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
@@ -150,8 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				2603A8F62BD9C0E200B45B1C /* CountryDetailsPageView.swift */,
-				2603A8F82BD9C0F400B45B1C /* CountryDetailsPageViewModel.swift */,
-				2603A8FA2BD9C10A00B45B1C /* CountryDetailsPageModel.swift */,
+				2603A8FA2BD9C10A00B45B1C /* CountryDetailsPageViewModel.swift */,
 				2603A8FC2BD9C12100B45B1C /* CountryDetailsPageViewController.swift */,
 			);
 			path = CountryDetailsPage;
@@ -255,9 +252,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2603A8E32BD9BFEC00B45B1C /* UIImageView.swift in Sources */,
-				2603A8F92BD9C0F400B45B1C /* CountryDetailsPageViewModel.swift in Sources */,
 				2603A8F72BD9C0E200B45B1C /* CountryDetailsPageView.swift in Sources */,
-				2603A8FB2BD9C10A00B45B1C /* CountryDetailsPageModel.swift in Sources */,
+				2603A8FB2BD9C10A00B45B1C /* CountryDetailsPageViewModel.swift in Sources */,
 				2603A8F32BD9C0C600B45B1C /* MainPageModel.swift in Sources */,
 				2603A8FD2BD9C12100B45B1C /* CountryDetailsPageViewController.swift in Sources */,
 				2603A9022BD9CDEC00B45B1C /* CustomStackView.swift in Sources */,
