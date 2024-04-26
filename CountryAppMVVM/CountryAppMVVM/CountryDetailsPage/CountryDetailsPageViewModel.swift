@@ -15,6 +15,8 @@ class CountryDetailsPageViewModel {
     let aboutTheFlagTitle = "About the Flag:"
     let basicInformationLabel = "Basic Information:"
     let mapsHeaderLabel = "Useful Links:"
+    let openStreetMap: String?
+    let googleMap: String?
     
     var stackViews: [CustomStackView] = [
         CustomStackView(),
@@ -85,5 +87,13 @@ class CountryDetailsPageViewModel {
         stackViews[18].countryLabel.text = country.startOfWeek
         stackViews[19].countryLabel.text = country.capitalInfo?.latlng?.getStringsFromDoubles()
         stackViews[20].countryLabel.text = "Format: \(country.postalCode?.format ?? "ვი დონთ ჰევ"),  " + "        Regex: \(country.postalCode?.regex ?? "ვი დონთ ჰევ")"
+        openStreetMap = country.maps?.openStreetMaps
+        googleMap = country.maps?.googleMaps
+    }
+    
+    func goToMap(Of company: String?) {
+        if let urlOfIosMap = URL(string: company ?? "") {
+            UIApplication.shared.open(urlOfIosMap)
+        }
     }
 }

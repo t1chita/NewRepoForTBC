@@ -10,6 +10,11 @@ protocol CountryDetailsPageViewDelegate: AnyObject {
     func goToMainPage()
 }
 
+protocol CountryDetailsPageViewMapsDelegate: AnyObject {
+    func safariMapButtonTouched()
+    func googleMapButtonTouched()
+}
+
 class CountryDetailsPageView: UIView {
     //MARK: UI Components-
     let chevronSymbol = UIButton()
@@ -30,6 +35,8 @@ class CountryDetailsPageView: UIView {
     let googleMapButton = UIButton()
     
     weak var delegate: CountryDetailsPageViewDelegate?
+    
+    weak var mapsDelegate: CountryDetailsPageViewMapsDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -184,6 +191,9 @@ class CountryDetailsPageView: UIView {
         iosMapButton.setImage(.openStreetMap, for: .normal)
         iosMapButton.frame.size = CGSize(width: 50, height: 50)
         iosMapButton.layer.borderColor = UIColor.black.cgColor
+        iosMapButton.addAction(UIAction(title: "Go To Safari Map", handler: { [weak self] _ in
+            self?.mapsDelegate?.safariMapButtonTouched()
+        }), for: .touchUpInside)
     }
     
     func setGoogleMapButton() {
@@ -191,6 +201,9 @@ class CountryDetailsPageView: UIView {
         googleMapButton.setImage(.googleMap, for: .normal)
         googleMapButton.frame.size = CGSize(width: 50, height: 50)
         googleMapButton.layer.cornerRadius = googleMapButton.frame.size.height / 2
+        googleMapButton.addAction(UIAction(title: "Go To Google Map", handler: { [weak self] _ in
+            self?.mapsDelegate?.googleMapButtonTouched()
+        }), for: .touchUpInside)
     }
     
     //MARK: Set Constraints To UI Components-

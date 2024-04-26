@@ -24,6 +24,7 @@ class CountryDetailsPageViewController: UIViewController {
     override func loadView() {
         view = countryDetailsPageView
         countryDetailsPageView.delegate = self
+        countryDetailsPageView.mapsDelegate = self
     }
     
     override func viewDidLoad() {
@@ -62,4 +63,14 @@ extension CountryDetailsPageViewController: CountryDetailsPageViewDelegate {
     func goToMainPage() {
         navigationController?.popViewController(animated: false)
     } 
+}
+
+extension CountryDetailsPageViewController: CountryDetailsPageViewMapsDelegate {
+    func safariMapButtonTouched() {
+        countryDetailsPageViewModel?.goToMap(Of: country?.maps?.openStreetMaps)
+    }
+    
+    func googleMapButtonTouched() {
+        countryDetailsPageViewModel?.goToMap(Of: country?.maps?.googleMaps)
+    }
 }
