@@ -17,7 +17,7 @@ class MainPageViewController: UIViewController {
     //MARK: Properties-
     var mainPageView: MainPageView
     var mainPageViewModel: MainPageViewModel
-    
+    let alert = UIAlertController(title: "☺️მოგესალმებით", message: "კეთილი იყოს თქვენი მობრძანება საუკეთესო აპლიკაციაში!", preferredStyle: .alert)
     //MARK: Initialization-
     init() {
         self.mainPageView = MainPageView()
@@ -41,6 +41,7 @@ class MainPageViewController: UIViewController {
         tableViewProtocols()
         setupData()
         setupSearchController()
+        presentAlert()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +84,13 @@ class MainPageViewController: UIViewController {
                 }
             })
         }
+    
+    func presentAlert() {
+        if UserDefaults.standard.bool(forKey: "First Login") {
+            self.alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }
 
 

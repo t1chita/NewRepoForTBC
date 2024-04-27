@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomStackView: UIStackView {
+class CustomCountryStackView: UIStackView {
     var generalLabel = UILabel()
     var countryLabel = UILabel()
     
