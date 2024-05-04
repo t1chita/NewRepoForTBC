@@ -31,7 +31,7 @@
 		264638E22BE1CC3C00DBD63D /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
 		264638E42BE1CC8200DBD63D /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		264638F22BE1E2A600DBD63D /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
-		264638F52BE3EB3E00DBD63D /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CatCell.swift; path = ../../../../CatCell.swift; sourceTree = "<group>"; };
+		264638F52BE3EB3E00DBD63D /* CatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCell.swift; sourceTree = "<group>"; };
 		267594762BE3F8CF0060CFD3 /* MainPageVC + ExtCatTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPageVC + ExtCatTableView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
