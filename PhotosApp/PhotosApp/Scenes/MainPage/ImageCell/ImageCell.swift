@@ -12,9 +12,8 @@ class ImageCell: UICollectionViewCell {
     static let identifier = "ImageCell"
     
     //MARK: - UIComponents
-    let personImageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = .ramishvili
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView
@@ -29,6 +28,11 @@ class ImageCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Configure
+    func configure(imageUrl: String) {
+        self.imageView.loadImage(from: URL(string: imageUrl)!)
+    }
+    
     //MARK: - Setup UI Components
     func setupUI() {
         setPersonImageView()
@@ -36,16 +40,16 @@ class ImageCell: UICollectionViewCell {
     }
     
     func setPersonImageView() {
-        addSubview(personImageView)
+        addSubview(imageView)
         setConstraintsToPersonImage()
     }
     //MARK: - Set Constrainst To UI Components
     func setConstraintsToPersonImage() {
         NSLayoutConstraint.activate([
-            personImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            personImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            personImageView.topAnchor.constraint(equalTo: topAnchor),
-            personImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
 }

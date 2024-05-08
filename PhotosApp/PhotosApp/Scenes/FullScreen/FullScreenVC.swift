@@ -10,9 +10,11 @@ import UIKit
 class FullScreenVC: UIViewController {
     //MARK: - Properties
     let fullScreenView: FullScreenView
+    let fullScreenViewModel: FullScreenViewModel
     //MARK: - Initialization
-    init(fullScreenView: FullScreenView) {
+    init(fullScreenView: FullScreenView, fullScreenViewModel: FullScreenViewModel) {
         self.fullScreenView = fullScreenView
+        self.fullScreenViewModel = fullScreenViewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,5 +30,8 @@ class FullScreenVC: UIViewController {
         super.viewWillAppear(animated)
         view = fullScreenView
     }
+    
+    //MARK: DataSource & DataSourceSnapshot typealias
+    
 }
 

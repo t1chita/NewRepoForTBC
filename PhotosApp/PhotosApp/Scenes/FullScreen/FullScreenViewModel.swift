@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class FullScreenViewModel {
+    //MARK: - Properties
+    //MARK: - LifeCycles
+    //MARK: - Child Methods
+}

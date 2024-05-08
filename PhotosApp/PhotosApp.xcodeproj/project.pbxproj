@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,12 @@
 		269591F82BEB8F6F00EA20DD /* FullScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269591F72BEB8F6F00EA20DD /* FullScreenVC.swift */; };
 		269591FA2BEB8F7D00EA20DD /* FullScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269591F92BEB8F7D00EA20DD /* FullScreenViewModel.swift */; };
 		269591FC2BEB8F8A00EA20DD /* FullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269591FB2BEB8F8A00EA20DD /* FullScreenView.swift */; };
+		26FB40442BEBA03000A31074 /* NetworkServicePackages in Frameworks */ = {isa = PBXBuildFile; productRef = 26FB40432BEBA03000A31074 /* NetworkServicePackages */; };
+		26FB40462BEBA05000A31074 /* NetworkServicePackages in Frameworks */ = {isa = PBXBuildFile; productRef = 26FB40452BEBA05000A31074 /* NetworkServicePackages */; };
+		26FB40482BEBB02F00A31074 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB40472BEBB02F00A31074 /* ImageModel.swift */; };
+		26FB404B2BEBB37200A31074 /* UIimageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB404A2BEBB37200A31074 /* UIimageView.swift */; };
+		26FB404E2BEC36C900A31074 /* FullImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB404D2BEC36C900A31074 /* FullImageCell.swift */; };
+		26FB40502BEC370400A31074 /* FullScreenVC + ExtGalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FB404F2BEC370400A31074 /* FullScreenVC + ExtGalleryCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +42,10 @@
 		269591F72BEB8F6F00EA20DD /* FullScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenVC.swift; sourceTree = "<group>"; };
 		269591F92BEB8F7D00EA20DD /* FullScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenViewModel.swift; sourceTree = "<group>"; };
 		269591FB2BEB8F8A00EA20DD /* FullScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenView.swift; sourceTree = "<group>"; };
+		26FB40472BEBB02F00A31074 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		26FB404A2BEBB37200A31074 /* UIimageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIimageView.swift; sourceTree = "<group>"; };
+		26FB404D2BEC36C900A31074 /* FullImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageCell.swift; sourceTree = "<group>"; };
+		26FB404F2BEC370400A31074 /* FullScreenVC + ExtGalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullScreenVC + ExtGalleryCollectionView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FB40462BEBA05000A31074 /* NetworkServicePackages in Frameworks */,
+				26FB40442BEBA03000A31074 /* NetworkServicePackages in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,9 +82,10 @@
 			children = (
 				269591E62BEAC65800EA20DD /* Supporting */,
 				269591E82BEAC65F00EA20DD /* App */,
+				269591FD2BEB9A9E00EA20DD /* Model */,
 				269591E72BEAC65C00EA20DD /* Scenes */,
-				269591F22BEAD6C000EA20DD /* ImageCell */,
 				269591E52BEAC65600EA20DD /* Resources */,
+				26FB40492BEBB35C00A31074 /* Extensions */,
 			);
 			path = PhotosApp;
 			sourceTree = "<group>";
@@ -119,6 +132,7 @@
 				269591F02BEAC6FC00EA20DD /* MainPageView.swift */,
 				269591EE2BEAC6F000EA20DD /* MainPageViewModel.swift */,
 				269591F52BEADBB900EA20DD /* MainPageVC + ExtGalleryCollectionView.swift */,
+				269591F22BEAD6C000EA20DD /* ImageCell */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -129,6 +143,8 @@
 				269591F72BEB8F6F00EA20DD /* FullScreenVC.swift */,
 				269591FB2BEB8F8A00EA20DD /* FullScreenView.swift */,
 				269591F92BEB8F7D00EA20DD /* FullScreenViewModel.swift */,
+				26FB404F2BEC370400A31074 /* FullScreenVC + ExtGalleryCollectionView.swift */,
+				26FB404C2BEC36B000A31074 /* FullImageCell */,
 			);
 			path = FullScreen;
 			sourceTree = "<group>";
@@ -149,6 +165,30 @@
 			path = ImageCell;
 			sourceTree = "<group>";
 		};
+		269591FD2BEB9A9E00EA20DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26FB40472BEBB02F00A31074 /* ImageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26FB40492BEBB35C00A31074 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26FB404A2BEBB37200A31074 /* UIimageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26FB404C2BEC36B000A31074 /* FullImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				26FB404D2BEC36C900A31074 /* FullImageCell.swift */,
+			);
+			path = FullImageCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +205,10 @@
 			dependencies = (
 			);
 			name = PhotosApp;
+			packageProductDependencies = (
+				26FB40432BEBA03000A31074 /* NetworkServicePackages */,
+				26FB40452BEBA05000A31074 /* NetworkServicePackages */,
+			);
 			productName = PhotosApp;
 			productReference = 269591CE2BEAC63100EA20DD /* PhotosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -193,6 +237,9 @@
 				Base,
 			);
 			mainGroup = 269591C52BEAC63100EA20DD;
+			packageReferences = (
+				269592022BEB9BB200EA20DD /* XCLocalSwiftPackageReference "../Packages/NetworkServicePackages" */,
+			);
 			productRefGroup = 269591CF2BEAC63100EA20DD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,13 +266,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FB404B2BEBB37200A31074 /* UIimageView.swift in Sources */,
+				26FB40482BEBB02F00A31074 /* ImageModel.swift in Sources */,
 				269591FA2BEB8F7D00EA20DD /* FullScreenViewModel.swift in Sources */,
 				269591EF2BEAC6F000EA20DD /* MainPageViewModel.swift in Sources */,
 				269591F82BEB8F6F00EA20DD /* FullScreenVC.swift in Sources */,
+				26FB40502BEC370400A31074 /* FullScreenVC + ExtGalleryCollectionView.swift in Sources */,
 				269591FC2BEB8F8A00EA20DD /* FullScreenView.swift in Sources */,
 				269591F12BEAC6FC00EA20DD /* MainPageView.swift in Sources */,
 				269591D22BEAC63100EA20DD /* AppDelegate.swift in Sources */,
 				269591ED2BEAC6E500EA20DD /* MainPageVC.swift in Sources */,
+				26FB404E2BEC36C900A31074 /* FullImageCell.swift in Sources */,
 				269591F62BEADBB900EA20DD /* MainPageVC + ExtGalleryCollectionView.swift in Sources */,
 				269591D42BEAC63100EA20DD /* SceneDelegate.swift in Sources */,
 				269591F42BEAD6E100EA20DD /* ImageCell.swift in Sources */,
@@ -441,6 +492,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		269592022BEB9BB200EA20DD /* XCLocalSwiftPackageReference "../Packages/NetworkServicePackages" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/NetworkServicePackages;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26FB40432BEBA03000A31074 /* NetworkServicePackages */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkServicePackages;
+		};
+		26FB40452BEBA05000A31074 /* NetworkServicePackages */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NetworkServicePackages;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 269591C62BEAC63100EA20DD /* Project object */;
 }
