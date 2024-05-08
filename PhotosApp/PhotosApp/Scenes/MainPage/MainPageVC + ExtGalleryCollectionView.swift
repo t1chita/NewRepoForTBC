@@ -19,6 +19,13 @@ extension MainPageVC: UICollectionViewDataSource {
     }
 }
 
+extension MainPageVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let fullScreenVC = FullScreenVC(fullScreenView: FullScreenView())
+        navigationController?.pushViewController(fullScreenVC, animated: false)
+    }
+}
+
 extension MainPageVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 118, height: 136.96)
