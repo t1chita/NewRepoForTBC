@@ -11,13 +11,21 @@ import UIKit
 extension MainPageVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let fullScreenVC = FullScreenVC(fullScreenView: FullScreenView(), fullScreenViewModel: FullScreenViewModel())
+        fullScreenVC.fullScreenViewModel.setImageIndex(indexPath.row)
+        fullScreenVC.configureCollectionViewDataSource()
+        fullScreenVC.applySnapshot(with: mainPageViewModel.imagesArray)
+        fullScreenVC.loadImage()
         navigationController?.pushViewController(fullScreenVC, animated: false)
     }
 }
 
 extension MainPageVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 118, height: 136.96)
+        var width: CGFloat = collectionView.frame.width / 3 - 1
+        if UIDevice.current.orientation.isLandscape {
+            width = collectionView.frame.width / 6 - 1
+        }
+        return CGSize(width: width, height: width)
     }
 }
 
@@ -43,4 +51,5 @@ extension MainPageVC: SnapshotDelegate {
         })
     }
 }
+
 

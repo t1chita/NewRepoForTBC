@@ -12,6 +12,12 @@ class FullImageCell: UICollectionViewCell {
     static let identifier = "FullImageCell"
     
     //MARK: - UIComponents
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
  
     //MARK: - Initialization
     override init(frame: CGRect) {
@@ -25,12 +31,28 @@ class FullImageCell: UICollectionViewCell {
     
     //MARK: Configure
     func configure(imageUrl: String) {
+        guard let url = URL(string: imageUrl) else { return }
+        imageView.loadImage(from: url)
     }
     
     //MARK: - Setup UI Components
     func setupUI() {
+        setImageView()
         clipsToBounds = true
     }
+    
+    func setImageView() {
+        addSubview(imageView)
+        setConstraintsToImageView()
+    }
+    
     //MARK: - Set Constrainst To UI Components
-   
+    func setConstraintsToImageView() {
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
 }

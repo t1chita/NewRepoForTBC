@@ -21,13 +21,15 @@ class MainPageView: UIView {
     let galleryCollectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 327, height: 700), collectionViewLayout: collectionViewFlowLayout)
+        collectionViewFlowLayout.minimumLineSpacing = 1
+        collectionViewFlowLayout.minimumInteritemSpacing = 1
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: ImageCell.identifier)
         collectionView.backgroundColor = .clear
         return collectionView
     }()
-    
+
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)

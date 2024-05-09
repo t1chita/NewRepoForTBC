@@ -18,6 +18,7 @@ class ImageCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+    
     //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -43,6 +44,7 @@ class ImageCell: UICollectionViewCell {
         addSubview(imageView)
         setConstraintsToPersonImage()
     }
+    
     //MARK: - Set Constrainst To UI Components
     func setConstraintsToPersonImage() {
         NSLayoutConstraint.activate([

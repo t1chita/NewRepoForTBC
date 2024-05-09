@@ -11,6 +11,7 @@ class MainPageVC: UIViewController {
     //MARK: - Properties
     let mainPageView: MainPageView
     let mainPageViewModel: MainPageViewModel
+    
     //MARK: - Initialization
     init(mainPageView: MainPageView, mainPageViewModel: MainPageViewModel) {
         self.mainPageView = mainPageView
