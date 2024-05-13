@@ -63,10 +63,10 @@
 			isa = PBXGroup;
 			children = (
 				26FAEA7E2BF2672D00E94628 /* CustomViews */,
-				260B87202BED739A00187B1E /* Supporting */,
 				260B871D2BED738600187B1E /* App */,
 				260B871E2BED738D00187B1E /* Scenes */,
 				260B871F2BED739200187B1E /* Resources */,
+				260B87202BED739A00187B1E /* Supporting */,
 			);
 			path = MusicApp;
 			sourceTree = "<group>";

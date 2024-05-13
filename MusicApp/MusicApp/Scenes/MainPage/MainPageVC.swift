@@ -128,31 +128,56 @@ extension MainPageVC: AnimatedButtonDelegate {
         guard let unwrappedButton = sender else { return }
         scaleButton(for: unwrappedButton)
     }
+    
     private func scaleButton(for button: UIButton) {
         let buttonImage = button.currentImage?.withTintColor(.blue, renderingMode: .alwaysOriginal)
-        let buttonImageWhiteHome = mainPageView.homeButton.currentImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        let buttonImageWhiteFavourite = mainPageView.favouriteButton.currentImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        let buttonImageWhiteMusic = mainPageView.musicButton.currentImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        UIView.animate(withDuration: 1, animations: {
-            button.setImage(buttonImage, for: .normal)
-            button.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        guard let unwrappedButtonImage = buttonImage else { return }
+        transformAllButtonAfterSelection(button, unwrappedButtonImage: unwrappedButtonImage)
+    }
+    
+    private func transformAllButtonAfterSelection(_ selectedButton: UIButton, unwrappedButtonImage: UIImage) {
+        UIView.animate(withDuration: 1, animations: { [weak self] in
+            guard let self = self else { return }
+            
+            transformSelectedButton(selectedButton, buttonImage: unwrappedButtonImage)
         }) { [weak self] _ in
             guard let self = self else { return }
-            if mainPageView.homeButton.transform == CGAffineTransform(scaleX: 1.5, y: 1.5) ||
-                mainPageView.favouriteButton.transform == CGAffineTransform(scaleX: 1.5, y: 1.5) ||
-                mainPageView.musicButton.transform == CGAffineTransform(scaleX: 1.5, y: 1.5) {
+            
+            if isButtonsSizeTransformed() {
                 UIView.animate(withDuration: 1) { [weak self] in
                     guard let self = self else { return }
-                    mainPageView.homeButton.transform = .identity
-                    mainPageView.homeButton.setImage(buttonImageWhiteHome, for: .normal)
-                    mainPageView.favouriteButton.transform = .identity
-                    mainPageView.favouriteButton.setImage(buttonImageWhiteFavourite, for: .normal)
-                    mainPageView.musicButton.transform = .identity
-                    mainPageView.musicButton.setImage(buttonImageWhiteMusic, for: .normal)
-                    button.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-                    button.setImage(buttonImage, for: .normal)
+                    transformTwoButtonToIdentity()
+                    transformSelectedButton(selectedButton, buttonImage: unwrappedButtonImage)
                 }
             }
         }
+    }
+    
+    private func isButtonsSizeTransformed() -> Bool {
+        if  mainPageView.homeButton.transform == CGAffineTransform(scaleX: 1.5, y: 1.5) ||
+            mainPageView.favouriteButton.transform == CGAffineTransform(scaleX: 1.5, y: 1.5) ||
+            mainPageView.musicButton.transform == CGAffineTransform(scaleX: 1.5, y: 1.5) {
+            return true
+        }
+        return false
+    }
+    
+    private func transformSelectedButton(_ button: UIButton, buttonImage: UIImage) {
+        button.setImage(buttonImage, for: .normal)
+        button.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+    }
+    
+    private func transformTwoButtonToIdentity() {
+        let buttonImageWhiteHome = mainPageView.homeButton.currentImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let buttonImageWhiteMusic = mainPageView.musicButton.currentImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        let buttonImageWhiteFavourite = mainPageView.favouriteButton.currentImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
+        navigButtonTransformAfterSelectOne(for:  mainPageView.homeButton, with: buttonImageWhiteHome)
+        navigButtonTransformAfterSelectOne(for:  mainPageView.musicButton, with: buttonImageWhiteMusic)
+        navigButtonTransformAfterSelectOne(for:  mainPageView.favouriteButton, with: buttonImageWhiteFavourite)
+    }
+    
+    private func navigButtonTransformAfterSelectOne(for button: UIButton, with image: UIImage?) {
+        button.transform = .identity
+        button.setImage(image, for: .normal)
     }
 }
