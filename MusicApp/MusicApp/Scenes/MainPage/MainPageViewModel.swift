@@ -14,8 +14,9 @@ final class MainPageViewModel {
     var currentTime = 0
     let totalTime = 133
     
-    weak var buttonTappedChildDelegates: ButtonTappedChildDelegates?
+    weak var playButtonTappedChildDelegates: PlayButtonTappedChildDelegates?
     weak var musicConditionDelegates: MusicConditionDelegates?
+    weak var repeatButtonTappedChildDelegates: RepeatButtonTappedChildDelegates?
     
     //TODO: დაარესერჩე კარგად String(format:)
     func timeString(for seconds: Int) -> String {
@@ -32,11 +33,11 @@ final class MainPageViewModel {
 
 //MARK: Handle Pause And Play Actions Extensions
 extension MainPageViewModel {
-    func handleButtonTapped() {
+    func handlePlayButtonTapped() {
         guard let unwrappedHasNotStarted = musicConditionDelegates?.musicHasNotStarted  else { return }
         guard let unwrappedIsPlaying = musicConditionDelegates?.musicisPlaying  else { return }
         
-        if unwrappedHasNotStarted{
+        if unwrappedHasNotStarted {
             startMusic()
         } else if unwrappedIsPlaying {
             resumeTimer()
@@ -46,30 +47,51 @@ extension MainPageViewModel {
     }
     
     private func startMusic() {
-        buttonTappedChildDelegates?.changedPauseButton()
+        playButtonTappedChildDelegates?.changedPauseButton()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
-            buttonTappedChildDelegates?.handleScheduledTimer()
+            playButtonTappedChildDelegates?.handleScheduledTimer()
         }
     }
     
     private func pauseMusic() {
         timer.invalidate()
-        buttonTappedChildDelegates?.changedPlayButton()
-        buttonTappedChildDelegates?.scaleImageAfterPause()
+        playButtonTappedChildDelegates?.changedPlayButton()
+        playButtonTappedChildDelegates?.scaleImageAfterPause()
     }
     
     private func resumeTimer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
             guard let self = self else { return }
-            buttonTappedChildDelegates?.changedPauseButton()
+            playButtonTappedChildDelegates?.changedPauseButton()
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
                 guard let self = self else { return }
-                buttonTappedChildDelegates?.handleScheduledTimer()
+                playButtonTappedChildDelegates?.handleScheduledTimer()
             }
-            buttonTappedChildDelegates?.hideSpinningCircle()
-            buttonTappedChildDelegates?.scaleImageAfterResume()
+            playButtonTappedChildDelegates?.hideSpinningCircle()
+            playButtonTappedChildDelegates?.scaleImageAfterResume()
         }
-        buttonTappedChildDelegates?.animateSpinningCircle()
+        playButtonTappedChildDelegates?.animateSpinningCircle()
+    }
+}
+
+//MARK: Handle Pause And Play Actions Extensions
+extension MainPageViewModel {
+    func handleRepeatButtonTapped() {
+        guard let unwrappedHasNotStarted = musicConditionDelegates?.musicHasNotStarted  else { return }
+        guard let unwrappedIsPlaying = musicConditionDelegates?.musicisPlaying  else { return }
+        
+        if !unwrappedHasNotStarted {
+            repeatMusic()
+        } else if unwrappedHasNotStarted {
+            pauseMusic()
+        }
+    }
+    
+    private func repeatMusic() {
+        timer.invalidate()
+        playButtonTappedChildDelegates?.scaleImageAfterResume()
+        repeatButtonTappedChildDelegates?.restartProgressBarAndDuration()
+        startMusic()
     }
 }

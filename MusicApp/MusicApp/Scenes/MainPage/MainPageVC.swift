@@ -6,21 +6,6 @@
 //
 
 import UIKit
-protocol ButtonTappedChildDelegates: AnyObject {
-    func scaleImageAfterResume()
-    func scaleImageAfterPause()
-    func animateSpinningCircle()
-    func handleScheduledTimer()
-    func hideSpinningCircle()
-    func changedPlayButton()
-    func changedPauseButton()
-}
-
-protocol MusicConditionDelegates: AnyObject {
-    var musicisPlaying: Bool { get }
-    var musicHasNotStarted: Bool { get }
-}
-
 final class MainPageVC: UIViewController {
     //MARK: - Properties
     private let mainPageView: MainPageView
@@ -45,7 +30,7 @@ final class MainPageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        getViewDelegates()
+        getAllDelegates()
     }
     
     //MARK: Setup
@@ -53,12 +38,21 @@ final class MainPageVC: UIViewController {
         updateView()
     }
     
+    private func getAllDelegates() {
+        getViewDelegates()
+        getViewModelDelegates()
+    }
+    
     //MARK: View Delegates
     private func getViewDelegates() {
-        mainPageView.PlayButtondelegate = self
+        mainPageView.playlistButtonsDelegate = self
         mainPageView.animatedButtonDelegate = self
-        mainPageViewModel.buttonTappedChildDelegates = self
+
+    } 
+    private func getViewModelDelegates() {
         mainPageViewModel.musicConditionDelegates = self
+        mainPageViewModel.playButtonTappedChildDelegates = self
+        mainPageViewModel.repeatButtonTappedChildDelegates = self
     }
     
     //MARK: View And ViewModel Methods
@@ -68,8 +62,19 @@ final class MainPageVC: UIViewController {
     }
 }
 
-//MARK: Play And Pause Delegate
-extension MainPageVC: PlayButtonDelegate, ButtonTappedChildDelegates, MusicConditionDelegates {
+//MARK: PlaylistButtonsDelegateFor View
+extension MainPageVC: PlaylistButtonsDelegate {
+    func playButtonTapped() {
+        mainPageViewModel.handlePlayButtonTapped()
+    }
+    
+    func repeatButtonTapped() {
+        mainPageViewModel.handleRepeatButtonTapped()
+    }
+}
+
+//MARK: MusicConditionDelegates For ViewModel
+extension MainPageVC: MusicConditionDelegates {
     var musicisPlaying: Bool {
         get {
             mainPageView.musicProgressBar.progress > 0 && mainPageView.playButton.imageView?.image == UIImage(systemName: "play.circle.fill")
@@ -80,11 +85,10 @@ extension MainPageVC: PlayButtonDelegate, ButtonTappedChildDelegates, MusicCondi
             mainPageView.musicProgressBar.progress == 0
         }
     }
-    
-    func buttonTapped() {
-        mainPageViewModel.handleButtonTapped()
-    }
-    
+}
+
+//MARK: PlayButtonTappedChildDelegates For ViewModel
+extension MainPageVC: PlayButtonTappedChildDelegates {
     func changedPlayButton() {
         mainPageView.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
@@ -122,7 +126,16 @@ extension MainPageVC: PlayButtonDelegate, ButtonTappedChildDelegates, MusicCondi
     }
 }
 
-//MARK: Pages' Animated Buttons' Delegate
+//MARK:  RepeatButtonTappedChildDelegates For ViewModel
+extension MainPageVC: RepeatButtonTappedChildDelegates {
+    func restartProgressBarAndDuration() {
+        mainPageViewModel.currentTime = 0
+        mainPageView.musicProgressBar.setProgress(0, animated: true)
+    }
+}
+
+
+//MARK: Navigation Animated Buttons Delegates
 extension MainPageVC: AnimatedButtonDelegate {
     func animatedButtonTapped(_ sender: UIButton?) {
         guard let unwrappedButton = sender else { return }

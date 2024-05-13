@@ -7,14 +7,6 @@
 
 import UIKit
 
-protocol PlayButtonDelegate: AnyObject {
-    func buttonTapped()
-}
-
-protocol AnimatedButtonDelegate: AnyObject {
-    func animatedButtonTapped(_ sender: UIButton?)
-}
-
 final class MainPageView: UIView {
     let spinningCircleView = SpinningCircleView()
     //MARK: - UIComponents
@@ -47,8 +39,8 @@ final class MainPageView: UIView {
     
      let artistName: UILabel = {
         let lb = UILabel()
-        lb.textColor = .artistNameLabel
         lb.textAlignment = .center
+        lb.textColor = .artistNameLabel
         lb.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         return lb
     }()
@@ -57,35 +49,31 @@ final class MainPageView: UIView {
         let pv = UIProgressView()
         pv.trackTintColor = .gray
         pv.progressTintColor = .systemBlue
-        pv.setProgress(0, animated: false)
+         pv.setProgress(0, animated: false)
         pv.translatesAutoresizingMaskIntoConstraints = false
         return pv
     }()
     
-    private let buttonsStackView: UIStackView = {
+    private let playlistButtonsStackView: UIStackView = {
         let sv = UIStackView()
+        sv.spacing = 39.96
         sv.axis = .horizontal
         sv.alignment = .center
         sv.distribution = .fillProportionally
-        sv.spacing = 39.96
         sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
     
-    private let shuffleImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "shuffle")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        iv.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        return iv
+    private let shuffleButton: PlaylistButtonsView = {
+        let bttn = PlaylistButtonsView()
+        bttn.setImage(UIImage(systemName: "shuffle")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        return bttn
     }()
     
-    private let backwardEndImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "backward.end")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        iv.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        return iv
+    private let backwardEndButton: PlaylistButtonsView = {
+        let bttn = PlaylistButtonsView()
+        bttn.setImage(UIImage(systemName: "backward.end")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        return bttn
     }()
     
      let playButton: PageNavigationButton = {
@@ -95,20 +83,16 @@ final class MainPageView: UIView {
         return bttn
     }()
     
-    private let forwardEndImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "forward.end")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        iv.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        return iv
+    private let forwardEndButton: PlaylistButtonsView = {
+        let bttn = PlaylistButtonsView()
+        bttn.setImage(UIImage(systemName: "forward.end")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        return bttn
     }()
     
-    private let repeatImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "repeat")?.withTintColor(.white, renderingMode: .alwaysOriginal)
-        iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        iv.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        return iv
+    private let repeatButton: PlaylistButtonsView = {
+        let bttn = PlaylistButtonsView()
+        bttn.setImage(UIImage(systemName: "repeat")?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
+        return bttn
     }()
     
      let durationLabel: UILabel = {
@@ -123,9 +107,9 @@ final class MainPageView: UIView {
     
     private let containerView: UIView = {
         let uv = UIView()
-        uv.backgroundColor = .container
         uv.clipsToBounds = true
         uv.layer.cornerRadius = 40
+        uv.backgroundColor = .container
         uv.translatesAutoresizingMaskIntoConstraints = false
         return uv
     }()
@@ -158,7 +142,7 @@ final class MainPageView: UIView {
     }()
     
     //MARK: Delegates
-    weak var PlayButtondelegate: PlayButtonDelegate?
+    weak var playlistButtonsDelegate: PlaylistButtonsDelegate?
     weak var animatedButtonDelegate: AnimatedButtonDelegate?
     
     //MARK: - Initialization
@@ -208,16 +192,20 @@ final class MainPageView: UIView {
     }
 
     private func setButtonsStackView() {
-        addSubview(buttonsStackView)
+        addSubview(playlistButtonsStackView)
         setConstraintsToButtonsStackView()
-        buttonsStackView.addArrangedSubview(shuffleImage)
-        buttonsStackView.addArrangedSubview(backwardEndImage)
-        buttonsStackView.addArrangedSubview(playButton)
-        buttonsStackView.addArrangedSubview(forwardEndImage)
-        buttonsStackView.addArrangedSubview(repeatImage)
+        playlistButtonsStackView.addArrangedSubview(shuffleButton)
+        playlistButtonsStackView.addArrangedSubview(backwardEndButton)
+        playlistButtonsStackView.addArrangedSubview(playButton)
+        playlistButtonsStackView.addArrangedSubview(forwardEndButton)
+        playlistButtonsStackView.addArrangedSubview(repeatButton)
         
         playButton.addAction(UIAction(title: "Play Music", handler: { [weak self] _ in
-            self?.PlayButtondelegate?.buttonTapped()
+            self?.playlistButtonsDelegate?.playButtonTapped()
+        }), for: .touchUpInside)
+        
+        repeatButton.addAction(UIAction(title: "Repeat Music", handler: { [weak self] _ in
+            self?.playlistButtonsDelegate?.repeatButtonTapped()
         }), for: .touchUpInside)
     }
     
@@ -291,10 +279,10 @@ final class MainPageView: UIView {
     
     private func setConstraintsToButtonsStackView() {
         NSLayoutConstraint.activate([
-            buttonsStackView.topAnchor.constraint(equalTo: musicProgressBar.bottomAnchor, constant: 34),
-            buttonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21),
-            buttonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -21),
-            buttonsStackView.heightAnchor.constraint(equalToConstant: 74),
+            playlistButtonsStackView.topAnchor.constraint(equalTo: musicProgressBar.bottomAnchor, constant: 34),
+            playlistButtonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21),
+            playlistButtonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -21),
+            playlistButtonsStackView.heightAnchor.constraint(equalToConstant: 74),
         ])
     }
     
@@ -310,7 +298,7 @@ final class MainPageView: UIView {
     
     private func setConstraintsToContainerView() {
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: 40),
+            containerView.topAnchor.constraint(equalTo: playlistButtonsStackView.bottomAnchor, constant: 40),
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -21),
             containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 50)

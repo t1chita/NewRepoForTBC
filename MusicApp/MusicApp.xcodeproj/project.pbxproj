@@ -15,7 +15,9 @@
 		260B87242BED746C00187B1E /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87232BED746C00187B1E /* MainPageViewModel.swift */; };
 		260B87262BED748800187B1E /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87252BED748800187B1E /* MainPageView.swift */; };
 		260B87292BEED31400187B1E /* SpinningCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87282BEED31400187B1E /* SpinningCircleView.swift */; };
-		26FAEA802BF2675E00E94628 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAEA7F2BF2675E00E94628 /* CustomButtonView.swift */; };
+		26FAEA802BF2675E00E94628 /* PageNavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAEA7F2BF2675E00E94628 /* PageNavigationButtonView.swift */; };
+		26FAEA822BF2D26A00E94628 /* PlaylistButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAEA812BF2D26A00E94628 /* PlaylistButtonsView.swift */; };
+		26FAEA852BF2D9C100E94628 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAEA842BF2D9C100E94628 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +31,9 @@
 		260B87232BED746C00187B1E /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
 		260B87252BED748800187B1E /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		260B87282BEED31400187B1E /* SpinningCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningCircleView.swift; sourceTree = "<group>"; };
-		26FAEA7F2BF2675E00E94628 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		26FAEA7F2BF2675E00E94628 /* PageNavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageNavigationButtonView.swift; sourceTree = "<group>"; };
+		26FAEA812BF2D26A00E94628 /* PlaylistButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistButtonsView.swift; sourceTree = "<group>"; };
+		26FAEA842BF2D9C100E94628 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 		260B87222BED744000187B1E /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				26FAEA832BF2D9AF00E94628 /* Protocols */,
 				260B87272BEED2F800187B1E /* SpinningCircle */,
 				260B870D2BED733500187B1E /* MainPageVC.swift */,
 				260B87252BED748800187B1E /* MainPageView.swift */,
@@ -135,9 +140,18 @@
 		26FAEA7E2BF2672D00E94628 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				26FAEA7F2BF2675E00E94628 /* CustomButtonView.swift */,
+				26FAEA7F2BF2675E00E94628 /* PageNavigationButtonView.swift */,
+				26FAEA812BF2D26A00E94628 /* PlaylistButtonsView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		26FAEA832BF2D9AF00E94628 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				26FAEA842BF2D9C100E94628 /* Protocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,8 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26FAEA802BF2675E00E94628 /* CustomButtonView.swift in Sources */,
+				26FAEA822BF2D26A00E94628 /* PlaylistButtonsView.swift in Sources */,
+				26FAEA802BF2675E00E94628 /* PageNavigationButtonView.swift in Sources */,
 				260B87292BEED31400187B1E /* SpinningCircleView.swift in Sources */,
+				26FAEA852BF2D9C100E94628 /* Protocols.swift in Sources */,
 				260B87242BED746C00187B1E /* MainPageViewModel.swift in Sources */,
 				260B870E2BED733500187B1E /* MainPageVC.swift in Sources */,
 				260B87262BED748800187B1E /* MainPageView.swift in Sources */,
