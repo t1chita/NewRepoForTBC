@@ -6,6 +6,20 @@
 //
 
 import UIKit
+protocol ButtonTappedChildDelegates: AnyObject {
+    func scaleImageAfterResume()
+    func scaleImageAfterPause()
+    func animateSpinningCircle()
+    func handleScheduledTimer()
+    func hideSpinningCircle()
+    func changedPlayButton()
+    func changedPauseButton()
+}
+
+protocol MusicConditionDelegates: AnyObject {
+    var musicisPlaying: Bool { get }
+    var musicHasNotStarted: Bool { get }
+}
 
 class MainPageVC: UIViewController {
     //MARK: - Properties
@@ -43,58 +57,54 @@ class MainPageVC: UIViewController {
     private func getViewDelegates() {
         mainPageView.PlayButtondelegate = self
         mainPageView.animatedButtonDelegate = self
+        mainPageViewModel.buttonTappedChildDelegates = self
+        mainPageViewModel.musicConditionDelegates = self
     }
+    
     //MARK: View And ViewModel Methods
     private func updateView() {
         mainPageView.artistName.text = mainPageViewModel.artistName
         mainPageView.songName.text = mainPageViewModel.songName
     }
-    
 }
 
 //MARK: Play And Pause Delegate
-extension MainPageVC: PlayButtonDelegate {
+extension MainPageVC: PlayButtonDelegate, ButtonTappedChildDelegates, MusicConditionDelegates {
+    
+    
+    var musicisPlaying: Bool {
+        get {
+            mainPageView.musicProgressBar.progress > 0 && mainPageView.playButton.imageView?.image == UIImage(systemName: "play.circle.fill")
+        }
+    }
+    var musicHasNotStarted: Bool {
+        get {
+            mainPageView.musicProgressBar.progress == 0
+        }
+    }
+    
     func buttonTapped() {
-        let musicisPlaying: Bool = mainPageView.musicProgressBar.progress > 0 && mainPageView.playButton.imageView?.image == UIImage(systemName: "play.circle.fill")
-        let musicHasNotStarted: Bool = mainPageView.musicProgressBar.progress == 0
-        if musicHasNotStarted {
-            startMusic()
-        } else if musicisPlaying {
-            resumeTimer()
-        } else {
-            pauseMusic()
-        }
+        mainPageViewModel.handleButtonTapped()
     }
     
-    private func startMusic() {
-        mainPageView.playButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-        mainPageViewModel.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            handleScheduledTimer()
-        }
-    }
-    
-    private func pauseMusic() {
-        mainPageViewModel.timer.invalidate()
+    func changedPlayButton() {
         mainPageView.playButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-        scaleImageAfterPause(for: mainPageView.albumImage)
     }
     
-    private func resumeTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5){ [weak self] in
-            guard let self = self else { return }
-            mainPageView.playButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-            mainPageViewModel.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
-                guard let self = self else { return }
-                handleScheduledTimer()
-            }
-            mainPageView.spinningCircleView.isHidden = true
-            scaleImageAfterResume(for: mainPageView.albumImage)
-        }
-        animateSpinningCircle()
+    func changedPauseButton() {
+        mainPageView.playButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
     }
     
-    private func handleScheduledTimer() {
+    func hideSpinningCircle() {
+        mainPageView.spinningCircleView.isHidden = true
+    }
+    
+    func animateSpinningCircle() {
+        mainPageView.spinningCircleView.animate()
+        mainPageView.spinningCircleView.isHidden = false
+    }
+    
+    func handleScheduledTimer() {
         mainPageViewModel.currentTime += 1
         mainPageView.durationLabel.text = mainPageViewModel.timeString(for: mainPageViewModel.currentTime)
         let progress = Float(mainPageViewModel.currentTime) / Float(mainPageViewModel.totalTime)
@@ -102,19 +112,14 @@ extension MainPageVC: PlayButtonDelegate {
         mainPageViewModel.compareTime()
     }
     
-    private func animateSpinningCircle() {
-        mainPageView.spinningCircleView.animate()
-        mainPageView.spinningCircleView.isHidden = false
-    }
-    
-    private func scaleImageAfterPause(for image: UIImageView) {
-        UIView.animate(withDuration: 1) {
-            image.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+    func scaleImageAfterPause() {
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.mainPageView.albumImage.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         }
     }
-    private func scaleImageAfterResume(for image: UIImageView) {
-        UIView.animate(withDuration: 1) {
-            image.transform = .identity
+    func scaleImageAfterResume() {
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.mainPageView.albumImage.transform = .identity
         }
     }
 }
