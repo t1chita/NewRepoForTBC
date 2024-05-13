@@ -36,7 +36,6 @@ extension MainPageViewModel {
         guard let unwrappedHasNotStarted = musicConditionDelegates?.musicHasNotStarted  else { return }
         guard let unwrappedIsPlaying = musicConditionDelegates?.musicisPlaying  else { return }
         
-        
         if unwrappedHasNotStarted{
             startMusic()
         } else if unwrappedIsPlaying {
