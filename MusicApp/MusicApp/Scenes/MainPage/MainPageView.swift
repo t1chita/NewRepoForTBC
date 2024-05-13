@@ -14,7 +14,8 @@ protocol PlayButtonDelegate: AnyObject {
 protocol AnimatedButtonDelegate: AnyObject {
     func animatedButtonTapped(_ sender: UIButton?)
 }
-class MainPageView: UIView {
+
+final class MainPageView: UIView {
     let spinningCircleView = SpinningCircleView()
     //MARK: - UIComponents
      let albumImage: UIImageView = {
@@ -218,7 +219,6 @@ class MainPageView: UIView {
         playButton.addAction(UIAction(title: "Play Music", handler: { [weak self] _ in
             self?.PlayButtondelegate?.buttonTapped()
         }), for: .touchUpInside)
-//        playButton.heightAnchor.constraint(equalToConstant: 74).isActive = true
     }
     
     private func setDurationLabel() {

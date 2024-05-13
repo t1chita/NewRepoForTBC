@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PageNavigationButton: UIButton {
+final class PageNavigationButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

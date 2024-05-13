@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SpinningCircleView: UIView {
+final class SpinningCircleView: UIView {
     //MARK: - Properties
     let spinningCircle = CAShapeLayer()
     //MARK: - Initialization

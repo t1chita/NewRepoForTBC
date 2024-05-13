@@ -21,7 +21,7 @@ protocol MusicConditionDelegates: AnyObject {
     var musicHasNotStarted: Bool { get }
 }
 
-class MainPageVC: UIViewController {
+final class MainPageVC: UIViewController {
     //MARK: - Properties
     private let mainPageView: MainPageView
     private let mainPageViewModel: MainPageViewModel

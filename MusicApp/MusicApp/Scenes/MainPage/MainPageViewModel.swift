@@ -7,11 +7,7 @@
 
 import Foundation
 
-//protocol HandleButtonTappedDelegate: AnyObject {
-//    func handleButtonTapped()
-//}
-
-class MainPageViewModel {
+final class MainPageViewModel {
     let songName: String = "თბილისო"
     let artistName: String = "ოთარ რამიშვილი"
     private var timer = Timer()
