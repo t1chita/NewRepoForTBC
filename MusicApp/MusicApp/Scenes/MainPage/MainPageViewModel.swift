@@ -14,16 +14,12 @@ import Foundation
 class MainPageViewModel {
     let songName: String = "თბილისო"
     let artistName: String = "ოთარ რამიშვილი"
-    var timer = Timer()
+    private var timer = Timer()
     var currentTime = 0
     let totalTime = 133
-
+    
     weak var buttonTappedChildDelegates: ButtonTappedChildDelegates?
     weak var musicConditionDelegates: MusicConditionDelegates?
-    
-    func didLoad() {
-        
-    }
     
     //TODO: დაარესერჩე კარგად String(format:)
     func timeString(for seconds: Int) -> String {
@@ -37,6 +33,7 @@ class MainPageViewModel {
         }
     }
 }
+
 //MARK: Handle Pause And Play Actions Extensions
 extension MainPageViewModel {
     func handleButtonTapped() {

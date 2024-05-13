@@ -70,8 +70,6 @@ class MainPageVC: UIViewController {
 
 //MARK: Play And Pause Delegate
 extension MainPageVC: PlayButtonDelegate, ButtonTappedChildDelegates, MusicConditionDelegates {
-    
-    
     var musicisPlaying: Bool {
         get {
             mainPageView.musicProgressBar.progress > 0 && mainPageView.playButton.imageView?.image == UIImage(systemName: "play.circle.fill")

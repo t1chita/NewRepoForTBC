@@ -15,6 +15,7 @@
 		260B87242BED746C00187B1E /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87232BED746C00187B1E /* MainPageViewModel.swift */; };
 		260B87262BED748800187B1E /* MainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87252BED748800187B1E /* MainPageView.swift */; };
 		260B87292BEED31400187B1E /* SpinningCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87282BEED31400187B1E /* SpinningCircleView.swift */; };
+		26FAEA802BF2675E00E94628 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAEA7F2BF2675E00E94628 /* CustomButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		260B87232BED746C00187B1E /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
 		260B87252BED748800187B1E /* MainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageView.swift; sourceTree = "<group>"; };
 		260B87282BEED31400187B1E /* SpinningCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningCircleView.swift; sourceTree = "<group>"; };
+		26FAEA7F2BF2675E00E94628 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		260B87082BED733500187B1E /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				26FAEA7E2BF2672D00E94628 /* CustomViews */,
 				260B87202BED739A00187B1E /* Supporting */,
 				260B871D2BED738600187B1E /* App */,
 				260B871E2BED738D00187B1E /* Scenes */,
@@ -127,6 +130,14 @@
 				260B87282BEED31400187B1E /* SpinningCircleView.swift */,
 			);
 			path = SpinningCircle;
+			sourceTree = "<group>";
+		};
+		26FAEA7E2BF2672D00E94628 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				26FAEA7F2BF2675E00E94628 /* CustomButtonView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FAEA802BF2675E00E94628 /* CustomButtonView.swift in Sources */,
 				260B87292BEED31400187B1E /* SpinningCircleView.swift in Sources */,
 				260B87242BED746C00187B1E /* MainPageViewModel.swift in Sources */,
 				260B870E2BED733500187B1E /* MainPageVC.swift in Sources */,

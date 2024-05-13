@@ -17,7 +17,7 @@ protocol AnimatedButtonDelegate: AnyObject {
 class MainPageView: UIView {
     let spinningCircleView = SpinningCircleView()
     //MARK: - UIComponents
-      let albumImage: UIImageView = {
+     let albumImage: UIImageView = {
         let iv = UIImageView()
         iv.image = .ramishvili
         iv.clipsToBounds = true
@@ -27,7 +27,7 @@ class MainPageView: UIView {
         return iv
     }()
     
-     let songInfoStackView: UIStackView = {
+    private let songInfoStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .vertical
         sv.alignment = .fill
@@ -61,7 +61,7 @@ class MainPageView: UIView {
         return pv
     }()
     
-     let buttonsStackView: UIStackView = {
+    private let buttonsStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.alignment = .center
@@ -71,7 +71,7 @@ class MainPageView: UIView {
         return sv
     }()
     
-     let shuffleImage: UIImageView = {
+    private let shuffleImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "shuffle")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
@@ -79,7 +79,7 @@ class MainPageView: UIView {
         return iv
     }()
     
-     let backwardEndImage: UIImageView = {
+    private let backwardEndImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "backward.end")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
@@ -87,22 +87,14 @@ class MainPageView: UIView {
         return iv
     }()
     
-     let playButton: UIButton = {
-        let bttn = UIButton()
+     let playButton: PageNavigationButton = {
+        let bttn = PageNavigationButton()
         bttn.setImage(UIImage(systemName: "play.circle.fill" ), for: .normal)
-        bttn.imageView?.frame = CGRect(x: 0, y: 0, width: 75.82, height: 74)
-        bttn.imageView?.contentMode = .scaleToFill
-        bttn.contentMode = .scaleAspectFill
-        bttn.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        bttn.imageView?.topAnchor.constraint(equalTo: bttn.topAnchor).isActive = true
-        bttn.imageView?.bottomAnchor.constraint(equalTo: bttn.bottomAnchor).isActive = true
-        bttn.imageView?.trailingAnchor.constraint(equalTo: bttn.trailingAnchor).isActive = true
-        bttn.imageView?.leadingAnchor.constraint(equalTo: bttn.leadingAnchor).isActive = true
         bttn.heightAnchor.constraint(equalToConstant: 74).isActive = true
         return bttn
     }()
     
-     let forwardEndImage: UIImageView = {
+    private let forwardEndImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "forward.end")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
@@ -110,7 +102,7 @@ class MainPageView: UIView {
         return iv
     }()
     
-     let repeatImage: UIImageView = {
+    private let repeatImage: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "repeat")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         iv.heightAnchor.constraint(equalToConstant: 25).isActive = true
@@ -128,7 +120,7 @@ class MainPageView: UIView {
         return lb
     }()
     
-     let containerView: UIView = {
+    private let containerView: UIView = {
         let uv = UIView()
         uv.backgroundColor = .container
         uv.clipsToBounds = true
@@ -137,7 +129,7 @@ class MainPageView: UIView {
         return uv
     }()
     
-     let containersStackView: UIStackView = {
+    private let containersStackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.alignment = .center
@@ -146,49 +138,21 @@ class MainPageView: UIView {
         return sv
     }()
     
-    //TODO: Create Custom Button
-     let homeButton: UIButton = {
-        let bttn = UIButton()
+    let homeButton: PageNavigationButton = {
+        let bttn = PageNavigationButton()
         bttn.setImage(UIImage(systemName: "house" )?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-        bttn.imageView?.frame = CGRect(x: 0, y: 0, width: 75.82, height: 74)
-        bttn.imageView?.contentMode = .scaleToFill
-        bttn.contentMode = .scaleAspectFill
-        bttn.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        bttn.imageView?.topAnchor.constraint(equalTo: bttn.topAnchor).isActive = true
-        bttn.imageView?.bottomAnchor.constraint(equalTo: bttn.bottomAnchor).isActive = true
-        bttn.imageView?.trailingAnchor.constraint(equalTo: bttn.trailingAnchor).isActive = true
-        bttn.imageView?.leadingAnchor.constraint(equalTo: bttn.leadingAnchor).isActive = true
-        bttn.heightAnchor.constraint(equalToConstant: 24).isActive = true
         return bttn
     }()
     
-    let musicButton: UIButton = {
-        let bttn = UIButton()
+     let musicButton: PageNavigationButton = {
+        let bttn = PageNavigationButton()
         bttn.setImage(UIImage(systemName: "music.quarternote.3" )?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-        bttn.imageView?.frame = CGRect(x: 0, y: 0, width: 75.82, height: 74)
-        bttn.imageView?.contentMode = .scaleToFill
-        bttn.contentMode = .scaleAspectFill
-        bttn.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        bttn.imageView?.topAnchor.constraint(equalTo: bttn.topAnchor).isActive = true
-        bttn.imageView?.bottomAnchor.constraint(equalTo: bttn.bottomAnchor).isActive = true
-        bttn.imageView?.trailingAnchor.constraint(equalTo: bttn.trailingAnchor).isActive = true
-        bttn.imageView?.leadingAnchor.constraint(equalTo: bttn.leadingAnchor).isActive = true
-        bttn.heightAnchor.constraint(equalToConstant: 24).isActive = true
         return bttn
     }()
     
-    let favouriteButton: UIButton = {
-        let bttn = UIButton()
+     let favouriteButton: PageNavigationButton = {
+        let bttn = PageNavigationButton()
         bttn.setImage(UIImage(systemName: "heart" )?.withTintColor(.white, renderingMode: .alwaysOriginal), for: .normal)
-        bttn.imageView?.frame = CGRect(x: 0, y: 0, width: 75.82, height: 74)
-        bttn.imageView?.contentMode = .scaleToFill
-        bttn.contentMode = .scaleAspectFill
-        bttn.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        bttn.imageView?.topAnchor.constraint(equalTo: bttn.topAnchor).isActive = true
-        bttn.imageView?.bottomAnchor.constraint(equalTo: bttn.bottomAnchor).isActive = true
-        bttn.imageView?.trailingAnchor.constraint(equalTo: bttn.trailingAnchor).isActive = true
-        bttn.imageView?.leadingAnchor.constraint(equalTo: bttn.leadingAnchor).isActive = true
-        bttn.heightAnchor.constraint(equalToConstant: 24).isActive = true
         return bttn
     }()
     
@@ -254,6 +218,7 @@ class MainPageView: UIView {
         playButton.addAction(UIAction(title: "Play Music", handler: { [weak self] _ in
             self?.PlayButtondelegate?.buttonTapped()
         }), for: .touchUpInside)
+//        playButton.heightAnchor.constraint(equalToConstant: 74).isActive = true
     }
     
     private func setDurationLabel() {
