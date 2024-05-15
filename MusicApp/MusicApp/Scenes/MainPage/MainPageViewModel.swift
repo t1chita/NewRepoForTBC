@@ -4,7 +4,7 @@
 //
 //  Created by Temur Chitashvili on 10.05.24.
 //
-
+import AVFoundation
 import Foundation
 
 final class MainPageViewModel {
@@ -13,6 +13,8 @@ final class MainPageViewModel {
     private var timer = Timer()
     var currentTime = 0
     let totalTime = 133
+    
+    var player: AVAudioPlayer?
     
     weak var playButtonTappedChildDelegates: PlayButtonTappedChildDelegates?
     weak var musicConditionDelegates: MusicConditionDelegates?
@@ -47,6 +49,7 @@ extension MainPageViewModel {
     }
     
     private func startMusic() {
+        startMusicPlayer()
         playButtonTappedChildDelegates?.changedPauseButton()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
@@ -56,6 +59,7 @@ extension MainPageViewModel {
     
     private func pauseMusic() {
         timer.invalidate()
+        player?.pause()
         playButtonTappedChildDelegates?.changedPlayButton()
         playButtonTappedChildDelegates?.scaleImageAfterPause()
     }
@@ -70,16 +74,34 @@ extension MainPageViewModel {
             }
             playButtonTappedChildDelegates?.hideSpinningCircle()
             playButtonTappedChildDelegates?.scaleImageAfterResume()
+            player?.play()
         }
         playButtonTappedChildDelegates?.animateSpinningCircle()
     }
+    
+    private func startMusicPlayer() {
+        let urlStringOfMusic = Bundle.main.path(forResource: "ოთარ რამიშვილი - თბილისო (1988)", ofType: "mp3")
+        
+        do {
+            try AVAudioSession.sharedInstance().setMode(.default)
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            
+            guard let urlStringOfMusic = urlStringOfMusic else { return }
+            
+            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStringOfMusic))
+            player?.play()
+        }
+        catch {
+            print("something went wrong")
+        }
+    }
 }
+
 
 //MARK: Handle Pause And Play Actions Extensions
 extension MainPageViewModel {
     func handleRepeatButtonTapped() {
         guard let unwrappedHasNotStarted = musicConditionDelegates?.musicHasNotStarted  else { return }
-        guard let unwrappedIsPlaying = musicConditionDelegates?.musicisPlaying  else { return }
         
         if !unwrappedHasNotStarted {
             repeatMusic()
