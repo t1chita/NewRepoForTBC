@@ -10,47 +10,35 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Color.gray
-                .ignoresSafeArea()
             VStack {
-                HStack {
                     Text("SwiftUI Exercise")
                         .font(.system(size: 34, weight: .bold))
                         .frame(width: 308, height: 41)
                         .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 0, leading: -7, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-                Spacer()
+                        .padding(EdgeInsets(top: 6.9, leading: 9, bottom: 0, trailing: 90))
                 VStack {
                     HStack {
-                        HStack {
                             MusicView()
                                 .frame(width: 165, height: 232)
                                 .cornerRadius(18)
                                 .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: 13))
-                        }
                         VStack {
-                            HStack {
                                 MessageView()
                                     .frame(width: 165, height: 110)
                                     .cornerRadius(18)
-                            }
-                            HStack {
                                 NewsView()
                                     .frame(width: 165, height: 110)
                                     .cornerRadius(18)
-                            }
                         }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 23))
                     }
-                    Spacer()
-                        ListView()
+                    .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: 23))
+                }
+                ListView()
                     .padding(EdgeInsets(top: 0, leading: -40, bottom: 0, trailing: -11))
                     .ignoresSafeArea()
-                }
             }
         }
+        .background(Color.gray)
     }
 }
 
