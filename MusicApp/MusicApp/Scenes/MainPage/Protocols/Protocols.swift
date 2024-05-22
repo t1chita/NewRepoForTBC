@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ReloadDelegate: AnyObject {
+    func reloadData()
+}
+
 protocol PlayButtonTappedChildDelegates: AnyObject {
     func scaleImageAfterResume()
     func scaleImageAfterPause()
@@ -24,7 +28,6 @@ protocol MusicConditionDelegates: AnyObject {
 
 protocol RepeatButtonTappedChildDelegates: AnyObject {
     func restartProgressBarAndDuration()
-//    func handleScheduledTimerAfterRepeat()
 }
 
 protocol PlaylistButtonsDelegate: AnyObject {

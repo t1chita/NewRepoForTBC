@@ -8,17 +8,21 @@ import AVFoundation
 import Foundation
 
 final class MainPageViewModel {
-    let songName: String = "თბილისო"
-    let artistName: String = "ოთარ რამიშვილი"
     private var timer = Timer()
     var currentTime = 0
     let totalTime = 133
-    
-    var player: AVAudioPlayer?
+    private let musicApi = "https://api.deezer.com/search?q=Lela%20Tsurtsumia&redirect_uri=http%253A%252F%252Fguardian.mashape.com%252Fcallback&index=25"
+//    var player: AVAudioPlayer?
+    var musicInfoArray: [Track] = []
     
     weak var playButtonTappedChildDelegates: PlayButtonTappedChildDelegates?
     weak var musicConditionDelegates: MusicConditionDelegates?
     weak var repeatButtonTappedChildDelegates: RepeatButtonTappedChildDelegates?
+    weak var reloadDataDelegate: ReloadDelegate?
+    
+    func didLoad() {
+        fetchData()
+    }
     
     //TODO: დაარესერჩე კარგად String(format:)
     func timeString(for seconds: Int) -> String {
@@ -30,6 +34,18 @@ final class MainPageViewModel {
         if currentTime >= totalTime {
             timer.invalidate()
         }
+    }
+    
+    private func fetchData() {
+        NetworkService().getInfo(urlString: musicApi) { [weak self] (result: Result< TracksResponse, Error>) in
+            switch result {
+            case .success(let fetchedMusicInfoArray):
+                self?.musicInfoArray = fetchedMusicInfoArray.data
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+        reloadDataDelegate?.reloadData()
     }
 }
 
@@ -49,7 +65,7 @@ extension MainPageViewModel {
     }
     
     private func startMusic() {
-        startMusicPlayer()
+//        startMusicPlayer()
         playButtonTappedChildDelegates?.changedPauseButton()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] timer in
             guard let self = self else { return }
@@ -59,7 +75,7 @@ extension MainPageViewModel {
     
     private func pauseMusic() {
         timer.invalidate()
-        player?.pause()
+//        player?.pause()
         playButtonTappedChildDelegates?.changedPlayButton()
         playButtonTappedChildDelegates?.scaleImageAfterPause()
     }
@@ -74,27 +90,28 @@ extension MainPageViewModel {
             }
             playButtonTappedChildDelegates?.hideSpinningCircle()
             playButtonTappedChildDelegates?.scaleImageAfterResume()
-            player?.play()
+//            player?.play()
         }
         playButtonTappedChildDelegates?.animateSpinningCircle()
     }
     
-    private func startMusicPlayer() {
-        let urlStringOfMusic = Bundle.main.path(forResource: "ოთარ რამიშვილი - თბილისო (1988)", ofType: "mp3")
-        
-        do {
-            try AVAudioSession.sharedInstance().setMode(.default)
-            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-            
-            guard let urlStringOfMusic = urlStringOfMusic else { return }
-            
-            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStringOfMusic))
-            player?.play()
-        }
-        catch {
-            print("something went wrong")
-        }
-    }
+//
+//    private func startMusicPlayer() {
+//        let urlStringOfMusic = Bundle.main.path(forResource: "ოთარ რამიშვილი - თბილისო (1988)", ofType: "mp3")
+//        
+//        do {
+//            try AVAudioSession.sharedInstance().setMode(.default)
+//            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+//            
+//            guard let urlStringOfMusic = urlStringOfMusic else { return }
+//            
+//            player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlStringOfMusic))
+//            player?.play()
+//        }
+//        catch {
+//            print("something went wrong")
+//        }
+//    }
 }
 
 

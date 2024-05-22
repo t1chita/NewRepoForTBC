@@ -8,8 +8,8 @@
 import UIKit
 final class MainPageVC: UIViewController {
     //MARK: - Properties
-    private let mainPageView: MainPageView
-    private let mainPageViewModel: MainPageViewModel
+     let mainPageView: MainPageView
+     let mainPageViewModel: MainPageViewModel
     //MARK: - Initialization
     init(mainPageView: MainPageView, mainPageViewModel: MainPageViewModel) {
         self.mainPageView = mainPageView
@@ -29,13 +29,13 @@ final class MainPageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModelLoad()
         setup()
-        getAllDelegates()
     }
     
     //MARK: Setup
     private func setup() {
-        updateView()
+        getAllDelegates()
     }
     
     private func getAllDelegates() {
@@ -43,22 +43,21 @@ final class MainPageVC: UIViewController {
         getViewModelDelegates()
     }
     
+    private func viewModelLoad() {
+        mainPageViewModel.didLoad()
+    }
+    
     //MARK: View Delegates
     private func getViewDelegates() {
         mainPageView.playlistButtonsDelegate = self
         mainPageView.animatedButtonDelegate = self
-
-    } 
+        mainPageView.musicCollectionView.dataSource = self
+    }
     private func getViewModelDelegates() {
         mainPageViewModel.musicConditionDelegates = self
         mainPageViewModel.playButtonTappedChildDelegates = self
         mainPageViewModel.repeatButtonTappedChildDelegates = self
-    }
-    
-    //MARK: View And ViewModel Methods
-    private func updateView() {
-        mainPageView.artistName.text = mainPageViewModel.artistName
-        mainPageView.songName.text = mainPageViewModel.songName
+        mainPageViewModel.reloadDataDelegate = self
     }
 }
 
@@ -84,6 +83,12 @@ extension MainPageVC: MusicConditionDelegates {
         get {
             mainPageView.musicProgressBar.progress == 0
         }
+    }
+}
+
+extension MainPageVC: ReloadDelegate {
+    func reloadData() {
+        mainPageView.musicCollectionView.reloadData()
     }
 }
 
@@ -116,12 +121,12 @@ extension MainPageVC: PlayButtonTappedChildDelegates {
     
     func scaleImageAfterPause() {
         UIView.animate(withDuration: 1) { [weak self] in
-            self?.mainPageView.albumImage.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            self?.mainPageView.musicCollectionView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         }
     }
     func scaleImageAfterResume() {
         UIView.animate(withDuration: 1) { [weak self] in
-            self?.mainPageView.albumImage.transform = .identity
+            self?.mainPageView.musicCollectionView.transform = .identity
         }
     }
 }

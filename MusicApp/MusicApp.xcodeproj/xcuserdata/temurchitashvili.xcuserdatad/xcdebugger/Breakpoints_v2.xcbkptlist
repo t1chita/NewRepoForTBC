@@ -3,4 +3,256 @@
    uuid = "9C9ED072-F36B-4C35-84E5-2C111E41BCCA"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2EBC3E99-520F-49B0-BB3A-850504D8AB39"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/Extensions/MainPageVC + ExtCollectionView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5DBF61E8-1C4B-4B31-A465-946B38C732A9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "didLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EEAEB8EF-040B-426C-9909-6B462DA7B81D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "92178DBF-0DAD-4933-ADED-A9B4E782B8AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15B50AA4-1B11-460F-BBC8-B0EB4154BBE8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "setConstraintsToAlbumImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E5E408D-22ED-4686-8F30-2F4789E14EC6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1E5E408D-22ED-4686-8F30-2F4789E14EC6 - 698a3a7da221308e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MusicApp.MainPageViewModel.fetchData() -&gt; ()"
+                  moduleName = "MusicApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/temurchitashvili/Documents/TBCHOMEWORKS/MusicApp/MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40">
+               </Location>
+               <Location
+                  uuid = "1E5E408D-22ED-4686-8F30-2F4789E14EC6 - d4267ce2e82ef0bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MusicApp.TracksResponse, Swift.Error&gt;) -&gt; () in MusicApp.MainPageViewModel.fetchData() -&gt; ()"
+                  moduleName = "MusicApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/temurchitashvili/Documents/TBCHOMEWORKS/MusicApp/MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EBA96F93-B058-4BE2-A817-0B3E1F7779BC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EBA96F93-B058-4BE2-A817-0B3E1F7779BC - d4267ce2e82ef0f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MusicApp.TracksResponse, Swift.Error&gt;) -&gt; () in MusicApp.MainPageViewModel.fetchData() -&gt; ()"
+                  moduleName = "MusicApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/temurchitashvili/Documents/TBCHOMEWORKS/MusicApp/MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42">
+               </Location>
+               <Location
+                  uuid = "EBA96F93-B058-4BE2-A817-0B3E1F7779BC - d4267ce2e82ef0f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MusicApp.TracksResponse, Swift.Error&gt;) -&gt; () in MusicApp.MainPageViewModel.fetchData() -&gt; ()"
+                  moduleName = "MusicApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/temurchitashvili/Documents/TBCHOMEWORKS/MusicApp/MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93D80978-9E0B-4673-AE80-BAB821E00E90"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "93D80978-9E0B-4673-AE80-BAB821E00E90 - d4267ce2e82ef0f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MusicApp.TracksResponse, Swift.Error&gt;) -&gt; () in MusicApp.MainPageViewModel.fetchData() -&gt; ()"
+                  moduleName = "MusicApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/temurchitashvili/Documents/TBCHOMEWORKS/MusicApp/MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42">
+               </Location>
+               <Location
+                  uuid = "93D80978-9E0B-4673-AE80-BAB821E00E90 - d4267ce2e82ef0f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MusicApp.TracksResponse, Swift.Error&gt;) -&gt; () in MusicApp.MainPageViewModel.fetchData() -&gt; ()"
+                  moduleName = "MusicApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/temurchitashvili/Documents/TBCHOMEWORKS/MusicApp/MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65C83E1C-D6CD-4250-A81C-DA09CF2DE3A6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CC128E4E-87DC-4E01-9CDB-FD4FEA439917"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MusicApp/Scenes/MainPage/MainPageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260734DC2BF5878E005AC69D /* TrackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260734DB2BF5878E005AC69D /* TrackModel.swift */; };
+		260734DF2BF58F85005AC69D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260734DE2BF58F85005AC69D /* NetworkService.swift */; };
+		260734E22BF63D77005AC69D /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260734E12BF63D77005AC69D /* MusicCell.swift */; };
+		260734E62BF63E5E005AC69D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260734E52BF63E5E005AC69D /* UIImageView.swift */; };
+		260734E92BF6404A005AC69D /* MainPageVC + ExtCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260734E82BF6404A005AC69D /* MainPageVC + ExtCollectionView.swift */; };
 		260B870A2BED733500187B1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B87092BED733500187B1E /* AppDelegate.swift */; };
 		260B870C2BED733500187B1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B870B2BED733500187B1E /* SceneDelegate.swift */; };
 		260B870E2BED733500187B1E /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260B870D2BED733500187B1E /* MainPageVC.swift */; };
@@ -22,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		260734DB2BF5878E005AC69D /* TrackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackModel.swift; sourceTree = "<group>"; };
+		260734DE2BF58F85005AC69D /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		260734E12BF63D77005AC69D /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
+		260734E52BF63E5E005AC69D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		260734E82BF6404A005AC69D /* MainPageVC + ExtCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPageVC + ExtCollectionView.swift"; sourceTree = "<group>"; };
 		260B87062BED733500187B1E /* MusicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		260B87092BED733500187B1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		260B870B2BED733500187B1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +59,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		260734DA2BF58779005AC69D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				260734DB2BF5878E005AC69D /* TrackModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		260734DD2BF58F6F005AC69D /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				260734DE2BF58F85005AC69D /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		260734E02BF63D60005AC69D /* MusicCell */ = {
+			isa = PBXGroup;
+			children = (
+				260734E12BF63D77005AC69D /* MusicCell.swift */,
+			);
+			path = MusicCell;
+			sourceTree = "<group>";
+		};
+		260734E32BF63E2A005AC69D /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				26A888A52BF5090C00DDDD2F /* ოთარ რამიშვილი - თბილისო (1988).mp3 */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		260734E42BF63E4A005AC69D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				260734E52BF63E5E005AC69D /* UIImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		260734E72BF64032005AC69D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				260734E82BF6404A005AC69D /* MainPageVC + ExtCollectionView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		260B86FD2BED733500187B1E = {
 			isa = PBXGroup;
 			children = (
@@ -68,10 +126,12 @@
 		260B87082BED733500187B1E /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
-				26A888A52BF5090C00DDDD2F /* ოთარ რამიშვილი - თბილისო (1988).mp3 */,
 				26FAEA7E2BF2672D00E94628 /* CustomViews */,
 				260B871D2BED738600187B1E /* App */,
+				260734DD2BF58F6F005AC69D /* NetworkService */,
+				260734DA2BF58779005AC69D /* Model */,
 				260B871E2BED738D00187B1E /* Scenes */,
+				260734E42BF63E4A005AC69D /* Extensions */,
 				260B871F2BED739200187B1E /* Resources */,
 				260B87202BED739A00187B1E /* Supporting */,
 			);
@@ -98,6 +158,7 @@
 		260B871F2BED739200187B1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				260734E32BF63E2A005AC69D /* Music */,
 				260B87122BED733700187B1E /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -123,6 +184,8 @@
 		260B87222BED744000187B1E /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				260734E72BF64032005AC69D /* Extensions */,
+				260734E02BF63D60005AC69D /* MusicCell */,
 				26FAEA832BF2D9AF00E94628 /* Protocols */,
 				260B87272BEED2F800187B1E /* SpinningCircle */,
 				260B870D2BED733500187B1E /* MainPageVC.swift */,
@@ -228,15 +291,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260734DF2BF58F85005AC69D /* NetworkService.swift in Sources */,
 				26FAEA822BF2D26A00E94628 /* PlaylistButtonsView.swift in Sources */,
 				26FAEA802BF2675E00E94628 /* PageNavigationButtonView.swift in Sources */,
+				260734E62BF63E5E005AC69D /* UIImageView.swift in Sources */,
 				260B87292BEED31400187B1E /* SpinningCircleView.swift in Sources */,
+				260734E92BF6404A005AC69D /* MainPageVC + ExtCollectionView.swift in Sources */,
+				260734DC2BF5878E005AC69D /* TrackModel.swift in Sources */,
 				26FAEA852BF2D9C100E94628 /* Protocols.swift in Sources */,
 				260B87242BED746C00187B1E /* MainPageViewModel.swift in Sources */,
 				260B870E2BED733500187B1E /* MainPageVC.swift in Sources */,
 				260B87262BED748800187B1E /* MainPageView.swift in Sources */,
 				260B870A2BED733500187B1E /* AppDelegate.swift in Sources */,
 				260B870C2BED733500187B1E /* SceneDelegate.swift in Sources */,
+				260734E22BF63D77005AC69D /* MusicCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

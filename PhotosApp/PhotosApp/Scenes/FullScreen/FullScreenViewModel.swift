@@ -9,10 +9,7 @@ import Foundation
 
 class FullScreenViewModel {
     //MARK: - Properties
-    var imageIndex: Int = 0 {
-        didSet {
-        }
-    }
+    var imageIndex: Int = 0
     
     //MARK: - Child Methods
     func setImageIndex(_ value: Int) {

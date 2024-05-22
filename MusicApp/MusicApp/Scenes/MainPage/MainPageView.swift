@@ -10,42 +10,20 @@ import UIKit
 final class MainPageView: UIView {
     let spinningCircleView = SpinningCircleView()
     //MARK: - UIComponents
-     let albumImage: UIImageView = {
-        let iv = UIImageView()
-        iv.image = .ramishvili
-        iv.clipsToBounds = true
-        iv.layer.cornerRadius = 20
-        iv.contentMode = .scaleAspectFill
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        return iv
+     let musicCollectionView: UICollectionView = {
+         let collectionViewFlowLayout = UICollectionViewFlowLayout()
+         collectionViewFlowLayout.scrollDirection = .horizontal
+         collectionViewFlowLayout.minimumLineSpacing = 0
+         collectionViewFlowLayout.minimumInteritemSpacing = 0
+         let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: collectionViewFlowLayout)
+         collectionView.translatesAutoresizingMaskIntoConstraints = false
+         collectionView.register(MusicCell.self, forCellWithReuseIdentifier: MusicCell.identifier)
+         collectionView.backgroundColor = .clear
+         collectionView.isPagingEnabled = false
+         return collectionView
     }()
     
-    private let songInfoStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.axis = .vertical
-        sv.alignment = .fill
-        sv.distribution = .fillProportionally
-        sv.translatesAutoresizingMaskIntoConstraints = false
-        return sv
-    }()
-    
-     let songName: UILabel = {
-        let lb = UILabel()
-        lb.textColor = .label
-        lb.textAlignment = .center
-        lb.font = UIFont.systemFont(ofSize: 24, weight: .regular)
-        return lb
-    }()
-    
-     let artistName: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .center
-        lb.textColor = .artistNameLabel
-        lb.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        return lb
-    }()
-    
-     let musicProgressBar: UIProgressView = {
+    let musicProgressBar: UIProgressView = {
         let pv = UIProgressView()
         pv.trackTintColor = .gray
         pv.progressTintColor = .systemBlue
@@ -159,7 +137,7 @@ final class MainPageView: UIView {
     private func setUp() {
         backgroundColor = .darkGray
         setAlbumImage()
-        setSongInfoStackView()
+//        setSongInfoStackView()
         setMusicProgressBar()
         setSpinningCircleView()
         setButtonsStackView()
@@ -168,7 +146,7 @@ final class MainPageView: UIView {
     }
     
     private func setAlbumImage() {
-        addSubview(albumImage)
+        addSubview(musicCollectionView)
         setConstraintsToAlbumImage()
     }
     
@@ -177,13 +155,6 @@ final class MainPageView: UIView {
         setConstraintsToSpinningCircleView()
         spinningCircleView.isHidden = true
         spinningCircleView.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    private func setSongInfoStackView() {
-        addSubview(songInfoStackView)
-        setConstraintsToSongInfoStackView()
-        songInfoStackView.addArrangedSubview(songName)
-        songInfoStackView.addArrangedSubview(artistName)
     }
     
     private func setMusicProgressBar() {
@@ -243,34 +214,25 @@ final class MainPageView: UIView {
     //MARK: - Set Constrainst To UI Components
     private func setConstraintsToAlbumImage() {
         NSLayoutConstraint.activate([
-            albumImage.topAnchor.constraint(equalTo: topAnchor, constant: 110),
-            albumImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
-            albumImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36),
-            albumImage.heightAnchor.constraint(equalToConstant: 319),
+            musicCollectionView.topAnchor.constraint(equalTo: topAnchor, constant: 110),
+            musicCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
+            musicCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -36),
+            musicCollectionView.heightAnchor.constraint(equalToConstant: 319),
         ])
     }
     
     private func setConstraintsToSpinningCircleView() {
         NSLayoutConstraint.activate([
-            spinningCircleView.topAnchor.constraint(equalTo: songInfoStackView.topAnchor, constant: -70),
-            spinningCircleView.centerXAnchor.constraint(equalTo: albumImage.centerXAnchor),
+            spinningCircleView.topAnchor.constraint(equalTo: musicProgressBar.topAnchor, constant: -112),
+            spinningCircleView.centerXAnchor.constraint(equalTo: musicCollectionView.centerXAnchor),
             spinningCircleView.widthAnchor.constraint(equalToConstant: 56),
             spinningCircleView.heightAnchor.constraint(equalToConstant: 56),
         ])
     }
     
-    private func setConstraintsToSongInfoStackView() {
-        NSLayoutConstraint.activate([
-            songInfoStackView.topAnchor.constraint(equalTo: albumImage.bottomAnchor, constant: 34),
-            songInfoStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65),
-            songInfoStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65),
-            songInfoStackView.heightAnchor.constraint(equalToConstant: 63),
-        ])
-    }
-
     private func setConstraintsToMusicProgressBar() {
         NSLayoutConstraint.activate([
-            musicProgressBar.topAnchor.constraint(equalTo: songInfoStackView.bottomAnchor, constant: 34),
+            musicProgressBar.topAnchor.constraint(equalTo: musicCollectionView.bottomAnchor, constant: 34),
             musicProgressBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 21),
             musicProgressBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -21),
             musicProgressBar.heightAnchor.constraint(equalToConstant: 2),

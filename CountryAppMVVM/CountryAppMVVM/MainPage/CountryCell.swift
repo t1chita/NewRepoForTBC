@@ -69,8 +69,8 @@ class CountryCell: UITableViewCell {
     
     private func setCountryName() {
         rectangleView.addSubview(countryName)
-        countryName.translatesAutoresizingMaskIntoConstraints = false
         setConstraintsToCountryName()
+        countryName.translatesAutoresizingMaskIntoConstraints = false
         countryName.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         countryName.textAlignment = .center
         countryName.textColor = .systemLabel
