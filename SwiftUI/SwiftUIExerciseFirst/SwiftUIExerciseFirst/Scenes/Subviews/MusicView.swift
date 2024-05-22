@@ -11,7 +11,6 @@ struct MusicView: View {
     @State var title: String = "We love property wrappers and closures"
     var body: some View {
         ZStack {
-            HStack {
                 VStack(alignment: .leading) {
                     Button(action: {
                         title = "ჩვენ გვიყვარს ოთარ რამიშვილი"
@@ -25,11 +24,8 @@ struct MusicView: View {
                         .foregroundColor(.white)
                         .frame(width: 87, height: 13)
                         .font(.system(size: 9, weight: .regular))
-                    Spacer()
                 }
-                Spacer()
-            }
-            .padding(EdgeInsets(top: 12, leading: 16, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 173, trailing: 67))
                 Image("GuitarImage")
                     .resizable()
                     .frame(width: 82, height: 182)
@@ -42,9 +38,10 @@ struct MusicView: View {
                     .padding(EdgeInsets(top: 111, leading: 0, bottom: 33, trailing: 20))
         }
         .background(Color.musicBackground)
+        .cornerRadius(18)
     }
 }
 
 #Preview {
-    ContentView()
+    MusicView()
 }
