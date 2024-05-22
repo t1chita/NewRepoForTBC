@@ -24,6 +24,8 @@ struct ListView: View {
     "აღმოჩნდა რომ დეველოპერები ძალიან გახარებულები არიან SwiftUI-ით. ნეტავ რამდენი ხანი გაგრძელდება Honeymoon phase?",
     ]
     
+    @State var buttonBackground: Color = .refreshBackground
+    
     var body: some View {
         ZStack {
             Color.gray
@@ -55,14 +57,26 @@ struct ListView: View {
                         }
                     }
                     .listStyle(PlainListStyle())
-                    .listRowSeparator(.visible, edges: VerticalEdge.Set(rawValue: Int8(posts.count + 1)))
-                    .listRowSeparatorTint(.red)
                     .listRowBackground(Color.gray)
                     .frame(width: 375)
                 }
             }
             .background(Color.gray)
             .scrollContentBackground(.hidden)
+            HStack {
+                Spacer()
+                Button(action: {
+                    buttonBackground = .blue
+                }, label: {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .foregroundColor(buttonBackground)
+                        .background(Color.white)
+                        .cornerRadius(30)
+                })
+                .padding(EdgeInsets(top: 330, leading: 0, bottom: 0, trailing: 10))
+            }
         }
     }
 }
