@@ -9,11 +9,18 @@ import SwiftUI
 
 struct MessageView: View {
     @State var backgroundColor: Color = .messageBackground
+    @State var backgroundChanged: Bool = false
     var body: some View {
         ZStack {
             VStack {
                     Button {
-                        backgroundColor = .purple
+                        if !backgroundChanged {
+                            backgroundColor = .purple
+                            backgroundChanged = true
+                        } else {
+                            backgroundColor = .messageBackground
+                            backgroundChanged = false
+                        }
                     } label: {
                         Image(.message)
                             .resizable()

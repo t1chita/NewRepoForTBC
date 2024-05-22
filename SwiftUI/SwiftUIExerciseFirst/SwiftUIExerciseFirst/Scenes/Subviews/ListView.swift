@@ -9,24 +9,23 @@ import SwiftUI
 
 struct ListView: View {
     
-    @State var titles: [String] = [
+     var titles: [String] = [
         "რა დაუწუნა ბარბარემ ნიკის?", "რა ზომის ფეხი აქვს ვასოს?",
-        "რა სიმაღლისაა ანჟელა ew?", "რატომ გაებუტა ბარბარეს ჭეპეტე?",
         "რა სიმაღლისაა ანჟელა ew?", "რატომ გაებუტა ბარბარეს ჭეპეტე?",
         "MVC vs MVVM", "ნეტავ რამდენი ხანი გაგრძელდება ეს?"
     ]
     
-    @State var posts: [String] = [
+     var posts: [String] = [
         "ნიკის ამაზე ჯერ განცხადება არ გაუკეთებია, ფანები ელოდებიან რომ რომელიმე მალე სიჩუმეს გაფანტავს",
         "დეველოპერებმა განაცხადეს რომ თუ მას 42 და მეტი ზომა ფეხი აქვს მის მოსმენას აზრი არ აქვს და კომენტარის გარეშე დატოვებენ ლექციას",
         "ანჟელა ew არის მეტრაოთხმოცი, რაც ნიშნავს რომ ის დაახლოებით ტეილორ Swift-ის სიმაღლისაა და დიდი ფეხი აქვს",
         "ამჟამინდელი მონაცემებით ისინი 2 დღე არ ესაუბრებოდნენ ერთმანეთს და როგორც გაირკვა ანიგნორებს აიგნორებდნენ რაღაც იგნორში.",
         "აი ეს MVC გასაგებია, მაგრამ MVVM ჩემამდე არ დადის რა, ამ სვიბთ იუაიში სად ვიყენებთ მაგას?",
         "აღმოჩნდა რომ დეველოპერები ძალიან გახარებულები არიან SwiftUI-ით. ნეტავ რამდენი ხანი გაგრძელდება Honeymoon phase?",
-        "აღმოჩნდა რომ დეველოპერები ძალიან გახარებულები არიან SwiftUI-ით. ნეტავ რამდენი ხანი გაგრძელდება Honeymoon phase?",
     ]
     
     @State var buttonBackground: Color = .refreshBackground
+    @State var buttonBackgroundChanged: Bool = false
     
     var body: some View {
         ZStack {
@@ -57,7 +56,13 @@ struct ListView: View {
             .scrollContentBackground(.hidden)
             
             Button(action: {
-                buttonBackground = .blue
+                if !buttonBackgroundChanged {
+                    buttonBackground = .blue
+                    buttonBackgroundChanged = true
+                } else {
+                    buttonBackground = .refreshBackground
+                    buttonBackgroundChanged = false
+                }
             }, label: {
                 Image(systemName: "arrow.clockwise.circle.fill")
                     .resizable()

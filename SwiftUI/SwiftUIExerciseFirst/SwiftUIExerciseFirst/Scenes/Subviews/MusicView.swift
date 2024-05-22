@@ -9,11 +9,18 @@ import SwiftUI
 
 struct MusicView: View {
     @State var title: String = "We love property wrappers and closures"
+    @State var titleIsChanged: Bool = false
     var body: some View {
         ZStack {
                 VStack(alignment: .leading) {
                     Button(action: {
-                        title = "ჩვენ გვიყვარს ოთარ რამიშვილი"
+                        if !titleIsChanged {
+                            title = "ჩვენ გვიყვარს ოთარ რამიშვილი"
+                            titleIsChanged = true
+                        } else  {
+                            title = "We love property wrappers and closures"
+                            titleIsChanged = false
+                        }
                     }, label: {
                         Image("MicImage")
                             .resizable()
