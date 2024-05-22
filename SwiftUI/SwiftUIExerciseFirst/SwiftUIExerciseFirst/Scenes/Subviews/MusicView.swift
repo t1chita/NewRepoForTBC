@@ -13,7 +13,6 @@ struct MusicView: View {
         ZStack{
             Color.musicBackground
                 .ignoresSafeArea()
-            ZStack {
                 VStack {
                     HStack {
                         Button(action: {
@@ -55,7 +54,6 @@ struct MusicView: View {
                         Spacer()
                     }
                 }
-            }
         }
     }
 }

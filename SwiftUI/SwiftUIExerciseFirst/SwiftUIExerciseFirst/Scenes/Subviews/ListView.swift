@@ -30,39 +30,33 @@ struct ListView: View {
         ZStack {
             Color.gray
             .ignoresSafeArea()
-#warning ("გაარკვიე zip რას შვება")
             List {
                 ForEach(Array(zip(titles, posts)), id: \.0) { item in
-                    ZStack {
                         HStack {
                             Image(.notf)
                                 .resizable()
-                                .frame(width: 40, height: 40)
+                                .scaledToFit()
+                                .frame(height: 40)
                                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 0))
                             
-                            VStack {
-                                HStack {
+                            VStack(alignment: .leading,spacing: 3) {
                                     Text(item.0)
                                         .font(.system(size: 14, weight: .medium))
-                                    Spacer()
-                                }
-                                HStack {
+
                                     Text(item.1)
                                         .font(.system(size: 10, weight: .regular))
                                         .foregroundColor(.black)
-                                    Spacer()
-                                }
                             }
-                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 29))
+                            .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 10))
                         }
-                    }
-                    .listStyle(PlainListStyle())
+                        .alignmentGuide(.listRowSeparatorLeading) { d in
+                            d[.leading]}
                     .listRowBackground(Color.gray)
-                    .frame(width: 375)
                 }
             }
-            .background(Color.gray)
+            .frame(width: 470)
             .scrollContentBackground(.hidden)
+            
             HStack {
                 Spacer()
                 Button(action: {
@@ -75,7 +69,7 @@ struct ListView: View {
                         .background(Color.white)
                         .cornerRadius(30)
                 })
-                .padding(EdgeInsets(top: 330, leading: 0, bottom: 0, trailing: 10))
+                .padding(EdgeInsets(top: 330, leading: 0, bottom: 0, trailing: 60))
             }
         }
     }
