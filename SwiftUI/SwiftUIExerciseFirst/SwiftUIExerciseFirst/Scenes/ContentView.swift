@@ -46,7 +46,8 @@ struct ContentView: View {
                     }
                     Spacer()
                         ListView()
-                            .frame(width: 375)
+                    .padding(EdgeInsets(top: 0, leading: -40, bottom: 0, trailing: -11))
+                    .ignoresSafeArea()
                 }
             }
         }
