@@ -15,14 +15,6 @@ struct MessageView: View {
             VStack {
                     Button {
                         if !backgroundChanged {
-                            backgroundColor = .purple
-                            backgroundColor = .purple
-                            backgroundColor = .purple
-                            backgroundColor = .purple
-                            backgroundColor = .purple
-                            backgroundColor = .purple
-                            backgroundColor = .purple
-                            backgroundColor = .purple
                             backgroundChanged = true
                         } else {
                             backgroundColor = .messageBackground
