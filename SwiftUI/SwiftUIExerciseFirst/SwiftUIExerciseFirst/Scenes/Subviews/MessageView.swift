@@ -16,6 +16,13 @@ struct MessageView: View {
                     Button {
                         if !backgroundChanged {
                             backgroundColor = .purple
+                            backgroundColor = .purple
+                            backgroundColor = .purple
+                            backgroundColor = .purple
+                            backgroundColor = .purple
+                            backgroundColor = .purple
+                            backgroundColor = .purple
+                            backgroundColor = .purple
                             backgroundChanged = true
                         } else {
                             backgroundColor = .messageBackground

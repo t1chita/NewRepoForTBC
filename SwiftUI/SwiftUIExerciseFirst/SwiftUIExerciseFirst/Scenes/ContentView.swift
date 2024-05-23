@@ -16,7 +16,6 @@ struct ContentView: View {
                         .frame(width: 308, height: 41)
                         .foregroundColor(.white)
                         .padding(EdgeInsets(top: 6.9, leading: 9, bottom: 0, trailing: 90))
-                VStack {
                     HStack {
                             MusicView()
                                 .frame(width: 165, height: 232)
@@ -30,15 +29,13 @@ struct ContentView: View {
                                     .frame(width: 165, height: 110)
                                     .cornerRadius(18)
                         }
-                    }
+                      }
                     .padding(EdgeInsets(top: 0, leading: 9, bottom: 0, trailing: 23))
-                }
                 ListView()
                     .padding(EdgeInsets(top: 0, leading: -40, bottom: 0, trailing: -11))
-                    .ignoresSafeArea()
             }
         }
-        .background(Color.gray)
+        .background(Color.background)
     }
 }
 

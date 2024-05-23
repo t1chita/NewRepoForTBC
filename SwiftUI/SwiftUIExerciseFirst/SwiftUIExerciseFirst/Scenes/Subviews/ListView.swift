@@ -22,6 +22,7 @@ struct ListView: View {
         "ამჟამინდელი მონაცემებით ისინი 2 დღე არ ესაუბრებოდნენ ერთმანეთს და როგორც გაირკვა ანიგნორებს აიგნორებდნენ რაღაც იგნორში.",
         "აი ეს MVC გასაგებია, მაგრამ MVVM ჩემამდე არ დადის რა, ამ სვიბთ იუაიში სად ვიყენებთ მაგას?",
         "აღმოჩნდა რომ დეველოპერები ძალიან გახარებულები არიან SwiftUI-ით. ნეტავ რამდენი ხანი გაგრძელდება Honeymoon phase?",
+        "აღმოჩნდა რომ დეველოპერები ძალიან გახარებულები არიან SwiftUI-ით. ნეტავ რამდენი ხანი გაგრძელდება Honeymoon phase?",
     ]
     
     @State var buttonBackground: Color = .refreshBackground
@@ -41,16 +42,17 @@ struct ListView: View {
                         VStack(alignment: .leading,spacing: 3) {
                             Text(item.0)
                                 .font(.system(size: 14, weight: .medium))
+                                .foregroundColor(.white)
                             
                             Text(item.1)
                                 .font(.system(size: 10, weight: .regular))
-                                .foregroundColor(.black)
+                                .foregroundColor(.gray)
                         }
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 10))
                     }
                     .alignmentGuide(.listRowSeparatorLeading) { d in
                         d[.leading]}
-                    .listRowBackground(Color.gray)
+                    .listRowBackground(Color.background)
                 }
             }
             .scrollContentBackground(.hidden)
