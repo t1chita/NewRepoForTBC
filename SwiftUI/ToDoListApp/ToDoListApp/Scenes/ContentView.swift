@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var checkMarkTapped = true
+    @State private var isAllTaskCompleted = false
     var body: some View {
         ZStack {
             VStack {
@@ -17,7 +18,7 @@ struct ContentView: View {
                     ProgressBar()
                         .frame(width: 380, height: 139)
                         .padding(EdgeInsets(top: 19, leading: 16, bottom: 0, trailing: 16))
-                    ListView(checkMarkTapped: $checkMarkTapped)
+                    ListView(checkMarkTapped: $checkMarkTapped, isAllTaskCompleted: $isAllTaskCompleted)
                         .frame(width: 400)
                         .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                 }
@@ -139,7 +140,7 @@ struct ProgressBar: View {
 
 
 struct ListView: View {
-    let tasksArray: [TaskModel] = [
+    @State var tasksArray: [TaskModel] = [
         TaskModel(title: "Mobile App Research", date: "5 Aug", color: .firstCell),
         TaskModel(title: "Prepare Wireframe for Main Flow", date: "5 Aug", color: .secondCell),
         TaskModel(title: "Prepare Screens", date: "5 Aug", color: .thirdCell),
@@ -151,6 +152,7 @@ struct ListView: View {
     @State private var backgroundColors: [UUID: Color] = [:]
     @Binding var checkMarkTapped: Bool
     @State private var checkMarkTappedDic: [UUID: Bool] = [:]
+    @Binding var isAllTaskCompleted: Bool
     var body: some View {
         VStack {
             HStack() {
@@ -218,16 +220,21 @@ struct ListView: View {
                         }
                         .contentShape(Circle())
                         .onTapGesture {
-                                if !checkMarkTapped {
-                                    strokeColors[task.id] = .progress
-                                    backgroundColors[task.id] = .clear
-                                    checkMarkTapped = true
-                                    checkMarkTappedDic[task.id] = true
-                                } else {
-                                    strokeColors[task.id] = .darkModeLabel
-                                    backgroundColors[task.id] = .progress
-                                    checkMarkTapped = false
-                                    checkMarkTappedDic[task.id] = false
+                            //TODO: Need To Fix Card checkMarkTapped Bug
+                            guard let index = tasksArray.firstIndex(where: { $0.id == task.id }) else { return }
+                            let removedTask = tasksArray.remove(at: index)
+                            if !checkMarkTapped {
+                                strokeColors[task.id] = .progress
+                                backgroundColors[task.id] = .clear
+                                checkMarkTapped = true
+                                checkMarkTappedDic[task.id] = true
+                                tasksArray.append(removedTask)
+                            } else {
+                                strokeColors[task.id] = .darkModeLabel
+                                backgroundColors[task.id] = .progress
+                                checkMarkTapped = false
+                                checkMarkTappedDic[task.id] = false
+                                tasksArray.insert(removedTask, at: 0)
                             }
                         }
                     }
