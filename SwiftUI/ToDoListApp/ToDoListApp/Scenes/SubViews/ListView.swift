@@ -98,11 +98,11 @@ struct ListView: View {
                 }
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
-                .onChange(of: isAllTaskCompleted) { newValue in
+                .onChange(of: isAllTaskCompleted, { oldValue, newValue in
                     if newValue {
                         completeAllTasks()
                     }
-                }
+                })
             }
             .frame(width: 420, height: 450)
         }
