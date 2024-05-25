@@ -24,7 +24,6 @@ struct ListView: View {
     @Binding var completedCounter: CGFloat
     @Binding var incompletedCounter: CGFloat
     @Binding var percent: CGFloat
-    @Binding var completeAllTask: () -> Void
     var body: some View {
         VStack {
             HStack() {
@@ -100,6 +99,7 @@ struct ListView: View {
                 .listRowSeparator(.hidden)
                 .onChange(of: isAllTaskCompleted, { oldValue, newValue in
                     if newValue {
+                        isAllTaskCompleted = false
                         completeAllTasks()
                     }
                 })
