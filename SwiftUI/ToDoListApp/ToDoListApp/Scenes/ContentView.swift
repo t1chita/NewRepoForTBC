@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var checkMarkTapped = true
     @State private var isAllTaskCompleted = false
     @State var completedCounter: CGFloat = 0
     @State var incompletedCounter: CGFloat = 6

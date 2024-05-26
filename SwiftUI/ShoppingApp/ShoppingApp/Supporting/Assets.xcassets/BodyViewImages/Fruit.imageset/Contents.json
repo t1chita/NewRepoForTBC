@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "HealthiestFruits-feb2318dc0a3454993007f57c724753f.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
