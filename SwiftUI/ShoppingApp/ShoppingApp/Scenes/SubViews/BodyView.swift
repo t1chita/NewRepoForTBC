@@ -23,31 +23,9 @@ struct FruitsListViewCell : View {
 
     var body: some View {
         ZStack(content: {
-            RoundedRectangle(cornerRadius: 20.0)
-                .foregroundColor(.background)
-                .frame(width: 350, height: 100)
+            cellBackgroundView
             
-            HStack {
-                Image(product.image)
-                    .resizable()
-                    .frame(width: 70,height: 70)
-                    .cornerRadius(20)
-                    .padding(.leading, 30)
-                
-                VStack(alignment: .leading) {
-                    Text ("პროდუქტის \nრაოდენობა: \(product.counter) ")
-                        .foregroundColor(.myLabel)
-                        .font(.system(size: 12, weight: .regular))
-                    
-                    Text ("ჯამური თანხა: \(product.totalPrice) ")
-                        .foregroundColor(.myLabel)
-                        .font(.system(size: 12, weight: .regular))
-                    
-                    removeFromCartButtonView
-                }
-                .padding(.top, 15)
-                Spacer()
-            }
+            productImageAndInfoInCart
             
             productInfoView
                 .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 30))
@@ -55,12 +33,51 @@ struct FruitsListViewCell : View {
         
     }
     
+    private var cellBackgroundView: some View {
+        RoundedRectangle(cornerRadius: 20.0)
+            .foregroundColor(.background)
+            .frame(width: 350, height: 100)
+    }
+    
+    private var productImageAndInfoInCart: some View {
+        HStack {
+            productImage
+            
+            productTotalQuantityAndPriceView
+            .padding(.top, 15)
+            
+            Spacer()
+        }
+    }
+    
+    private var productImage: some View {
+        Image(product.image)
+            .resizable()
+            .frame(width: 70,height: 70)
+            .cornerRadius(20)
+            .padding(.leading, 30)
+    }
+    
+    private var productTotalQuantityAndPriceView: some View {
+        VStack(alignment: .leading) {
+            Text ("პროდუქტის \nრაოდენობა: \(product.counter) ")
+                .foregroundColor(.myLabel)
+                .font(.system(size: 12, weight: .regular))
+            
+            Text ("ჯამური თანხა: \(String(format: "%.02f", product.totalPrice)) ")
+                .foregroundColor(.myLabel)
+                .font(.system(size: 12, weight: .regular))
+            
+            removeFromCartButtonView
+        }
+    }
+    
     private var removeFromCartButtonView: some View {
         VStack {
             Spacer()
             
             Button(action: {
-                viewModel.deleteProductFromCart(id: product.id)
+                viewModel.removeProductFromCart(id: product.id)
             }, label: {
                 Image(systemName: "trash.circle.fill")
                     .resizable()
@@ -102,7 +119,7 @@ struct FruitsListViewCell : View {
         HStack {
             Spacer()
             
-            Text("ფასი: \(product.price) ლარი")
+            Text("ფასი: \(String(format: "%.02f", product.price)) ლარი")
                 .foregroundColor(.myLabel)
                 .font(.system(size: 12, weight: .regular))
         }
@@ -133,11 +150,11 @@ struct FruitsListViewCell : View {
     }
     
     private func addButtonTapped() {
-        viewModel.increaseSelectedProductCounter(id: product.id)
+        viewModel.increaseProductCounter(id: product.id)
     }
     
     private func removeButtonTapped() {
-        viewModel.decreaseSelectedProductCounter(id: product.id)
+        viewModel.decreaseProductCounter(id: product.id)
     }
 }
 

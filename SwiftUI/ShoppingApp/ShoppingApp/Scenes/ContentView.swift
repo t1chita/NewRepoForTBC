@@ -17,19 +17,15 @@ struct ContentView: View {
                 
                 ScrollView {
                     BodyView(productViewModel: viewModel)
-                        .padding(.top, 30)
                 }
-                .frame(height: 400)
+                .frame(maxWidth: .infinity,maxHeight:  400)
+                
                 Spacer()
+                
                 FooterView(viewModel: viewModel)
             }
         })
-        .background(
-            Image(.background)
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-        )
+        .background(Color.myBackground)
     }
 }
 

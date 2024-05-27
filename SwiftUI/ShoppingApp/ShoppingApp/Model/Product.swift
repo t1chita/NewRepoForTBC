@@ -11,11 +11,10 @@ import SwiftUI
 struct Product: Identifiable {
     let id = UUID()
     let name: String
-    let price: Int
+    var price: Float
     let image: ImageResource
     var counter: Int
-    var totalPrice: Int
-    var isProductOutOfStock: Bool
+    var totalPrice: Float
 }
 
 
