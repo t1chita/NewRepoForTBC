@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel = ProductViewModel()
+   
     var body: some View {
         ZStack(content: {
             VStack {
                 HeaderView()
                 
-                Spacer()
                 ScrollView {
-                    BodyView()
-                    FooterView()
-                        .padding(.top, 20)
+                    BodyView(productViewModel: viewModel)
+                        .padding(.top, 30)
                 }
-                .frame(height: 600)
+                .frame(height: 400)
+                Spacer()
+                FooterView(viewModel: viewModel)
             }
         })
         .background(
@@ -27,7 +29,6 @@ struct ContentView: View {
                 .resizable()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
-                .opacity(0.8)
         )
     }
 }

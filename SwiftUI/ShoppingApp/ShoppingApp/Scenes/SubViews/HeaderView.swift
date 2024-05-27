@@ -12,22 +12,19 @@ struct HeaderView: View {
         ZStack {
             UnevenRoundedRectangle(topLeadingRadius: 25, topTrailingRadius: 25)
                 .frame(height: 200)
-                .foregroundColor(.secondary)
+                .foregroundColor(.background)
                 .padding(EdgeInsets(top: 0, leading: 22, bottom: 0, trailing: 22))
                 .overlay(content: {
                     UnevenRoundedRectangle(topLeadingRadius: 25, topTrailingRadius: 25)
                         .stroke(lineWidth: 3)
-                        .foregroundColor(Color(UIColor.systemBackground)
-                        .opacity(0.8))
+                        .foregroundColor(.border)
                         .padding(EdgeInsets(top: 0, leading: 22, bottom: 0, trailing: 22))
-                    
                     
                     ZStack {
                         VStack {
                             UnevenRoundedRectangle(topLeadingRadius: 25, topTrailingRadius: 25)
                                 .frame(height: 60)
-                                .foregroundColor(Color(UIColor.systemBackground)
-                                .opacity(0.8))
+                                .foregroundColor(.background)
                                 .padding(EdgeInsets(top: 1, leading: 23, bottom: 0, trailing: 23))
                             Spacer()
                         }
@@ -36,7 +33,7 @@ struct HeaderView: View {
                             HStack {
                                 Text("Fruits")
                                     .font(.system(size: 20, weight: .bold))
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.myLabel)
                                 Spacer()
                             }
                             Spacer()
