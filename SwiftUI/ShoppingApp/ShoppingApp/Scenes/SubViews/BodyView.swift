@@ -17,7 +17,7 @@ struct BodyView: View {
     }
 }
 
-struct FruitsListViewCell : View {
+struct FruitsListViewCell: View {
     var product: Product
     var viewModel: ProductViewModel
 
@@ -30,7 +30,6 @@ struct FruitsListViewCell : View {
             productInfoView
                 .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 30))
         })
-        
     }
     
     private var cellBackgroundView: some View {

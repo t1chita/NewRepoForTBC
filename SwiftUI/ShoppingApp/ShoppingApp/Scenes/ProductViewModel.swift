@@ -14,6 +14,7 @@ class ProductViewModel: ObservableObject {
     @Published var productsQuantity: Int = 0
     @Published var productsTotalPrice: Float = 0
     @Published var saleButtonTapped: Bool = false
+    
     //MARK: Initialisation
     init() {
         loadProducts()
