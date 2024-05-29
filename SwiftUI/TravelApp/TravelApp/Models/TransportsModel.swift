@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct TransportsResponse: Decodable, Identifiable, Hashable  {
-    var id = UUID()
+struct TransportsResponse: Decodable  {
     var transport: [Transport]
 }
 
-struct Transport: Decodable, Hashable  {
-    var transport: String
+struct Transport: Decodable {
+    let id: Int
+    var transport: [String]
 }

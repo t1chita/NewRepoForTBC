@@ -8,14 +8,54 @@
 import SwiftUI
 
 struct HotelsView: View {
-    @StateObject var viewModel = HotelsViewModel()
+    @ObservedObject var viewModel = HotelsViewModel()
+    @Binding var navPath: [Int]
+    var index: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            VStack {
+                Text("Hotels List")
+                    .font(.title)
+                    .foregroundColor(.myLabel)
+                if !viewModel.hotelsArray.isEmpty {
+                    HotelsListView(hotels: viewModel.hotelsArray, index: index)
+                } else {
+                    ProgressView()
+                }
+                Spacer()
+                
+                Button(action: {
+                    navPath.removeAll()
+                }, label: {
+                    Text("Go To Main Screen")
+                        .foregroundColor(.myLabel)
+                        .padding(6)
+                })
+                .frame(width: 150, height: 50)
+                .background(Color.cardsBackground)
+                .cornerRadius(5)
+                
+            }
         
-            .environmentObject(viewModel)
+        .onAppear {
+            viewModel.fetchData()
+        }
     }
 }
 
-#Preview {
-    HotelsView()
+
+struct HotelsListView: View {
+    var hotels: [HotelCategory]
+    var index: Int
+    var body: some View {
+        List {
+            ForEach(hotels[index].hotels, id: \.self) { hotel in
+                Text(hotel)
+            }
+        }
+    }
 }
+
+//#Preview {
+//    HotelsView(index: 3)
+//}

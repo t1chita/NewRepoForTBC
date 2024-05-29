@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct MustSeesResponse: Decodable, Identifiable, Hashable  {
-    var id = UUID()
+struct MustSeesResponse: Decodable {
     var mustSee: [MustSee]
 }
 
-struct MustSee: Decodable, Hashable  {
-    var mustSee: String
+struct MustSee: Decodable {
+    var id: Int
+    var mustSee: [String]
 }

@@ -8,15 +8,16 @@
 import Foundation
 #warning ("ამოაკომენტარე ფეჩინგი")
 class RandomTipsViewModel: ObservableObject{
-    private var apiForRandomTips: String = "https://travelappsecond.free.beeceptor.com/getRandomTips"
-//MARK: Meore API    private var apiForRandomTips: String = "https://travelappsecond.free.beeceptor.com/RandomTravelTip"
+    //    private var apiForRandomTips: String = "https://travelappsecond.free.beeceptor.com/getRandomTips"
+    //MARK: Meore API    private var apiForRandomTips: String = "https://travelappsecond.free.beeceptor.com/RandomTravelTip"
+    private var apiForRandomTips: String = "https://travelappfourth.free.beeceptor.com/getRandomTips"
     @Published var tipsArray: [Tips] = []
     var tip: String? = ""
     
-    init() {
-//        fetchData()
-    }
-    
+    //    init() {
+    //        fetchData()
+    //    }
+    //
     func getRandomTip() {
         let randomTip = tipsArray.randomElement()
         tip = randomTip?.travelTip
@@ -24,14 +25,15 @@ class RandomTipsViewModel: ObservableObject{
     
 //    private func fetchData() {
 //        NetworkService.networkService.getData(urlString: apiForRandomTips) { [weak self] (result: Result<RandomTipsResponse,Error>) in
-//            switch result {
-//            case .success(let randomTips):
-//                self?.tipsArray = randomTips.tips
-//            case .failure(let error):
-//                print(error.localizedDescription)
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let randomTips):
+//                    self?.tipsArray = randomTips.tips
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//                }
 //            }
 //        }
 //    }
-    
 }
 

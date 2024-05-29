@@ -231,7 +231,6 @@
 		267A9A4F2C066D6A0039A4F3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				267A9A552C066E010039A4F3 /* TravelTipsAlert */,
 				267A9A512C066D840039A4F3 /* DestinationDetailScreen */,
 				267A9A502C066D760039A4F3 /* MainScreenView */,
 			);
@@ -280,13 +279,6 @@
 				266AB0922C07A0B500FC4C9A /* HotelsView.swift */,
 			);
 			path = HotelsView;
-			sourceTree = "<group>";
-		};
-		267A9A552C066E010039A4F3 /* TravelTipsAlert */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TravelTipsAlert;
 			sourceTree = "<group>";
 		};
 		267A9A5E2C066E4E0039A4F3 /* NavigationStackViews */ = {

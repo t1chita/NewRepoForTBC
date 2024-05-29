@@ -6,11 +6,15 @@
 //
 
 import Foundation
-
+#warning ("ამოაკომენტარე ფეჩინგი")
 class MustSeeViewModel: ObservableObject {
     //MARK: pirveli API
     //MARK: meore API
-    private var apiForMustSeeInfo = "https://travelappthird.free.beeceptor.com/getMustSeesInfo"
+    //    private var apiForMustSeeInfo = "https://travelappthird.free.beeceptor.com/getMustSeesInfo"
+    private var apiForMustSeeInfo = "https://travelappfourth.free.beeceptor.com/getMustSeesInfo"
+    
+    
+    
     @Published var mustSees: [MustSee] = []
     
     init() {
@@ -19,11 +23,13 @@ class MustSeeViewModel: ObservableObject {
     
     func fetchData() {
         NetworkService.networkService.getData(urlString: apiForMustSeeInfo) { [weak self] (result: Result< MustSeesResponse,Error >) in
-            switch result {
-            case .success(let mustSees):
-                self?.mustSees = mustSees.mustSee
-            case .failure(let error):
-                print(error.localizedDescription)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let mustSees):
+                    self?.mustSees = mustSees.mustSee
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
     }

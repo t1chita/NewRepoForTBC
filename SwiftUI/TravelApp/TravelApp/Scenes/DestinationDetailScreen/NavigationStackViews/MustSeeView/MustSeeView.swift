@@ -7,12 +7,39 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct MustSeeView: View {
+    @ObservedObject var viewModel = MustSeeViewModel()
+    var index: Int
+    @Binding var navPath: [Int]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Transport List")
+                .font(.title)
+                .foregroundColor(.myLabel)
+            if !viewModel.mustSees.isEmpty {
+                MustSeeListView(hotels: viewModel.mustSees, index: index)
+            } else {
+                ProgressView()
+            }
+            Spacer()
+        }
+        .onAppear {
+            viewModel.fetchData()
+        }
     }
 }
 
-#Preview {
-    MustSeeView()
+
+struct MustSeeListView: View {
+    var hotels: [MustSee]
+    var index: Int
+    var body: some View {
+        List {
+            ForEach(hotels[index].mustSee, id: \.self) { hotel in
+                Text(hotel)
+            }
+        }
+    }
 }

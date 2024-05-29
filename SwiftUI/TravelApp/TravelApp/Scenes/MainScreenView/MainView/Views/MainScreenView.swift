@@ -65,6 +65,3 @@ struct MainScreenView: View {
        
 }
 
-#Preview {
-    MainScreenView()
-}

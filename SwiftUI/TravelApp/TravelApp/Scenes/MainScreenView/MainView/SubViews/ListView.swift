@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ListView: View {
     @EnvironmentObject var viewModel: MainScreenViewModel
+    @State private var navPath: [Int] = []
     var body: some View {
+        NavigationStack(path: $navPath) {
             Text("Choose Your Desired Country Or City")
                 .foregroundColor(.myLabel)
             
             List(viewModel.countryInfoArray) { country in
-                NavigationLink(value: country) {
+                NavigationLink(value: country.id) {
                     CountryRow(country: country)
                 }
                 .listRowSeparator(.hidden)
@@ -24,9 +26,14 @@ struct ListView: View {
             .onAppear{
                 URLCache.shared.memoryCapacity = 1024 * 1024 * 512
             }
-            .navigationDestination(for: Slide.self) { country in
-                DestinationDetailScreenView(country: country)
+            .navigationDestination(for: Int.self) { countryId in
+                if let country = viewModel.countryInfoArray.first(where: {$0.id == countryId}) {
+                    if let index = viewModel.countryInfoArray.firstIndex(where: {$0.id == country.id }) {
+                        DestinationDetailScreenView(country: country, index: index, navPath: $navPath)
+                    }
+                }
             }
+        }
     }
 }
 
@@ -34,7 +41,6 @@ struct ListView: View {
 struct CountryRow: View {
     var country: Slide
     var body: some View {  
-#warning("ყველაფერი წაშალე ამის გარდა")
         VStack(alignment: .leading) {
             ImageLoadingView(url: country.image.src)
             Text(country.title)
@@ -44,7 +50,4 @@ struct CountryRow: View {
         }
     }
 }
-//
-//#Preview {
-//    MainScreenView()
-//}
+

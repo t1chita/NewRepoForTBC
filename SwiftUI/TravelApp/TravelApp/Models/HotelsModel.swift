@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct HotelsResponse: Decodable, Identifiable, Hashable {
-    var id = UUID()
-    var hotels: [Hotel]
+struct HotelData: Decodable {
+    let hotels: [HotelCategory]
 }
 
-struct Hotel: Decodable, Hashable  {
-    var hotel: String
+struct HotelCategory: Decodable {
+    let id: Int
+    let hotels: [String]
 }
