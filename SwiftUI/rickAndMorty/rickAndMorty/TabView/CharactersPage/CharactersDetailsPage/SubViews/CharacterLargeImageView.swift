@@ -21,8 +21,8 @@ struct CharacterLargeImageView: View {
                 Image(uiImage: imageLoader.image!)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: 300)
-                    .cornerRadius(30)
+                    .frame(maxWidth: .infinity, maxHeight: 150)
+                    .cornerRadius(60)
                     .clipped()
             } else if imageLoader.errorMessage != nil {
                 Text(imageLoader.errorMessage!)

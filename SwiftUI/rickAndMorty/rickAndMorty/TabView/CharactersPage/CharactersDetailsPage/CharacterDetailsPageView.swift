@@ -21,6 +21,9 @@ struct CharacterDetailsPageView: View {
     var body: some View {
         VStack {
             CharacterLargeImageView(url: URL(string: character.image)!)
+        }
+        
+        VStack {
             
             Text(character.name)
                 .font(.title)
@@ -63,6 +66,29 @@ struct CharacterDetailsPageView: View {
         .padding(.horizontal, 16)
     }
     
+    private var charactersEpisodes: some View {
+        ScrollView {
+            ForEach(characterDetailsViewModel.episodes, id: \.id) { episode in
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.cardsBackground)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Name: \(episode.name)")
+                            
+                            Text("Date: \(episode.airDate)")
+                            
+                            Text("Episode: \(episode.episode)")
+                        }
+                        .foregroundColor(.myLabel)
+                        .padding(5)
+                        Spacer()
+                    }
+                }
+            }
+        }
+    }
+    
     private struct DescriptionOfCharacter: View {
         let title: String
         let value: String
@@ -80,25 +106,6 @@ struct CharacterDetailsPageView: View {
                         .padding(5)
                     
                     Spacer()
-                }
-            }
-        }
-    }
-    
-    private var charactersEpisodes: some View {
-        ScrollView {
-            ForEach(characterDetailsViewModel.episodes, id: \.self) { episode in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .foregroundColor(.cardsBackground)
-                    
-                    HStack {
-                        Text(episode)
-                            .foregroundColor(.myLabel)
-                            .padding(5)
-                        
-                        Spacer()
-                    }
                 }
             }
         }

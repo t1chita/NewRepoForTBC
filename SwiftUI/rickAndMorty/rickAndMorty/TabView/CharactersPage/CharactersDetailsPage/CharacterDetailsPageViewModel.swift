@@ -10,7 +10,7 @@ import Foundation
 class CharacterDetailsPageViewModel: ObservableObject {
     private var character: CartoonCharacter
     
-    @Published var episodes: [String] = []
+    @Published var episodes: [EpisodesResponse] = []
     
     init(character: CartoonCharacter) {
         self.character = character
@@ -22,7 +22,7 @@ class CharacterDetailsPageViewModel: ObservableObject {
             NetworkService.networkService.getData(urlString: character.episode[index]) { [weak self] (result: Result<EpisodesResponse, Error>) in
                 switch result {
                 case .success(let episode):
-                    self?.episodes.append(episode.name)
+                    self?.episodes.append(episode)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
