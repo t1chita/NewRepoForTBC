@@ -6,20 +6,13 @@
 //
 
 import Foundation
-#warning ("ამოაკომენტარე ფეჩინგი")
 class MustSeeViewModel: ObservableObject {
-    //MARK: pirveli API
-    //MARK: meore API
-    //    private var apiForMustSeeInfo = "https://travelappthird.free.beeceptor.com/getMustSeesInfo"
+    //MARK: თუ ერთი api არ მუშაობს ჩააფეისთეთ მეორე რა
+    //მეორე  private var apiForMustSeeInfo = "https://travelapp.free.beeceptor.com/getMustSeesInfo"
+    //პირველი
     private var apiForMustSeeInfo = "https://travelappfourth.free.beeceptor.com/getMustSeesInfo"
     
-    
-    
     @Published var mustSees: [MustSee] = []
-    
-    init() {
-        fetchData()
-    }
     
     func fetchData() {
         NetworkService.networkService.getData(urlString: apiForMustSeeInfo) { [weak self] (result: Result< MustSeesResponse,Error >) in

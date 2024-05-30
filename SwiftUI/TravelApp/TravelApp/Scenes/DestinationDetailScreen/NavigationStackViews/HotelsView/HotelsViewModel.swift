@@ -6,11 +6,14 @@
 //
 
 import Foundation
-#warning ("ამოაკომენტარე ფეჩინგი")
 
 class HotelsViewModel: ObservableObject {
-    //    private let apiForHotelsInfo = "https://travelappthird.free.beeceptor.com/getHotelsInfo"
+    //MARK: თუ ერთი api არ მუშაობს ჩააფეისთეთ მეორე რა
+    //მეორე  private var apiForHotelsInfo = "https://travelapp.free.beeceptor.com/getHotelsInfo"
+    //პირველი
     private let apiForHotelsInfo = "https://travelappfourth.free.beeceptor.com/getHotelsInfo"
+    
+    
     
     @Published var hotelsArray: [HotelCategory] = []
     @Published var errorMessage: String?

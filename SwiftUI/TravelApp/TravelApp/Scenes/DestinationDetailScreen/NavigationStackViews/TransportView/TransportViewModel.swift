@@ -6,11 +6,11 @@
 //
 
 import Foundation
-#warning ("ამოაკომენტარე ფეჩინგი")
+
 class TransportViewModel: ObservableObject {
-    //MARK: pirveli API private var apiForTransportInfo =
-    //MARK: meore API private var apiForTransportInfo =
-    //    private var apiForTransportInfo = "https://travelappthird.free.beeceptor.com/getTransportInfo"
+    //MARK: თუ ერთი api არ მუშაობს ჩააფეისთეთ მეორე რა
+    //მეორე  private var apiForMustSeeInfo = "https://travelapp.free.beeceptor.com/getTransportInfo""
+    //პირველი
     private var apiForTransportInfo = "https://travelappfourth.free.beeceptor.com/getTransportInfo"
     @Published var transports: [Transport] = []
     
