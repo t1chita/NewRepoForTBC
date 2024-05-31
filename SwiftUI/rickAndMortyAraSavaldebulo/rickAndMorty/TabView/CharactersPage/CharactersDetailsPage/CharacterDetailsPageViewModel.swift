@@ -9,7 +9,8 @@ import Foundation
 
 class CharacterDetailsPageViewModel: ObservableObject {
     private var character: CartoonCharacter
-    @Published var episodes: [Episode] = []
+    
+    @Published var episodes: [Episodes] = []
     
     init(character: CartoonCharacter) {
         self.character = character
@@ -18,7 +19,7 @@ class CharacterDetailsPageViewModel: ObservableObject {
     
     private func fetchData() {
         for index in character.episode.indices {
-            NetworkService.networkService.getData(urlString: character.episode[index]) { [weak self] (result: Result<Episode, Error>) in
+            NetworkService.networkService.getData(urlString: character.episode[index]) { [weak self] (result: Result<Episodes, Error>) in
                 switch result {
                 case .success(let episode):
                     self?.episodes.append(episode)

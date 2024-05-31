@@ -15,7 +15,8 @@ class CharactersPageViewModel: ObservableObject {
     init() {
         fetchData()
     }
-        
+    
+    
     func getCharacter(id: Int) -> CartoonCharacter {
         return characters.first(where: {$0.id == id})!
     }

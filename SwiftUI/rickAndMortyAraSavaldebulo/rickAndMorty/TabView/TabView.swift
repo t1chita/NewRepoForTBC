@@ -10,10 +10,8 @@ import SwiftUI
 struct MyTabView: View {
     @StateObject var charactersViewModel = CharactersPageViewModel()
     @StateObject var episodesViewModel = EpisodesPageViewModel()
-    @StateObject var locationViewModel = LocationPageViewModel()
-    
     var body: some View {
-        let searchPageViewModel = SearchPageViewModel(episodesViewModel: episodesViewModel, charactersViewModel: charactersViewModel, locationsViewModel: locationViewModel)
+        let searchPageViewModel = SearchPageViewModel(episodesViewModel: episodesViewModel, charactersViewModel: charactersViewModel)
         TabView {
             CharactersPageView()
                 .tabItem {
@@ -29,11 +27,6 @@ struct MyTabView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
-                }
-            LocationPageView(locations: locationViewModel.locations)
-                .tabItem {
-                    Image(systemName: "map")
-                    Text("Location")
                 }
             
         }
